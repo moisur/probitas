@@ -145,7 +145,7 @@ const PressePage: React.FC = () => {
     const filteredData = pressData.filter(item => filter === 'all' || item.type === filter);
 
     return (
-        <div className="bg-[#0C2E59] min-h-screen pt-48 pb-40 text-white">
+        <div className="bg-[#0C2E59] min-h-screen pt-32 md:pt-48 pb-40 text-white">
             <div className="max-w-7xl mx-auto px-6 md:px-24">
 
                 {/* Editorial Header */}
@@ -157,7 +157,7 @@ const PressePage: React.FC = () => {
                             <div className="h-[2px] w-12 bg-[#BF9B8E]" />
                         </div>
 
-                        <h1 className="text-7xl md:text-[9vw] font-black tracking-tighter leading-[0.85] text-white uppercase">
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[9vw] font-black tracking-tighter leading-[0.9] md:leading-[0.85] text-white uppercase">
                             TOUT LE MONDE <br />
                             <span className="italic font-light text-white/40">EN PARLE.</span>
                         </h1>
@@ -167,12 +167,14 @@ const PressePage: React.FC = () => {
                                 Découvrez nos interventions, nos analyses et nos combats pour une culture de l’éthique ancrée dans le réel.
                             </p>
 
-                            <div className="flex bg-[#0C2E59]/50 p-1.5 rounded-full border border-white/10 shadow-sm gap-1 self-start md:self-auto backdrop-blur-sm">
+                            <div className="flex flex-wrap gap-2 md:gap-4 self-start md:self-auto pt-4">
                                 {(['all', 'article', 'video'] as const).map((f) => (
                                     <button
                                         key={f}
                                         onClick={() => setFilter(f)}
-                                        className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${filter === f ? 'bg-[#BF9B8E] text-[#0C2E59]' : 'text-white/50 hover:text-white'}`}
+                                        className={`px-6 md:px-8 py-3 rounded-sm text-[10px] font-black uppercase tracking-[0.2em] transition-all border relative ${filter === f
+                                            ? 'bg-[#BF9B8E] text-[#0C2E59] border-[#BF9B8E] shadow-xl scale-105'
+                                            : 'bg-white/5 border-white/10 text-white/50 hover:border-white/30 hover:text-white'}`}
                                     >
                                         {f === 'all' ? 'Toutes les archives' : f === 'article' ? 'Articles' : 'Médias / TV'}
                                     </button>
@@ -196,7 +198,7 @@ const PressePage: React.FC = () => {
                                 onClick={() => setSelectedItem(item)}
                                 className="group cursor-pointer"
                             >
-                                <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] mb-8 bg-white/5">
+                                <div className="relative aspect-[4/5] overflow-hidden rounded-sm mb-8 bg-white/5">
                                     <motion.img
                                         src={item.image}
                                         alt={item.title}
@@ -206,14 +208,14 @@ const PressePage: React.FC = () => {
 
                                     {item.type === 'video' && (
                                         <div className="absolute top-6 right-6">
-                                            <div className="w-12 h-12 bg-[#BF9B8E]/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg">
+                                            <div className="w-12 h-12 bg-[#BF9B8E]/90 backdrop-blur rounded-sm flex items-center justify-center shadow-lg">
                                                 <Play className="w-5 h-5 text-[#0C2E59] fill-[#0C2E59] ml-0.5" />
                                             </div>
                                         </div>
                                     )}
 
                                     <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center text-white">
-                                        <span className="text-[9px] font-black uppercase tracking-widest bg-[#0C2E59]/80 backdrop-blur px-3 py-1 rounded-full border border-[#BF9B8E]/30 text-[#BF9B8E]">
+                                        <span className="text-[9px] font-black uppercase tracking-widest bg-[#0C2E59]/80 backdrop-blur px-3 py-1 rounded-sm border border-[#BF9B8E]/30 text-[#BF9B8E]">
                                             {item.source}
                                         </span>
                                     </div>
@@ -260,12 +262,12 @@ const PressePage: React.FC = () => {
                                 initial={{ opacity: 0, scale: 0.9, y: 50 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 50 }}
-                                className="relative w-full max-w-5xl bg-[#081d38] border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl z-[210] flex flex-col md:flex-row h-[85vh] md:h-auto"
+                                className="relative w-full max-w-5xl bg-[#081d38] border border-white/10 rounded-sm overflow-hidden shadow-2xl z-[210] flex flex-col md:flex-row h-[85vh] md:h-auto"
                             >
                                 {/* Close Button */}
                                 <button
                                     onClick={() => setSelectedItem(null)}
-                                    className="absolute top-8 right-8 z-[220] w-12 h-12 bg-[#BF9B8E] text-[#0C2E59] rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-xl"
+                                    className="absolute top-8 right-8 z-[220] w-12 h-12 bg-[#BF9B8E] text-[#0C2E59] rounded-sm flex items-center justify-center hover:scale-110 transition-all shadow-xl"
                                 >
                                     <X className="w-6 h-6" />
                                 </button>
@@ -302,7 +304,7 @@ const PressePage: React.FC = () => {
                                             href={selectedItem.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center justify-center gap-4 bg-[#BF9B8E] text-[#0C2E59] px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs hover:bg-white transition-all group"
+                                            className="inline-flex items-center justify-center gap-4 bg-[#BF9B8E] text-[#0C2E59] px-10 py-5 rounded-sm font-black uppercase tracking-widest text-xs hover:bg-white transition-all group"
                                         >
                                             {selectedItem.type === 'video' ? 'Visionner la vidéo' : 'Lire l\'article complet'}
                                             <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -310,7 +312,7 @@ const PressePage: React.FC = () => {
 
                                         <button
                                             onClick={() => setSelectedItem(null)}
-                                            className="inline-flex items-center justify-center px-10 py-5 rounded-full border border-white/20 font-black uppercase tracking-widest text-[10px] text-white/60 hover:text-white hover:border-white transition-all"
+                                            className="inline-flex items-center justify-center px-10 py-5 rounded-sm border border-white/20 font-black uppercase tracking-widest text-[10px] text-white/60 hover:text-white hover:border-white transition-all"
                                         >
                                             Retour aux archives
                                         </button>
@@ -324,7 +326,7 @@ const PressePage: React.FC = () => {
                 {/* Probitas Logo / Footer Section */}
                 <section className="mt-60 border-t border-white/10 pt-32 text-center">
                     <div className="inline-flex items-center gap-4 mb-12">
-                        <div className="w-16 h-16 bg-[#BF9B8E] text-[#0C2E59] flex items-center justify-center rounded-2xl shadow-xl">
+                        <div className="w-16 h-16 bg-[#BF9B8E] text-[#0C2E59] flex items-center justify-center rounded-sm shadow-xl">
                             <span className="text-3xl font-black italic">P</span>
                         </div>
                         <span className="text-4xl font-black tracking-tighter text-white">probitas</span>

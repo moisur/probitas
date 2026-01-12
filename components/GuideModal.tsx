@@ -33,7 +33,7 @@ const GuideModal: React.FC<GuideModalProps> = ({ guide, onClose }) => {
                         {/* Close Button */}
                         <button
                             onClick={onClose}
-                            className="absolute top-4 right-4 z-20 p-2 bg-white/50 hover:bg-white rounded-full transition-colors font-bold"
+                            className="absolute top-4 right-4 z-20 p-2 bg-white/50 hover:bg-white rounded-sm transition-colors font-bold"
                         >
                             <X className="w-6 h-6 text-[#0C2E59]" />
                         </button>
@@ -75,7 +75,7 @@ const GuideModal: React.FC<GuideModalProps> = ({ guide, onClose }) => {
                                     <h4 className="font-bold uppercase tracking-widest text-xs text-[#BF9B8E] mb-3">Expertises Clés</h4>
                                     <div className="flex flex-wrap gap-3">
                                         {guide.expertise?.map((exp, idx) => (
-                                            <span key={idx} className="px-4 py-2 bg-white border border-[#0C2E59]/10 rounded-full text-sm text-[#0C2E59]/80 flex items-center gap-2">
+                                            <span key={idx} className="px-4 py-2 bg-white border border-[#0C2E59]/10 rounded-sm text-sm text-[#0C2E59]/80 flex items-center gap-2">
                                                 <CheckCircle2 className="w-4 h-4 text-[#BF9B8E]" />
                                                 {exp}
                                             </span>

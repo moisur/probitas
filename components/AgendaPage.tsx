@@ -338,26 +338,49 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
 
     useLayoutEffect(() => {
         const updateMasks = () => {
-            const getPath = (ref: React.RefObject<HTMLDivElement>) => {
-                const el = ref.current;
-                if (!el) return '';
-                const rect = el.getBoundingClientRect();
-                const buttons = Array.from(el.querySelectorAll('button')) as HTMLElement[];
+            const getPath = (container: HTMLDivElement) => {
+                if (!container) return '';
+                const buttons = Array.from(container.querySelectorAll('button')) as HTMLElement[];
                 return buttons.map(btn => {
-                    const bRect = btn.getBoundingClientRect();
-                    const x = bRect.left - rect.left;
-                    const y = bRect.top - rect.top;
-                    const w = bRect.width;
-                    const h = bRect.height;
-                    const r = h / 2;
-                    return `M ${x + r},${y} h ${w - 2 * r} a ${r},${r} 0 0 1 ${r},${r} v 0 a ${r},${r} 0 0 1 -${r},${r} h -${w - 2 * r} a ${r},${r} 0 0 1 -${r},-${r} v 0 a ${r},${r} 0 0 1 ${r},-${r} z`;
+                    const padding = 5; // Aggressive padding to prevent any clipping artifacts
+                    const x = btn.offsetLeft - padding;
+                    const y = btn.offsetTop - padding;
+                    const w = btn.offsetWidth + (padding * 2);
+                    const h = btn.offsetHeight + (padding * 2);
+                    const r = 7; // rounded-sm (2px) + padding (5px)
+                    return `M ${x + r},${y} h ${w - 2 * r} a ${r},${r} 0 0 1 ${r},${r} v ${h - 2 * r} a ${r},${r} 0 0 1 -${r},${r} h -${w - 2 * r} a ${r},${r} 0 0 1 -${r},-${r} v -${h - 2 * r} a ${r},${r} 0 0 1 ${r},-${r} z`;
                 }).join(' ');
             };
-            setMasks({ loc: getPath(containerRefLoc), period: getPath(containerRefPeriod) });
+
+            if (containerRefLoc.current) {
+                setMasks(prev => ({ ...prev, loc: getPath(containerRefLoc.current!) }));
+            }
+            if (containerRefPeriod.current) {
+                setMasks(prev => ({ ...prev, period: getPath(containerRefPeriod.current!) }));
+            }
         };
+
+        const observer = new ResizeObserver(() => {
+            requestAnimationFrame(updateMasks);
+        });
+
+        const observeElements = () => {
+            if (containerRefLoc.current) {
+                observer.observe(containerRefLoc.current);
+                Array.from(containerRefLoc.current.children).forEach(child => observer.observe(child as Element));
+            }
+            if (containerRefPeriod.current) {
+                observer.observe(containerRefPeriod.current);
+                Array.from(containerRefPeriod.current.children).forEach(child => observer.observe(child as Element));
+            }
+        };
+
+        observeElements();
+        // Force update on mount and after font load
         updateMasks();
-        window.addEventListener('resize', updateMasks);
-        return () => window.removeEventListener('resize', updateMasks);
+        document.fonts.ready.then(updateMasks);
+
+        return () => observer.disconnect();
     }, [periods]);
 
     const toggleArchive = (id: string) => {
@@ -381,7 +404,7 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
     }, [filterLoc, filterPeriod]);
 
     return (
-        <div className="min-h-screen bg-[#0C2E59] text-white pt-48 pb-40 font-sans" onMouseLeave={() => setHoveredFilter(null)}>
+        <div className="min-h-screen bg-[#0C2E59] text-white pt-32 md:pt-48 pb-40 font-sans" onMouseLeave={() => setHoveredFilter(null)}>
             <div className="max-w-7xl mx-auto px-6 md:px-24 relative z-10">
 
                 {/* Editorial Header - Inspired by Blog */}
@@ -394,7 +417,7 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
                         </div>
 
                         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
-                            <h1 className="text-7xl md:text-[9vw] font-black tracking-tighter leading-[0.85] text-white uppercase">
+                            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[9vw] font-black tracking-tighter leading-[0.9] md:leading-[0.85] text-white uppercase">
                                 AGENDA <br />
                                 <span className="italic font-light text-white/40">PROBITAS.</span>
                             </h1>
@@ -418,52 +441,58 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
                         </div>
 
                         <div className="flex flex-col md:flex-row justify-between items-end gap-12 mt-12">
-                            <p className="text-xl md:text-2xl text-blue-200/60 font-light max-w-xl leading-snug">
+                            <p className="text-xl md:text-2xl text-blue-200/60 font-light max-w-xl leading-snug flex-1 min-w-0">
                                 Rejoignez-nous lors de nos prochaines interventions auprès de nos partenaires publics et privés.
                             </p>
 
-                            {/* Portaled Filter Bar Style from Blog - Simple Pass-Through Animation */}
-                            <div className="flex bg-[#0C2E59]/50 p-1.5 rounded-full border border-white/10 shadow-sm self-start md:self-auto backdrop-blur-sm relative overflow-hidden">
-                                {(['all', 'presence', 'distance'] as const).map((f) => (
-                                    <button
-                                        key={f}
-                                        onClick={() => setFilterLoc(f)}
-                                        onMouseEnter={() => setHoveredFilter(f)}
-                                        className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-colors relative z-10 ${filterLoc === f ? 'text-[#0C2E59]' : 'text-white/50 hover:text-white'}`}
-                                    >
-                                        {filterLoc === f && (
-                                            <motion.div
-                                                layoutId="activeFilterLoc"
-                                                className="absolute inset-0 bg-white rounded-full -z-10"
-                                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                            />
-                                        )}
-                                        {hoveredFilter === f && filterLoc !== f && (
-                                            <motion.div
-                                                layoutId="hoverFilterLoc"
-                                                className="absolute inset-0 bg-white/5 rounded-full -z-10"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                transition={{ duration: 0.2 }}
-                                            />
-                                        )}
-                                        <span className="relative z-20">
-                                            {f === 'all' ? 'Toutes sessions' : f === 'distance' ? 'À distance' : 'Présentiel'}
-                                        </span>
-                                    </button>
+                            {/* Portaled Filter Bar Style from Blog - Windowed Animation */}
+                            <div
+                                ref={containerRefLoc}
+                                className="flex flex-wrap md:flex-nowrap shrink-0 relative overflow-hidden py-2 gap-y-3"
+                            >
+                                {/* Stencil Layer for Location Filters */}
+                                <div
+                                    className="absolute inset-0 z-20 pointer-events-none bg-[#0C2E59]"
+                                    style={{
+                                        maskImage: masks.loc ? `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg'><path fill='black' d='M0,0 H10000 V10000 H0 z ${masks.loc}' fill-rule='evenodd'/></svg>`)}")` : 'none',
+                                        WebkitMaskImage: masks.loc ? `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg'><path fill='black' d='M0,0 H10000 V10000 H0 z ${masks.loc}' fill-rule='evenodd'/></svg>`)}")` : 'none',
+                                    }}
+                                />
+
+                                {(['all', 'presence', 'distance'] as const).map((f, idx) => (
+                                    <React.Fragment key={f}>
+                                        {idx > 0 && <div className="w-3 md:w-4" />}
+                                        <button
+                                            onClick={() => setFilterLoc(f)}
+                                            onMouseEnter={() => setHoveredFilter(`loc-${f}`)}
+                                            className={`px-6 md:px-8 py-3 rounded-sm text-[10px] md:text-xs font-black uppercase tracking-[0.2em] transition-all relative border z-10 ${filterLoc === f
+                                                ? 'text-[#0C2E59] border-white'
+                                                : 'bg-white/5 border-white/10 text-white/50 hover:border-white/30 hover:text-white'}`}
+                                        >
+                                            {filterLoc === f && (
+                                                <motion.div
+                                                    layoutId="activeFilterLoc"
+                                                    className="absolute -inset-[3px] bg-white rounded-sm -z-10"
+                                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                                />
+                                            )}
+                                            <span className="relative z-20">
+                                                {f === 'all' ? 'Toutes sessions' : f === 'distance' ? 'À distance' : 'Présentiel'}
+                                            </span>
+                                        </button>
+                                    </React.Fragment>
                                 ))}
                             </div>
                         </div>
                     </div>
                 </header>
 
-                {/* Second Level Filtering: Periods - Windowed Animation (Hidden in gaps) */}
+                {/* Second Level Filtering: Periods - Windowed Animation */}
                 <div
                     ref={containerRefPeriod}
-                    className="max-w-5xl mb-16 flex flex-wrap relative overflow-hidden"
+                    className="max-w-5xl mb-16 flex flex-wrap md:flex-nowrap shrink-0 relative overflow-hidden gap-y-3"
                 >
-                    {/* Stencil Layer - Covers the gaps but reveals the buttons */}
+                    {/* Stencil Layer for Period Filters */}
                     <div
                         className="absolute inset-0 z-20 pointer-events-none bg-[#0C2E59]"
                         style={{
@@ -475,15 +504,15 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
                     <button
                         onClick={() => setFilterPeriod('all')}
                         onMouseEnter={() => setHoveredFilter('period-all')}
-                        className={`px-6 py-2.5 rounded-full text-[9px] font-black uppercase tracking-widest transition-all border relative z-10 ${filterPeriod === 'all'
-                            ? 'text-[#0C2E59] border-white shadow-xl'
-                            : 'bg-white/5 border-white/10 text-white/40 hover:border-white/30'
+                        className={`px-6 py-2.5 rounded-sm text-[9px] font-black uppercase tracking-[0.2em] transition-all border relative z-10 ${filterPeriod === 'all'
+                            ? 'text-[#0C2E59] border-white'
+                            : 'bg-white/5 border-white/10 text-white/60 hover:border-white/30 hover:text-white'
                             }`}
                     >
                         {filterPeriod === 'all' && (
                             <motion.div
                                 layoutId="activeFilterPeriod"
-                                className="absolute inset-0 bg-white rounded-full -z-10"
+                                className="absolute -inset-[3px] bg-white rounded-sm -z-10"
                                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             />
                         )}
@@ -491,19 +520,19 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
                     </button>
                     {periods.map((period) => (
                         <React.Fragment key={period}>
-                            <div className="w-3" /> {/* GAP (Hidden by stencil) */}
+                            <div className="w-3 md:w-3" />
                             <button
                                 onClick={() => setFilterPeriod(period)}
                                 onMouseEnter={() => setHoveredFilter(`period-${period}`)}
-                                className={`px-6 py-2.5 rounded-full text-[9px] font-black uppercase tracking-widest transition-all border relative z-10 ${filterPeriod === period
-                                    ? 'text-[#0C2E59] border-white shadow-xl'
-                                    : 'bg-white/5 border-white/10 text-white/40 hover:border-white/30'
+                                className={`px-6 py-2.5 rounded-sm text-[9px] font-black uppercase tracking-[0.2em] transition-all border relative z-10 ${filterPeriod === period
+                                    ? 'text-[#0C2E59] border-white'
+                                    : 'bg-white/5 border-white/10 text-white/60 hover:border-white/30 hover:text-white'
                                     }`}
                             >
                                 {filterPeriod === period && (
                                     <motion.div
                                         layoutId="activeFilterPeriod"
-                                        className="absolute inset-0 bg-white rounded-full -z-10"
+                                        className="absolute -inset-[3px] bg-white rounded-sm -z-10"
                                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                     />
                                 )}
@@ -512,6 +541,7 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
                         </React.Fragment>
                     ))}
                 </div>
+
 
                 {/* Timeline / Events Grid - Hybrid Style (Editorial + Screenshot Cards) */}
                 <div className="max-w-5xl mb-24 min-h-[400px]">
@@ -549,7 +579,7 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
                                             <div className="md:w-1/4 mb-4 md:mb-0">
                                                 <div className="bg-white/5 border border-white/10 rounded-sm p-6 text-center group-hover:border-[#BF9B8E]/50 transition-all duration-500 h-full flex flex-col justify-center shadow-xl">
                                                     <Calendar className="mx-auto mb-3 text-[#BF9B8E]/60 group-hover:text-[#BF9B8E] transition-colors" size={24} />
-                                                    <span className="text-3xl font-black font-mono text-white block tracking-tighter mb-1">
+                                                    <span className="text-xl md:text-3xl font-black font-mono text-white block tracking-tighter mb-1">
                                                         {event.date}
                                                     </span>
                                                     <div className="flex items-center justify-center gap-2 text-white/30 text-[9px] font-black uppercase tracking-widest group-hover:text-[#BF9B8E]/60 transition-colors">
@@ -592,7 +622,7 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                className="text-center py-40 bg-white/5 rounded-[3rem] border border-dashed border-white/10"
+                                className="text-center py-40 bg-white/5 rounded-sm border border-dashed border-white/10"
                             >
                                 <p className="text-white/40 font-serif italic text-2xl">Aucun événement ne correspond à vos critères.</p>
                                 <button
@@ -617,7 +647,7 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
 
                     <div className="space-y-6">
                         {archives.map((archive) => (
-                            <div key={archive.id} className="border border-white/10 rounded-[2rem] overflow-hidden bg-white/2 hover:bg-white/5 transition-all duration-500 group">
+                            <div key={archive.id} className="border border-white/10 rounded-sm overflow-hidden bg-white/2 hover:bg-white/5 transition-all duration-500 group">
                                 <button
                                     onClick={() => toggleArchive(archive.id)}
                                     className="w-full flex items-center justify-between p-8 md:p-12 transition-colors text-left"
@@ -626,7 +656,7 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
                                         <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-white/30">Sessions clôturées</span>
                                         <h3 className="font-cinzel font-black text-xl md:text-2xl text-white group-hover:text-[#BF9B8E] transition-colors uppercase tracking-widest">{archive.title}</h3>
                                     </div>
-                                    <div className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all duration-500 ${openArchives.includes(archive.id) ? 'bg-[#BF9B8E] text-[#0C2E59] border-[#BF9B8E]' : 'group-hover:border-[#BF9B8E]'}`}>
+                                    <div className={`w-12 h-12 rounded-sm border border-white/10 flex items-center justify-center transition-all duration-500 ${openArchives.includes(archive.id) ? 'bg-[#BF9B8E] text-[#0C2E59] border-[#BF9B8E]' : 'group-hover:border-[#BF9B8E]'}`}>
                                         {openArchives.includes(archive.id) ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                                     </div>
                                 </button>
@@ -649,7 +679,7 @@ const AgendaPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact })
                                                         <ul className="space-y-3">
                                                             {month.items.map((item, i) => (
                                                                 <li key={i} className="text-blue-50/60 font-light text-sm leading-relaxed flex gap-3 group/item">
-                                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#BF9B8E]/30 mt-1.5 flex-shrink-0 group-hover/item:bg-[#BF9B8E] transition-colors" />
+                                                                    <div className="w-1.5 h-1.5 rounded-sm bg-[#BF9B8E]/30 mt-1.5 flex-shrink-0 group-hover/item:bg-[#BF9B8E] transition-colors" />
                                                                     {item}
                                                                 </li>
                                                             ))}

@@ -10,7 +10,7 @@ const TestimonialsPage: React.FC = () => {
 
             {/* Conteneur Principal avec marges mobiles pour l'effet "Box" */}
             <main className="flex-1 w-full flex items-center justify-center p-2 md:p-6 overflow-hidden">
-                <div className="w-full h-full max-w-6xl mx-auto rounded-[24px] md:rounded-[40px] overflow-hidden shadow-[0_30px_100px_-10px_rgba(0,0,0,0.9)] relative border border-white/10 bg-[#0C2E59]">
+                <div className="w-full h-full max-w-6xl mx-auto rounded-sm overflow-hidden shadow-[0_30px_100px_-10px_rgba(0,0,0,0.9)] relative border border-white/10 bg-[#0C2E59]">
                     <TestimonialSlider />
                 </div>
             </main>

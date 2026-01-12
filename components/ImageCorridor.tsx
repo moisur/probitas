@@ -81,7 +81,7 @@ const ImageCorridor: React.FC = () => {
         </div>
 
         {/* Floating Decoration */}
-        <div className="absolute inset-0 pointer-events-none border-[1px] border-[#BF9B8E]/5 m-12 rounded-[60px]" />
+        <div className="absolute inset-0 pointer-events-none border-[1px] border-[#BF9B8E]/5 m-12 rounded-sm" />
       </div>
 
       <style>{`

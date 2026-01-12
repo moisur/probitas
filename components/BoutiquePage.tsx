@@ -109,9 +109,9 @@ const BoutiquePage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white/5 border border-white/10 p-8 rounded-2xl flex flex-col hover:border-[#BF9B8E]/50 transition-colors group"
+            className="bg-white/5 border border-white/10 p-8 rounded-sm flex flex-col hover:border-[#BF9B8E]/50 transition-colors group"
         >
-            <div className="bg-[#BF9B8E]/10 w-12 h-12 rounded-xl flex items-center justify-center text-[#BF9B8E] mb-6 group-hover:scale-110 transition-transform">
+            <div className="bg-[#BF9B8E]/10 w-12 h-12 rounded-sm flex items-center justify-center text-[#BF9B8E] mb-6 group-hover:scale-110 transition-transform">
                 {product.icon}
             </div>
             <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.2em] mb-2">{product.type}</span>
@@ -128,7 +128,7 @@ const BoutiquePage: React.FC = () => {
     );
 
     return (
-        <div className="min-h-screen bg-[#0C2E59] text-white pt-32 pb-20">
+        <div className="min-h-screen bg-[#0C2E59] text-white pt-32 md:pt-48 pb-20">
             {/* Header */}
             <div className="container mx-auto px-6 mb-20">
                 <motion.div
@@ -139,7 +139,7 @@ const BoutiquePage: React.FC = () => {
                     <div className="h-[1px] w-12 bg-[#BF9B8E]" />
                     <span className="text-[#BF9B8E] font-mono text-[10px] tracking-[0.5em] uppercase">Outils Gratuits</span>
                 </motion.div>
-                <h1 className="text-4xl md:text-7xl font-cinzel font-black uppercase mb-6">
+                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-cinzel font-black uppercase mb-6 leading-none">
                     BOUTIQUE <br /><span className="text-[#BF9B8E]">& RESSOURCES.</span>
                 </h1>
                 <p className="text-xl text-white/60 max-w-2xl font-serif italic">
@@ -192,7 +192,7 @@ const BoutiquePage: React.FC = () => {
 
             {/* Lead Gen CTA */}
             <div className="container mx-auto px-6">
-                <div className="bg-[#BF9B8E] text-[#0C2E59] p-12 md:p-20 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
+                <div className="bg-[#BF9B8E] text-[#0C2E59] p-12 md:p-20 rounded-sm flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
                     <div className="relative z-10">
                         <h2 className="text-3xl md:text-4xl font-cinzel font-black uppercase mb-4">Besoin d'un pack sur-mesure ?</h2>
                         <p className="text-lg opacity-80">Nous créons des outils adaptés à la structure spécifique de votre organisation.</p>

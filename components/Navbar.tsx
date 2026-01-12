@@ -222,18 +222,18 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
               <motion.span
                 animate={isOpen ? { top: "50%", rotate: 45, backgroundColor: "#ffffff" } : { top: "0%", rotate: 0, backgroundColor: "#ffffff" }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="absolute left-0 w-full h-0.5 rounded-full origin-center bg-white"
+                className="absolute left-0 w-full h-0.5 rounded-sm origin-center bg-white"
                 style={{ top: "0%" }}
               />
               <motion.span
                 animate={isOpen ? { opacity: 0, scale: 0, x: 10 } : { opacity: 1, scale: 1, x: 0, backgroundColor: "#ffffff" }}
                 transition={{ duration: 0.2 }}
-                className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 rounded-full bg-white"
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 rounded-sm bg-white"
               />
               <motion.span
                 animate={isOpen ? { bottom: "50%", rotate: -45, backgroundColor: "#ffffff", y: 1 } : { bottom: "0%", rotate: 0, backgroundColor: "#ffffff", y: 0 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="absolute left-0 w-full h-0.5 rounded-full origin-center bg-white"
+                className="absolute left-0 w-full h-0.5 rounded-sm origin-center bg-white"
                 style={{ bottom: "0%" }}
               />
             </div>

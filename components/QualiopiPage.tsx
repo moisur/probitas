@@ -20,7 +20,7 @@ const QualiopiPage: React.FC = () => {
                 </header>
 
                 {/* Certificate Verification Section */}
-                <section className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 mb-16 text-center space-y-12">
+                <section className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-8 md:p-12 mb-16 text-center space-y-12">
                     <div className="max-w-md mx-auto">
                         <img
                             src="/assets/certificat-qua006775.webp"
@@ -61,7 +61,7 @@ const QualiopiPage: React.FC = () => {
                     <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                         <a
                             href="#formation"
-                            className="group flex flex-col items-center p-8 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all"
+                            className="group flex flex-col items-center p-8 bg-white/5 border border-white/10 rounded-sm hover:bg-white/10 transition-all"
                         >
                             <GraduationCap className="w-10 h-10 text-[#BF9B8E] mb-4 group-hover:scale-110 transition-transform" />
                             <span className="font-bold text-lg mb-2">Catalogue de formations</span>
@@ -72,7 +72,7 @@ const QualiopiPage: React.FC = () => {
                             href="https://meet.brevo.com/farah-zaoui/echangeons-formation-"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group flex flex-col items-center p-8 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all"
+                            className="group flex flex-col items-center p-8 bg-white/5 border border-white/10 rounded-sm hover:bg-white/10 transition-all"
                         >
                             <Calendar className="w-10 h-10 text-[#BF9B8E] mb-4 group-hover:scale-110 transition-transform" />
                             <span className="font-bold text-lg mb-2">Prendre rendez-vous</span>

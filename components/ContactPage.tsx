@@ -72,7 +72,7 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
 
                 <div className="contact-content grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     {/* Form Section */}
-                    <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
+                    <div className="bg-white/5 backdrop-blur-md rounded-sm p-8 md:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[#BF9B8E]/10 rounded-full blur-3xl -mr-16 -mt-16" />
 
                         <h3 className="text-2xl font-semibold mb-6">Envoyez-nous un message</h3>
@@ -103,7 +103,7 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
+                                        className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
                                         placeholder="Votre nom"
                                     />
                                 </div>
@@ -114,7 +114,7 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
+                                        className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
                                         placeholder="votre@email.com"
                                     />
                                 </div>
@@ -125,7 +125,7 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
                                         name="phone"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
+                                        className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
                                         placeholder="06 00 00 00 00"
                                     />
                                 </div>
@@ -136,7 +136,7 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
                                         rows={4}
                                         value={formData.message}
                                         onChange={handleChange}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
+                                        className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
                                         placeholder="En quoi pouvons-nous vous aider ?"
                                     />
                                 </div>
@@ -147,7 +147,7 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
                                         name="captcha"
                                         value={formData.captcha}
                                         onChange={handleChange}
-                                        className="w-24 bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
+                                        className="w-24 bg-white/5 border border-white/10 rounded-sm px-4 py-3 focus:border-[#BF9B8E] focus:outline-none transition-colors"
                                         placeholder="Réponse"
                                     />
                                 </div>
@@ -156,7 +156,7 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-[#BF9B8E] hover:bg-[#d9b6a9] text-[#0C2E59] font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] active:scale-95 shadow-xl"
+                                    className="w-full bg-[#BF9B8E] hover:bg-[#d9b6a9] text-[#0C2E59] font-bold py-4 rounded-sm flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] active:scale-95 shadow-xl"
                                 >
                                     <Send className="w-5 h-5" />
                                     ENVOYER
@@ -180,9 +180,9 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
                             </div>
                         </div>
 
-                        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10">
+                        <div className="bg-white/5 backdrop-blur-md rounded-sm p-8 border border-white/10">
                             <div className="flex items-start gap-6">
-                                <div className="w-16 h-16 rounded-2xl bg-[#BF9B8E]/20 flex items-center justify-center flex-shrink-0">
+                                <div className="w-16 h-16 rounded-sm bg-[#BF9B8E]/20 flex items-center justify-center flex-shrink-0">
                                     <Calendar className="w-8 h-8 text-[#BF9B8E]" />
                                 </div>
                                 <div>
@@ -208,7 +208,7 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
                                     href="https://www.linkedin.com/company/probitas-conseil/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] transition-all group"
+                                    className="w-14 h-14 rounded-sm border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] transition-all group"
                                 >
                                     <Linkedin className="w-6 h-6" />
                                 </a>
@@ -216,7 +216,7 @@ const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }
                                     href="https://twitter.com/Probitas_org/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] transition-all group"
+                                    className="w-14 h-14 rounded-sm border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] transition-all group"
                                 >
                                     <Twitter className="w-6 h-6" />
                                 </a>

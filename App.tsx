@@ -153,17 +153,17 @@ const App: React.FC = () => {
                       La confiance est la base de toute relation de probité. Découvrez les retours de nos partenaires publics et privés.
                     </p>
                     <div className="flex gap-4 items-center group cursor-pointer" onClick={() => setCurrentView('testimonials')}>
-                      <div className="h-16 w-16 rounded-full border border-[#BF9B8E] flex items-center justify-center group-hover:bg-[#BF9B8E] transition-all duration-500">
+                      <div className="h-16 w-16 rounded-sm border border-[#BF9B8E] flex items-center justify-center group-hover:bg-[#BF9B8E] transition-all duration-500">
                         <span className="text-[#BF9B8E] group-hover:text-white transition-colors text-2xl">→</span>
                       </div>
                       <span className="font-cinzel font-bold tracking-[0.3em] uppercase text-xs">Lire les témoignages</span>
                     </div>
                   </div>
                   <div className="flex-1 grid grid-cols-2 gap-4">
-                    <div className="h-64 bg-white/5 rounded-2xl overflow-hidden border border-white/10 group">
+                    <div className="h-64 bg-white/5 rounded-sm overflow-hidden border border-white/10 group">
                       <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800" className="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 cursor-pointer" />
                     </div>
-                    <div className="h-64 bg-[#BF9B8E] rounded-2xl flex items-center justify-center p-8 rotate-3 shadow-2xl">
+                    <div className="h-64 bg-[#BF9B8E] rounded-sm flex items-center justify-center p-8 rotate-3 shadow-2xl">
                       <p className="text-[#0C2E59] font-cinzel font-black text-3xl text-center leading-none tracking-tighter uppercase">Excellence & Intégrité</p>
                     </div>
                   </div>

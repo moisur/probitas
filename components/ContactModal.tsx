@@ -15,12 +15,14 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     const [contactType, setContactType] = useState<ContactType>(null);
     const [subType, setSubType] = useState<string | null>(null);
     const [formSent, setFormSent] = useState(false);
+    const [showMobileForm, setShowMobileForm] = useState(false);
 
     const resetModal = () => {
         setStep(1);
         setContactType(null);
         setSubType(null);
         setFormSent(false);
+        setShowMobileForm(false);
     };
 
     const handleClose = () => {
@@ -90,27 +92,51 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     initial={{ scale: 0.9, opacity: 0, y: 20 }}
                     animate={{ scale: 1, opacity: 1, y: 0 }}
                     exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                    className="relative w-full max-w-4xl max-h-[90vh] bg-[#0C2E59] border border-white/10 rounded-lg overflow-hidden overflow-y-auto shadow-2xl flex flex-col md:flex-row md:min-h-[600px]"
+                    className="relative w-full max-w-4xl max-h-[90vh] md:max-h-[90vh] flex flex-col md:flex-row bg-[#0C2E59] border border-white/10 rounded-sm shadow-2xl overflow-y-auto md:overflow-hidden md:min-h-[600px]"
                 >
+                    {/* Close Button - Sticky/Fixed relative to container */}
+                    <button
+                        onClick={handleClose}
+                        className="absolute top-4 right-4 z-50 p-2 text-white/50 hover:text-white transition-colors bg-[#0C2E59]/20 hover:bg-[#0C2E59]/40 rounded-full"
+                    >
+                        <X size={24} />
+                    </button>
+
                     {/* Background layers to allow watermark on both parts */}
-                    <div className="absolute inset-0 z-0">
-                        <div className="absolute left-0 top-0 bottom-0 md:w-1/3 bg-[#BF9B8E]" />
-                        <div className="absolute bottom-0 right-0 text-[12rem] font-cinzel font-black opacity-[0.08] -mr-16 -mb-16 leading-none pointer-events-none select-none">
+                    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-sm">
+                        <div className="absolute left-0 top-0 bottom-0 md:w-1/3 bg-[#BF9B8E] hidden md:block" />
+                        <div className="absolute bottom-0 right-0 text-[6rem] md:text-[12rem] font-cinzel font-black opacity-[0.08] -mr-8 -mb-8 md:-mr-16 md:-mb-16 leading-none select-none">
                             PROBITAS
                         </div>
                     </div>
 
                     {/* Sidebar / Info Panel */}
-                    <div className="relative z-10 w-full md:w-1/3 p-6 md:p-12 flex flex-col text-[#0C2E59] bg-[#BF9B8E]">
-                        <h2 className="text-2xl md:text-4xl font-cinzel font-black uppercase leading-none mb-4">
+                    <div className={`relative z-10 w-full md:w-1/3 p-4 md:p-12 flex flex-col text-[#0C2E59] bg-[#BF9B8E] md:overflow-y-auto md:h-full shrink-0 overflow-hidden ${showMobileForm ? 'hidden md:flex' : 'flex'}`}>
+                        {/* Mobile Sidebar Watermark */}
+                        <div className="absolute bottom-0 right-0 text-[6rem] font-cinzel font-black opacity-[0.1] -mr-8 -mb-8 leading-none select-none md:hidden pointer-events-none text-[#0C2E59]">
+                            PROBITAS
+                        </div>
+
+                        <h2 className="text-xl md:text-4xl font-cinzel font-black uppercase leading-none mb-2 md:mb-4 relative z-10">
                             Parlons <br />
                             <span className="text-white">ENSEMBLE.</span>
                         </h2>
-                        <p className="text-sm font-medium opacity-80 mb-12 leading-relaxed">
+                        <p className="text-xs md:text-sm font-medium opacity-80 mb-6 md:mb-12 leading-relaxed">
                             Nous sommes à votre écoute pour structurer votre démarche d'intégrité.
                         </p>
 
-                        <div className="mt-auto space-y-6">
+                        {/* Mobile Only: CTA to open form */}
+                        <div className="md:hidden mb-6">
+                            <button
+                                onClick={() => setShowMobileForm(true)}
+                                className="w-full bg-[#0C2E59] text-[#BF9B8E] font-black uppercase tracking-[0.2em] py-3 rounded-sm text-xs hover:bg-[#1a4a8a] transition-all flex items-center justify-center gap-3 shadow-lg"
+                            >
+                                Formulaire de contact
+                                <ArrowRight size={16} />
+                            </button>
+                        </div>
+
+                        <div className="mt-8 md:mt-auto space-y-6">
                             <a
                                 href="https://wa.me/33652308166?text=Hello%20Farah%20Zaoui%2C%20je%20vous%20ai%20d%C3%A9couvert%20sur%20votre%20site%20internet%20pourrais%20je%20prendre%20rendez%20vous%20%3F"
                                 target="_blank"
@@ -139,7 +165,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                 </div>
                             </a>
 
-                            <div className="pt-6 mt-6 border-t border-[#0C2E59]/10 flex items-center gap-4">
+                            <div className="pt-4 md:pt-6 mt-4 md:mt-6 border-t border-[#0C2E59]/10 flex items-center gap-4">
                                 <a href="https://www.linkedin.com/in/corruptionexpert/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#0C2E59] flex items-center justify-center text-[#BF9B8E] hover:scale-110 transition-transform" title="LinkedIn">
                                     <Linkedin size={18} />
                                 </a>
@@ -154,24 +180,27 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     {/* Main Content Area */}
-                    <div className="relative z-10 flex-1 p-6 md:p-16 flex flex-col overflow-hidden">
-                        <button
-                            onClick={handleClose}
-                            className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors"
-                        >
-                            <X size={24} />
-                        </button>
-
+                    <div className={`relative z-10 flex-1 p-4 md:p-16 flex flex-col md:overflow-y-auto md:h-full ${!showMobileForm ? 'hidden md:flex' : 'flex'}`}>
                         {!formSent ? (
                             <div className="flex-1 flex flex-col">
                                 {/* Navigation / Breadcrumbs */}
-                                {step > 1 && (
+                                {step > 1 ? (
                                     <button
                                         onClick={() => setStep(step - 1)}
-                                        className="flex items-center gap-2 text-[#BF9B8E] text-[10px] font-black uppercase tracking-[0.2em] mb-8 hover:-translate-x-2 transition-transform"
+                                        className="flex items-center gap-2 text-[#BF9B8E] text-[10px] font-black uppercase tracking-[0.2em] mb-4 md:mb-8 hover:-translate-x-2 transition-transform w-fit"
                                     >
                                         <ArrowLeft size={14} /> Retour
                                     </button>
+                                ) : (
+                                    /* Mobile: Back to Info */
+                                    <div className="md:hidden">
+                                        <button
+                                            onClick={() => setShowMobileForm(false)}
+                                            className="flex items-center gap-2 text-[#BF9B8E] text-[10px] font-black uppercase tracking-[0.2em] mb-4 md:mb-8 hover:-translate-x-2 transition-transform w-fit"
+                                        >
+                                            <ArrowLeft size={14} /> Retour aux infos
+                                        </button>
+                                    </div>
                                 )}
 
                                 {/* Step 1: Category */}
@@ -181,7 +210,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                         animate={{ opacity: 1, x: 0 }}
                                         className="flex-1"
                                     >
-                                        <h3 className="text-xl md:text-2xl font-cinzel font-black uppercase mb-10 tracking-tight">
+                                        <h3 className="text-lg md:text-2xl font-cinzel font-black uppercase mb-6 md:mb-10 tracking-tight">
                                             Quel est l'objet de <br /><span className="text-[#BF9B8E]">votre demande ?</span>
                                         </h3>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -189,10 +218,10 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                                 <button
                                                     key={cat.id}
                                                     onClick={() => handleCategorySelect(cat.id as ContactType)}
-                                                    className="p-6 rounded-lg bg-[#081d38] text-left hover:bg-[#1a4a8a] hover:text-white transition-all group duration-500 hover:shadow-[0_0_30px_rgba(26,74,138,0.3)]"
+                                                    className="p-4 md:p-6 rounded-sm bg-[#081d38] text-left hover:bg-[#1a4a8a] hover:text-white transition-all group duration-500 hover:shadow-[0_0_30px_rgba(26,74,138,0.3)] border border-transparent hover:border-[#1a4a8a]"
                                                 >
-                                                    <span className="text-[#BF9B8E] group-hover:text-white mb-4 block transition-colors">{cat.icon}</span>
-                                                    <p className="font-cinzel font-black uppercase tracking-widest text-xs">{cat.label}</p>
+                                                    <span className="text-[#BF9B8E] group-hover:text-white mb-2 md:mb-4 block transition-colors scale-75 md:scale-100 origin-top-left">{cat.icon}</span>
+                                                    <p className="font-cinzel font-black uppercase tracking-widest text-[10px] md:text-xs">{cat.label}</p>
                                                 </button>
                                             ))}
                                         </div>
@@ -206,7 +235,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                         animate={{ opacity: 1, x: 0 }}
                                         className="flex-1"
                                     >
-                                        <h3 className="text-xl md:text-2xl font-cinzel font-black uppercase mb-10 tracking-tight">
+                                        <h3 className="text-lg md:text-2xl font-cinzel font-black uppercase mb-6 md:mb-10 tracking-tight">
                                             Précisez <br /><span className="text-[#BF9B8E]">votre besoin :</span>
                                         </h3>
                                         <div className="grid grid-cols-1 gap-4">
@@ -214,9 +243,9 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                                 <button
                                                     key={sub.value}
                                                     onClick={() => handleSubTypeSelect(sub.value)}
-                                                    className="p-8 rounded-lg bg-[#081d38] border border-white/10 text-left hover:bg-[#1a4a8a] transition-all flex items-center justify-between group hover:border-[#1a4a8a]"
+                                                    className="p-4 md:p-8 rounded-sm bg-[#081d38] border border-white/10 text-left hover:bg-[#1a4a8a] transition-all flex items-center justify-between group hover:border-[#1a4a8a]"
                                                 >
-                                                    <p className="font-cinzel font-black uppercase tracking-widest text-sm">{sub.label}</p>
+                                                    <p className="font-cinzel font-black uppercase tracking-widest text-xs md:text-sm">{sub.label}</p>
                                                     <ArrowRight size={18} className="text-[#BF9B8E] group-hover:translate-x-2 transition-transform" />
                                                 </button>
                                             ))}
@@ -231,33 +260,33 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                         animate={{ opacity: 1, x: 0 }}
                                         className="flex-1"
                                     >
-                                        <h3 className="text-xl md:text-2xl font-cinzel font-black uppercase mb-8 tracking-tight">
+                                        <h3 className="text-lg md:text-2xl font-cinzel font-black uppercase mb-4 md:mb-8 tracking-tight">
                                             Parlez-nous <br /><span className="text-[#BF9B8E]">de vous :</span>
                                         </h3>
-                                        <form onSubmit={handleSubmit} className="space-y-4">
+                                        <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
                                             <div className="grid grid-cols-2 gap-4">
                                                 <input
                                                     type="text"
                                                     placeholder="Prénom"
                                                     required
-                                                    className="bg-[#081d38] border border-white/10 rounded-lg px-6 py-4 text-sm focus:border-[#BF9B8E] outline-none transition-colors"
+                                                    className="bg-[#081d38] border border-white/10 rounded-sm px-4 py-3 md:px-6 md:py-4 text-xs md:text-sm focus:border-[#BF9B8E] outline-none transition-colors w-full"
                                                 />
                                                 <input
                                                     type="text"
                                                     placeholder="Nom"
                                                     required
-                                                    className="bg-[#081d38] border border-white/10 rounded-lg px-6 py-4 text-sm focus:border-[#BF9B8E] outline-none transition-colors"
+                                                    className="bg-[#081d38] border border-white/10 rounded-sm px-4 py-3 md:px-6 md:py-4 text-xs md:text-sm focus:border-[#BF9B8E] outline-none transition-colors w-full"
                                                 />
                                             </div>
                                             <input
                                                 type="email"
                                                 placeholder="Email professionnel"
                                                 required
-                                                className="w-full bg-[#081d38] border border-white/10 rounded-lg px-6 py-4 text-sm focus:border-[#BF9B8E] outline-none transition-colors"
+                                                className="w-full bg-[#081d38] border border-white/10 rounded-sm px-4 py-3 md:px-6 md:py-4 text-xs md:text-sm focus:border-[#BF9B8E] outline-none transition-colors"
                                             />
                                             <div className="relative">
                                                 <select
-                                                    className="w-full bg-[#081d38] border border-white/10 rounded-lg px-6 py-4 text-sm focus:border-[#BF9B8E] outline-none transition-colors text-white appearance-none cursor-pointer"
+                                                    className="w-full bg-[#081d38] border border-white/10 rounded-sm px-4 py-3 md:px-6 md:py-4 text-xs md:text-sm focus:border-[#BF9B8E] outline-none transition-colors text-white appearance-none cursor-pointer"
                                                     required
                                                 >
                                                     <option value="" disabled selected className="bg-[#081d38]">Vous êtes...</option>
@@ -269,12 +298,12 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                             </div>
                                             <textarea
                                                 placeholder="Comment pouvons-nous vous aider ?"
-                                                rows={4}
-                                                className="w-full bg-[#081d38] border border-white/10 rounded-lg px-6 py-4 text-sm focus:border-[#BF9B8E] outline-none transition-colors resize-none"
+                                                rows={3}
+                                                className="w-full bg-[#081d38] border border-white/10 rounded-sm px-4 py-3 md:px-6 md:py-4 text-xs md:text-sm focus:border-[#BF9B8E] outline-none transition-colors resize-none"
                                             />
                                             <button
                                                 type="submit"
-                                                className="w-full bg-[#BF9B8E] text-[#0C2E59] font-black uppercase tracking-[0.3em] py-5 rounded-sm text-xs hover:bg-[#DDC5BB] transition-all shadow-xl shadow-[#BF9B8E]/10 flex items-center justify-center gap-3 group"
+                                                className="w-full bg-[#BF9B8E] text-[#0C2E59] font-black uppercase tracking-[0.3em] py-3 md:py-5 rounded-sm text-xs hover:bg-[#DDC5BB] transition-all shadow-xl shadow-[#BF9B8E]/10 flex items-center justify-center gap-3 group"
                                             >
                                                 Envoyer la demande
                                                 <Mail size={16} />

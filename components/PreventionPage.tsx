@@ -114,7 +114,7 @@ const PreventionPage: React.FC = () => {
                 </section>
 
                 {/* Le Public */}
-                <section className="mb-32 bg-[#081d38] p-12 rounded-lg border border-white/5 relative overflow-hidden">
+                <section className="mb-32 bg-[#081d38] p-12 rounded-sm border border-white/5 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-[#BF9B8E]/5 rounded-full blur-3xl" />
 
                     <div className="text-center mb-16">
@@ -136,7 +136,7 @@ const PreventionPage: React.FC = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="p-8 bg-white/5 rounded-lg border border-white/10 hover:border-[#BF9B8E] transition-colors group"
+                                className="p-8 bg-white/5 rounded-sm border border-white/10 hover:border-[#BF9B8E] transition-colors group"
                             >
                                 <div className="w-16 h-16 bg-[#0C2E59] rounded-full flex items-center justify-center mx-auto mb-6 text-[#BF9B8E] group-hover:scale-110 transition-transform">
                                     {item.icon}
@@ -186,7 +186,7 @@ const PreventionPage: React.FC = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="bg-[#081d38] border border-white/10 rounded-xl p-8 flex flex-col hover:border-[#BF9B8E] transition-all hover:shadow-[0_0_30px_rgba(191,155,142,0.1)]"
+                                className="bg-[#081d38] border border-white/10 rounded-sm p-8 flex flex-col hover:border-[#BF9B8E] transition-all hover:shadow-[0_0_30px_rgba(191,155,142,0.1)]"
                             >
                                 <div className="mb-6 text-[#BF9B8E]">{offer.icon}</div>
                                 <h3 className="text-2xl font-cinzel font-bold text-white uppercase mb-4">{offer.title}</h3>

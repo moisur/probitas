@@ -61,86 +61,92 @@ const SensibilisationPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenC
     ];
 
     return (
-        <div className="min-h-screen bg-[#0C2E59] text-white pt-32 pb-20">
-            {/* Header */}
-            <div className="container mx-auto px-6 mb-32">
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="flex items-center gap-4 mb-8"
-                >
-                    <div className="h-[1px] w-12 bg-[#BF9B8E]" />
-                    <span className="text-[#BF9B8E] font-mono text-[10px] tracking-[0.5em] uppercase">Pilier 3</span>
-                </motion.div>
-                <h1 className="text-4xl md:text-7xl lg:text-8xl font-cinzel font-black text-white leading-[0.9] uppercase mb-12">
-                    SENSIBILISATION <br />
-                    <span className="text-[#BF9B8E] italic font-serif lowercase">& rayonnement</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-white/70 font-serif italic max-w-3xl leading-snug">
-                    Conférences, ateliers et production de contenus pour diffuser la culture de l'intégrité et renforcer votre positionnement.
-                </p>
-            </div>
+        <div className="min-h-screen bg-[#0C2E59] text-white pt-32 md:pt-48 pb-40 font-sans">
+            <div className="max-w-7xl mx-auto px-6 md:px-24 relative z-10">
 
-            {/* Services */}
-            <section className="container mx-auto px-6 mb-32">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                {/* Editorial Header - AgendaPage Style */}
+                <header className="mb-32 relative">
+                    <div className="flex flex-col gap-8">
+                        <div className="flex items-center gap-4">
+                            <div className="h-[2px] w-12 bg-[#BF9B8E]" />
+                            <span className="text-[#BF9B8E] font-bold text-[10px] uppercase tracking-[0.4em]">Conférences & Ateliers</span>
+                            <div className="h-[2px] w-12 bg-[#BF9B8E]" />
+                        </div>
+
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[9vw] font-black tracking-tighter leading-[0.9] md:leading-[0.85] text-white uppercase">
+                            SENSIBILISATION <br />
+                            <span className="italic font-light text-white/40">& RAYONNEMENT.</span>
+                        </h1>
+
+                        <p className="text-xl md:text-2xl text-blue-200/60 font-light max-w-xl leading-snug mt-8">
+                            Conférences impactantes et ateliers immersifs pour ancrer durablement la culture de l'intégrité.
+                        </p>
+                    </div>
+                </header>
+
+                {/* Services Grid - Editorial Cards */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-40">
                     {services.map((service, i) => (
-                        <motion.div
+                        <div
                             key={service.id}
                             id={`sensibilisation-${service.id}`}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className="bg-white/5 border border-white/10 p-10 rounded-2xl hover:border-[#BF9B8E]/30 transition-colors scroll-mt-32"
+                            className="group bg-[#081d38] border border-white/5 p-10 rounded-sm relative overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-[#BF9B8E]/30 transition-all duration-500 scroll-mt-48 flex flex-col"
                         >
-                            <div className="text-[#BF9B8E] mb-8">{service.icon}</div>
-                            <h3 className="text-2xl font-cinzel font-black uppercase mb-6">{service.title}</h3>
-                            <p className="text-white/60 mb-8 leading-relaxed">{service.desc}</p>
-                            <ul className="space-y-3">
+                            <div className="absolute top-0 left-0 w-1.5 h-full bg-[#BF9B8E]/10 group-hover:bg-[#BF9B8E] transition-colors" />
+                            <div className="text-[#BF9B8E]/40 group-hover:text-[#BF9B8E] transition-colors mb-8 duration-500">{service.icon}</div>
+                            <h3 className="text-2xl font-cinzel font-black uppercase mb-6 group-hover:text-[#BF9B8E] transition-colors duration-500">{service.title}</h3>
+                            <p className="text-white/40 group-hover:text-white/70 transition-colors duration-500 mb-8 leading-relaxed font-light">{service.desc}</p>
+                            <ul className="space-y-4 mt-auto">
                                 {service.details.map((detail, j) => (
-                                    <li key={j} className="flex items-center gap-3 text-sm text-white/50">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#BF9B8E]" />
+                                    <li key={j} className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-white/20 group-hover:text-white/40 transition-colors">
+                                        <div className="w-1.5 h-1.5 rounded-sm bg-[#BF9B8E]/20 group-hover:bg-[#BF9B8E]/50" />
                                         {detail}
                                     </li>
                                 ))}
                             </ul>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
-            </section>
 
-            {/* Formats */}
-            <section className="bg-white/5 py-24 border-y border-white/5">
-                <div className="container mx-auto px-6">
-                    <h2 className="text-center text-3xl font-cinzel font-black uppercase mb-16">Nos Formats</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                {/* Formats Section - Simplified & Stylish */}
+                <div className="py-32 border-t border-white/5">
+                    <div className="flex items-center gap-4 mb-20">
+                        <div className="h-px flex-1 bg-white/10" />
+                        <h2 className="text-3xl font-black uppercase tracking-tighter text-white">NOS <span className="text-[#BF9B8E]/40 font-light italic">FORMATS.</span></h2>
+                        <div className="h-px flex-1 bg-white/10" />
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-5xl mx-auto">
                         {formats.map((format, i) => (
-                            <div key={i} className="text-center p-8">
-                                <h3 className="text-xl font-cinzel font-bold text-[#BF9B8E] uppercase mb-4">{format.label}</h3>
-                                <p className="text-white/50 text-sm">{format.desc}</p>
+                            <div key={i} className="text-center group">
+                                <div className="text-[#BF9B8E] font-black text-xs uppercase tracking-[0.4em] mb-4 group-hover:scale-110 transition-transform duration-500">{format.label}</div>
+                                <div className="h-px w-8 bg-[#BF9B8E]/20 mx-auto mb-6 group-hover:w-16 transition-all duration-500" />
+                                <p className="text-white/40 text-sm font-light leading-relaxed group-hover:text-white/70 transition-colors">{format.desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
-            </section>
 
-            {/* CTA */}
-            <section className="container mx-auto px-6 py-32">
-                <div className="bg-[#BF9B8E] text-[#0C2E59] p-12 md:p-20 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
-                    <div className="relative z-10">
-                        <h2 className="text-3xl md:text-4xl font-cinzel font-black uppercase mb-4">Organiser une intervention ?</h2>
-                        <p className="text-lg opacity-80">Contactez-nous pour discuter de vos besoins en sensibilisation.</p>
+                {/* Contact CTA - Restored "Plus Joli" Style */}
+                <div className="mt-40 bg-[#BF9B8E] text-[#0C2E59] p-12 md:p-20 rounded-sm flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden group">
+                    <div className="relative z-10 text-center md:text-left">
+                        <p className="text-[#0C2E59]/60 mb-4 font-black text-[10px] uppercase tracking-[0.5em]">Collaboration & Rayonnement</p>
+                        <h3 className="text-3xl md:text-5xl font-cinzel font-black uppercase leading-tight tracking-tighter">
+                            ORGANISONS <br /> VOTRE PROCHAINE <br /> <span className="opacity-40 font-light italic">INTERVENTION.</span>
+                        </h3>
                     </div>
                     <button
                         onClick={onOpenContact}
-                        className="inline-block bg-[#0C2E59] text-white px-10 py-5 font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform"
+                        className="inline-flex items-center gap-4 bg-[#0C2E59] text-white font-black py-6 px-12 rounded-sm hover:scale-105 active:scale-95 transition-all tracking-[0.2em] uppercase text-xs shadow-2xl relative z-10"
                     >
                         Discuter de votre projet
+                        <ArrowRight size={16} />
                     </button>
-                    <div className="absolute top-0 right-0 text-[12rem] font-cinzel font-black opacity-10 -mr-10 -mt-10 leading-none">S</div>
+                    {/* Watermark "S" */}
+                    <div className="absolute top-0 right-0 text-[18rem] font-cinzel font-black opacity-10 -mr-12 -mt-20 leading-none pointer-events-none select-none">
+                        S
+                    </div>
                 </div>
-            </section>
+            </div>
         </div>
     );
 };

@@ -49,11 +49,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                     <article className="lg:col-span-8">
                         {/* Header */}
                         <header className="mb-12">
-                            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-[#BF9B8E]/30 bg-[#BF9B8E]/10 backdrop-blur text-[#BF9B8E] text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+                            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-sm border border-[#BF9B8E]/30 bg-[#BF9B8E]/10 backdrop-blur text-[#BF9B8E] text-[10px] font-black uppercase tracking-[0.2em] mb-8">
                                 {post.category}
                             </div>
 
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-8">
+                            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-8">
                                 {post.title}
                             </h1>
 
@@ -70,7 +70,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                         </header>
 
                         {/* Hero Image */}
-                        <div className="relative aspect-[16/9] rounded-[2rem] overflow-hidden mb-16 shadow-2xl border border-white/10 group">
+                        <div className="relative aspect-[16/9] rounded-sm overflow-hidden mb-16 shadow-2xl border border-white/10 group">
                             <img
                                 src={post.image}
                                 alt={post.title}
@@ -89,7 +89,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                             prose-a:text-[#BF9B8E] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
                             prose-ul:list-none prose-ul:pl-0 prose-ul:space-y-6 prose-ul:my-12
                             prose-li:pl-10 prose-li:relative prose-li:text-lg prose-li:text-blue-50/70
-                            prose-li:before:content-[''] prose-li:before:absolute prose-li:before:left-0 prose-li:before:top-[0.6em] prose-li:before:w-3 prose-li:before:h-3 prose-li:before:bg-[#BF9B8E] prose-li:before:rounded-full
+                            prose-li:before:content-[''] prose-li:before:absolute prose-li:before:left-0 prose-li:before:top-[0.6em] prose-li:before:w-3 prose-li:before:h-3 prose-li:before:bg-[#BF9B8E] prose-li:before:rounded-sm
                             ">
 
                             <div className="text-xl md:text-3xl font-cinzel font-bold leading-tight mb-16 text-white border-l-[6px] border-[#BF9B8E] pl-8 py-2">
@@ -104,13 +104,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                         <div className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
                             <span className="text-sm font-bold uppercase tracking-widest text-white/50">Partager cet article</span>
                             <div className="flex gap-4">
-                                <button className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] hover:border-[#BF9B8E] transition-all duration-300">
+                                <button className="w-12 h-12 rounded-sm border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] hover:border-[#BF9B8E] transition-all duration-300">
                                     <Linkedin className="w-5 h-5" />
                                 </button>
-                                <button className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] hover:border-[#BF9B8E] transition-all duration-300">
+                                <button className="w-12 h-12 rounded-sm border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] hover:border-[#BF9B8E] transition-all duration-300">
                                     <Twitter className="w-5 h-5" />
                                 </button>
-                                <button className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] hover:border-[#BF9B8E] transition-all duration-300">
+                                <button className="w-12 h-12 rounded-sm border border-white/10 flex items-center justify-center hover:bg-[#BF9B8E] hover:text-[#0C2E59] hover:border-[#BF9B8E] transition-all duration-300">
                                     <LinkIcon className="w-5 h-5" />
                                 </button>
                             </div>
@@ -124,7 +124,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 {otherPosts.map(other => (
-                                    <a key={other.id} href={`#blog/${other.id}`} className="group block bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-[#BF9B8E]/50 transition-colors">
+                                    <a key={other.id} href={`#blog/${other.id}`} className="group block bg-white/5 rounded-sm overflow-hidden border border-white/10 hover:border-[#BF9B8E]/50 transition-colors">
                                         <div className="aspect-video relative overflow-hidden">
                                             <img src={other.image} alt={other.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                                             <div className="absolute inset-0 bg-[#0C2E59]/50 group-hover:bg-[#0C2E59]/20 transition-colors" />
@@ -144,14 +144,14 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                         <div className="sticky top-32 space-y-8">
 
                             {/* EXPERT CARD */}
-                            <div className="bg-white text-[#0C2E59] rounded-[2rem] p-8 text-center shadow-2xl">
-                                <div className="w-32 h-32 mx-auto rounded-full border-4 border-[#BF9B8E] p-1 mb-6 relative">
+                            <div className="bg-white text-[#0C2E59] rounded-sm p-8 text-center shadow-2xl">
+                                <div className="w-32 h-32 mx-auto rounded-sm border-4 border-[#BF9B8E] p-1 mb-6 relative">
                                     <img
                                         src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop"
                                         alt="Farah Zaoui"
-                                        className="w-full h-full object-cover rounded-full"
+                                        className="w-full h-full object-cover rounded-sm"
                                     />
-                                    <div className="absolute -bottom-2 -right-2 bg-[#BF9B8E] text-[#0C2E59] rounded-full p-2 shadow-lg">
+                                    <div className="absolute -bottom-2 -right-2 bg-[#BF9B8E] text-[#0C2E59] rounded-sm p-2 shadow-lg">
                                         <Award className="w-5 h-5" />
                                     </div>
                                 </div>
@@ -163,16 +163,16 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                                     "J' accompagne les dirigeants et les élus dans la sécurisation de leurs décisions et la diffusion d'une culture éthique performante."
                                 </p>
 
-                                <a href="#contact" className="w-full inline-flex items-center justify-center gap-2 bg-[#0C2E59] text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#0C2E59]/90 transition-colors">
+                                <a href="#contact" className="w-full inline-flex items-center justify-center gap-2 bg-[#0C2E59] text-white py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-[#0C2E59]/90 transition-colors">
                                     <Phone className="w-4 h-4" />
                                     Contactez-moi
                                 </a>
                             </div>
 
                             {/* CTA CARD */}
-                            <div className="bg-[#BF9B8E] rounded-[2rem] p-8 text-center relative overflow-hidden">
+                            <div className="bg-[#BF9B8E] rounded-sm p-8 text-center relative overflow-hidden">
                                 {/* Abstract Pattern */}
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-sm blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                                 <h3 className="text-[#0C2E59] text-2xl font-black uppercase tracking-tight mb-4 relative z-10">
                                     Prêt à passer à l'action ?
@@ -180,7 +180,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                                 <p className="text-[#0C2E59]/80 text-sm mb-8 leading-relaxed relative z-10">
                                     Ne laissez plus les zones grises fragiliser votre structure. Formez-vous dès maintenant.
                                 </p>
-                                <a href="#formation" className="w-full inline-flex items-center justify-center gap-2 bg-white text-[#0C2E59] py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#0C2E59] hover:text-white transition-colors relative z-10">
+                                <a href="#formation" className="w-full inline-flex items-center justify-center gap-2 bg-white text-[#0C2E59] py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-[#0C2E59] hover:text-white transition-colors relative z-10">
                                     Je me lance !
                                 </a>
                             </div>

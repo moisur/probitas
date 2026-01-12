@@ -68,7 +68,7 @@ const Milestone: React.FC<{
                     {/* Détails techniques */}
                     <div className={`flex flex-wrap gap-2 ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
                         {details.map((detail, i) => (
-                            <span key={i} className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#BF9B8E] bg-white/5 px-3 py-1.5 rounded border border-white/10 hover:bg-[#BF9B8E] hover:text-[#0C2E59] transition-colors cursor-default">
+                            <span key={i} className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#BF9B8E] bg-white/5 px-3 py-1.5 rounded-sm border border-white/10 hover:bg-[#BF9B8E] hover:text-[#0C2E59] transition-colors cursor-default">
                                 {detail}
                             </span>
                         ))}

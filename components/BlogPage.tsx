@@ -12,7 +12,7 @@ const BlogPage: React.FC = () => {
     const filteredData = blogData.filter(item => filter === 'all' || item.type === filter);
 
     return (
-        <div className="bg-[#0C2E59] min-h-screen pt-48 pb-40 text-white" onMouseLeave={() => setHoveredFilter(null)}>
+        <div className="bg-[#0C2E59] min-h-screen pt-32 md:pt-48 pb-40 text-white" onMouseLeave={() => setHoveredFilter(null)}>
             <div className="max-w-7xl mx-auto px-6 md:px-24">
 
                 {/* Editorial Header */}
@@ -24,7 +24,7 @@ const BlogPage: React.FC = () => {
                             <div className="h-[2px] w-12 bg-[#BF9B8E]" />
                         </div>
 
-                        <h1 className="text-7xl md:text-[9vw] font-black tracking-tighter leading-[0.85] text-white uppercase">
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[9vw] font-black tracking-tighter leading-[0.9] md:leading-[0.85] text-white uppercase">
                             NOS DERNIÈRES <br />
                             <span className="italic font-light text-white/40">ANALYSES.</span>
                         </h1>
@@ -34,32 +34,16 @@ const BlogPage: React.FC = () => {
                                 Retrouvez ici nos articles de fond, nos réflexions et notre veille juridique sur l'actualité de l'éthique et de la probité.
                             </p>
 
-                            <div className="flex bg-[#0C2E59]/50 p-1.5 rounded-full border border-white/10 shadow-sm gap-1 self-start md:self-auto backdrop-blur-sm relative">
+                            <div className="flex flex-wrap gap-2 md:gap-4 self-start md:self-auto pt-4">
                                 {(['all', 'article', 'video'] as const).map((f) => (
                                     <button
                                         key={f}
                                         onClick={() => setFilter(f)}
-                                        onMouseEnter={() => setHoveredFilter(f)}
-                                        className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-colors relative z-10 ${filter === f ? 'text-[#0C2E59]' : 'text-white/50 hover:text-white'}`}
+                                        className={`px-6 md:px-8 py-3 rounded-sm text-[10px] font-black uppercase tracking-[0.2em] transition-all border relative ${filter === f
+                                            ? 'bg-[#BF9B8E] text-[#0C2E59] border-[#BF9B8E] shadow-xl scale-105'
+                                            : 'bg-white/5 border-white/10 text-white/50 hover:border-white/30 hover:text-white'}`}
                                     >
-                                        {filter === f && (
-                                            <motion.div
-                                                layoutId="activeFilter"
-                                                className="absolute inset-0 bg-[#BF9B8E] rounded-full -z-10"
-                                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                            />
-                                        )}
-                                        {hoveredFilter === f && filter !== f && (
-                                            <motion.div
-                                                layoutId="hoverFilter"
-                                                className="absolute inset-0 bg-pink-100/10 rounded-full -z-10"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                transition={{ duration: 0.2 }}
-                                            />
-                                        )}
-                                        {f === 'all' ? 'Tout voir' : f === 'article' ? 'Articles' : 'Vidéos'}
+                                        {f === 'all' ? 'Tous les articles' : f === 'article' ? 'Articles' : 'Vidéos'}
                                     </button>
                                 ))}
                             </div>
@@ -81,7 +65,7 @@ const BlogPage: React.FC = () => {
                                 onClick={() => setSelectedItem(item)}
                                 className="group cursor-pointer"
                             >
-                                <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] mb-8 bg-white/5">
+                                <div className="relative aspect-[4/5] overflow-hidden rounded-sm mb-8 bg-white/5">
                                     <motion.img
                                         src={item.image}
                                         alt={item.title}
@@ -98,7 +82,7 @@ const BlogPage: React.FC = () => {
                                     )}
 
                                     <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center text-white">
-                                        <span className="text-[9px] font-black uppercase tracking-widest bg-[#0C2E59]/80 backdrop-blur px-3 py-1 rounded-full border border-[#BF9B8E]/30 text-[#BF9B8E]">
+                                        <span className="text-[9px] font-black uppercase tracking-widest bg-[#0C2E59]/80 backdrop-blur px-3 py-1 rounded-sm border border-[#BF9B8E]/30 text-[#BF9B8E]">
                                             {item.category}
                                         </span>
                                     </div>
@@ -146,7 +130,7 @@ const BlogPage: React.FC = () => {
                                     initial={{ opacity: 0, scale: 0.9, y: 50 }}
                                     animate={{ opacity: 1, scale: 1, y: 0 }}
                                     exit={{ opacity: 0, scale: 0.9, y: 50 }}
-                                    className="relative w-full max-w-5xl bg-[#081d38] border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl z-[210] flex flex-col md:flex-row max-h-[90vh] md:h-auto"
+                                    className="relative w-full max-w-5xl bg-[#081d38] border border-white/10 rounded-sm overflow-hidden shadow-2xl z-[210] flex flex-col md:flex-row max-h-[90vh] md:h-auto"
                                 >
                                     {/* Close Button */}
                                     <button
@@ -189,7 +173,7 @@ const BlogPage: React.FC = () => {
                                                     setSelectedItem(null);
                                                     window.location.hash = `#blog/${selectedItem.id}`;
                                                 }}
-                                                className="inline-flex items-center justify-center gap-4 bg-[#BF9B8E] text-[#0C2E59] px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs hover:bg-white transition-all group"
+                                                className="inline-flex items-center justify-center gap-4 bg-[#BF9B8E] text-[#0C2E59] px-10 py-5 rounded-sm font-black uppercase tracking-widest text-xs hover:bg-white transition-all group"
                                             >
                                                 {selectedItem.type === 'video' ? 'Visionner la vidéo' : 'Lire l\'article complet'}
                                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -197,7 +181,7 @@ const BlogPage: React.FC = () => {
 
                                             <button
                                                 onClick={() => setSelectedItem(null)}
-                                                className="inline-flex items-center justify-center px-10 py-5 rounded-full border border-white/20 font-black uppercase tracking-widest text-[10px] text-white/60 hover:text-white hover:border-white transition-all"
+                                                className="inline-flex items-center justify-center px-10 py-5 rounded-sm border border-white/20 font-black uppercase tracking-widest text-[10px] text-white/60 hover:text-white hover:border-white transition-all"
                                             >
                                                 Fermer
                                             </button>

@@ -115,7 +115,7 @@ const faqs: FaqItem[] = [
 // --- Components ---
 
 const FormationCard: React.FC<{ formation: Formation }> = ({ formation }) => (
-    <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:bg-white/10 transition-colors flex flex-col h-full group">
+    <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-sm hover:bg-white/10 transition-colors flex flex-col h-full group">
         <h3 className="text-xl font-bold text-[#BF9B8E] mb-4 group-hover:text-white transition-colors">
             {formation.title}
         </h3>
@@ -174,126 +174,145 @@ const FormationPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#0C2E59] text-white pt-32 pb-20">
+        <div className="min-h-screen bg-[#0C2E59] text-white pt-32 md:pt-48 pb-40 font-sans">
+            <div className="max-w-7xl mx-auto px-6 md:px-24 relative z-10">
 
-            {/* Header */}
-            <div className="px-4 md:px-8 mb-20 text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 font-cinzel">
-                    NOS FORMATIONS À LA CARTE
-                </h1>
-                <div className="w-24 h-1 bg-[#BF9B8E] mx-auto mb-8"></div>
-                <p className="text-xl text-white/80 max-w-2xl mx-auto">
-                    Des programmes sur mesure pour diffuser la culture de l'intégrité
-                </p>
-            </div>
-
-            {/* Qualiopi Section */}
-            <div className="container mx-auto px-4 md:px-8 mb-24 text-center">
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-12 space-y-8">
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-                        <div className="flex-1 space-y-6">
-                            <h2 className="text-3xl md:text-5xl font-cinzel font-black text-[#BF9B8E] uppercase tracking-tighter">Certification QUALIOPI</h2>
-                            <p className="text-lg md:text-xl font-light text-white/90">
-                                PROBITAS est certifié QUALIOPI pour ses <strong>ACTIONS DE FORMATION</strong>. <br />
-                                Gage de qualité et de professionnalisme reconnu par l'État.
-                            </p>
-                            <a
-                                href="https://certif-icpf.org/search?query=Probitas"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center text-[#BF9B8E] hover:text-white transition-colors font-black uppercase tracking-[0.3em] text-[10px] group"
-                            >
-                                Vérifier le certificat <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                            </a>
+                {/* Editorial Header - AgendaPage Style */}
+                <header className="mb-32 relative">
+                    <div className="flex flex-col gap-8">
+                        <div className="flex items-center gap-4">
+                            <div className="h-[2px] w-12 bg-[#BF9B8E]" />
+                            <span className="text-[#BF9B8E] font-bold text-[10px] uppercase tracking-[0.4em]">Programmes de formation</span>
+                            <div className="h-[2px] w-12 bg-[#BF9B8E]" />
                         </div>
-                        <div className="flex-1 w-full max-w-sm">
-                            <img
-                                src="/assets/certificat-qua006775.webp"
-                                alt="Certification Qualiopi - Probitas Actions de Formation"
-                                className="w-full h-auto rounded-sm shadow-2xl"
-                            />
+
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[9vw] font-black tracking-tighter leading-[0.9] md:leading-[0.85] text-white uppercase">
+                            FORMATION <br />
+                            <span className="italic font-light text-white/40">À LA CARTE.</span>
+                        </h1>
+
+                        <p className="text-xl md:text-2xl text-blue-200/60 font-light max-w-xl leading-snug mt-8">
+                            Des programmes sur mesure pour diffuser la culture de l'intégrité au sein de votre organisation.
+                        </p>
+                    </div>
+                </header>
+
+                {/* Qualiopi Section */}
+                <div className="mb-24">
+                    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-sm p-8 md:p-12">
+                        <div className="flex flex-col md:flex-row items-center gap-12">
+                            <div className="flex-1 space-y-6">
+                                <h2 className="text-3xl md:text-5xl font-cinzel font-black text-[#BF9B8E] uppercase tracking-tighter">Certification QUALIOPI</h2>
+                                <p className="text-lg md:text-xl font-light text-white/90">
+                                    PROBITAS est certifié QUALIOPI pour ses <strong>ACTIONS DE FORMATION</strong>. <br />
+                                    Gage de qualité et de professionnalisme reconnu par l'État.
+                                </p>
+                                <a
+                                    href="https://certif-icpf.org/search?query=Probitas"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center text-[#BF9B8E] hover:text-white transition-colors font-black uppercase tracking-[0.4em] text-[10px] group"
+                                >
+                                    Vérifier le certificat <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                                </a>
+                            </div>
+                            <div className="flex-1 w-full max-w-sm">
+                                <img
+                                    src="/assets/certificat-qua006775.webp"
+                                    alt="Certification Qualiopi - Probitas Actions de Formation"
+                                    className="w-full h-auto rounded-sm shadow-2xl"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Docs Downloads */}
+                <div className="mb-32">
+                    <h3 className="text-white/30 mb-8 uppercase tracking-[0.3em] text-[10px] font-black">Documentation légale</h3>
+                    <div className="flex flex-wrap gap-4">
+                        {documentLinks.map((doc, i) => (
+                            <a
+                                key={i}
+                                href={doc.href}
+                                download
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-sm transition-all group"
+                            >
+                                <Download className="w-4 h-4 text-[#BF9B8E]" />
+                                <span className="text-xs font-bold group-hover:text-[#BF9B8E] transition-colors uppercase tracking-widest">{doc.name}</span>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Content Sections */}
+                <div className="space-y-40">
+                    {/* À LA CARTE - PUBLIC */}
+                    <section id="formation-public" className="scroll-mt-48">
+                        <div className="flex items-center gap-6 mb-16">
+                            <div className="h-px w-12 bg-[#BF9B8E]" />
+                            <h2 className="text-3xl md:text-5xl font-cinzel font-black text-white uppercase tracking-tighter">Secteur <span className="text-[#BF9B8E]">Public.</span></h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {publicFormations.map((formation, idx) => (
+                                <FormationCard key={idx} formation={formation} />
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* À LA CARTE - PRIVÉ */}
+                    <section id="formation-prive" className="scroll-mt-48">
+                        <div className="flex items-center gap-6 mb-16">
+                            <div className="h-px w-12 bg-[#BF9B8E]" />
+                            <h2 className="text-3xl md:text-5xl font-cinzel font-black text-white uppercase tracking-tighter">Secteur <span className="text-[#BF9B8E]">Privé.</span></h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {privateFormations.map((formation, idx) => (
+                                <FormationCard key={idx} formation={formation} />
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* SUR MESURE - Restored "Plus Joli" Style */}
+                    <section id="formation-surmesure" className="scroll-mt-48">
+                        <div className="bg-[#BF9B8E] text-[#0C2E59] p-12 md:p-20 rounded-sm flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden group shadow-2xl">
+                            <div className="relative z-10 text-center md:text-left">
+                                <p className="text-[#0C2E59]/60 mb-4 font-black text-[10px] uppercase tracking-[0.5em]">Co-construction & Expertise</p>
+                                <h3 className="text-3xl md:text-5xl font-cinzel font-black uppercase leading-tight tracking-tighter">
+                                    FORMATIONS <br /> <span className="opacity-40 font-light italic">SUR MESURE.</span>
+                                </h3>
+                            </div>
+                            <button
+                                onClick={onOpenContact}
+                                className="inline-flex items-center gap-4 bg-[#0C2E59] text-white font-black py-6 px-12 rounded-sm hover:scale-105 active:scale-95 transition-all tracking-[0.2em] uppercase text-xs shadow-2xl relative z-10"
+                            >
+                                Discuter de votre projet
+                                <ArrowRight size={16} />
+                            </button>
+                            {/* Watermark "F" */}
+                            <div className="absolute top-0 right-0 text-[18rem] font-cinzel font-black opacity-10 -mr-12 -mt-20 leading-none pointer-events-none select-none">
+                                F
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* FAQ */}
+                    <section className="max-w-4xl mx-auto pb-40">
+                        <div className="flex items-center gap-4 mb-16">
+                            <div className="h-px flex-1 bg-white/10" />
+                            <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white">QUESTIONS <span className="text-[#BF9B8E]/40 font-light italic">FRÉQUENTES.</span></h2>
+                            <div className="h-px flex-1 bg-white/10" />
+                        </div>
+                        <div className="bg-white/2 border border-white/10 rounded-sm p-6 md:p-12 backdrop-blur-sm">
+                            {faqs.map((faq, idx) => (
+                                <FaqItemComponent key={idx} item={faq} />
+                            ))}
+                        </div>
+                    </section>
+                </div>
             </div>
-
-            {/* Docs Downloads */}
-            <div className="container mx-auto px-4 md:px-8 mb-32">
-                <h3 className="text-center text-white/60 mb-8 uppercase tracking-widest text-sm">Documents Utiles</h3>
-                <div className="flex flex-wrap justify-center gap-4">
-                    {documentLinks.map((doc, i) => (
-                        <a
-                            key={i}
-                            href={doc.href}
-                            download
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all group"
-                        >
-                            <Download className="w-4 h-4 text-[#BF9B8E]" />
-                            <span className="text-sm font-bold group-hover:text-[#BF9B8E] transition-colors">{doc.name}</span>
-                        </a>
-                    ))}
-                </div>
-            </div>
-
-            {/* À LA CARTE - PUBLIC */}
-            <section id="formation-public" className="container mx-auto px-4 md:px-8 mb-32 scroll-mt-32">
-                <div className="flex items-center gap-4 mb-12">
-                    <div className="h-px bg-white/20 flex-grow"></div>
-                    <h2 className="text-3xl md:text-4xl font-cinzel font-bold text-center uppercase tracking-widest">À LA CARTE - Public</h2>
-                    <div className="h-px bg-white/20 flex-grow"></div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {publicFormations.map((formation, idx) => (
-                        <FormationCard key={idx} formation={formation} />
-                    ))}
-                </div>
-            </section>
-
-            {/* À LA CARTE - PRIVÉ */}
-            <section id="formation-prive" className="container mx-auto px-4 md:px-8 mb-32 scroll-mt-32">
-                <div className="flex items-center gap-4 mb-12">
-                    <div className="h-px bg-white/20 flex-grow"></div>
-                    <h2 className="text-3xl md:text-4xl font-cinzel font-bold text-center uppercase tracking-widest">À LA CARTE - Privé</h2>
-                    <div className="h-px bg-white/20 flex-grow"></div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {privateFormations.map((formation, idx) => (
-                        <FormationCard key={idx} formation={formation} />
-                    ))}
-                </div>
-            </section>
-
-            {/* SUR MESURE */}
-            <section id="formation-surmesure" className="container mx-auto px-4 md:px-8 mb-32 scroll-mt-32">
-                <div className="bg-[#BF9B8E] text-[#0C2E59] rounded-2xl p-12 text-center">
-                    <h2 className="text-3xl md:text-5xl font-cinzel font-black uppercase mb-6">Formation Sur Mesure</h2>
-                    <p className="text-xl font-serif italic mb-10 max-w-2xl mx-auto">
-                        Besoin d'un programme spécifique adapté à votre organisation ? <br />
-                        Nous co-construisons votre formation pour répondre à vos enjeux propres.
-                    </p>
-                    <button
-                        onClick={onOpenContact}
-                        className="inline-block bg-[#0C2E59] text-white px-10 py-5 font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform"
-                    >
-                        Discuter de votre projet
-                    </button>
-                </div>
-            </section>
-
-            {/* FAQ */}
-            <section className="container mx-auto px-4 md:px-8 max-w-4xl">
-                <h2 className="text-3xl md:text-4xl font-cinzel font-bold text-center mb-16">
-                    QUESTIONS FRÉQUENTES
-                </h2>
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-10 backdrop-blur-sm">
-                    {faqs.map((faq, idx) => (
-                        <FaqItemComponent key={idx} item={faq} />
-                    ))}
-                </div>
-            </section>
-
         </div>
     );
 };

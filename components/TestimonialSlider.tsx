@@ -99,10 +99,10 @@ export const TestimonialSlider: React.FC = () => {
 
             {/* Flèches Navigation (Desktop) */}
             <div className="absolute top-1/2 left-4 right-4 -translate-y-1/2 flex justify-between z-50 pointer-events-none hidden lg:flex">
-                <button onClick={prevSlide} className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-white/40 hover:text-[#BF9B8E] transition-all pointer-events-auto backdrop-blur-md border border-white/10 group">
+                <button onClick={prevSlide} className="p-3 rounded-sm bg-white/5 hover:bg-white/10 text-white/40 hover:text-[#BF9B8E] transition-all pointer-events-auto backdrop-blur-md border border-white/10 group">
                     <ChevronLeft size={28} />
                 </button>
-                <button onClick={nextSlide} className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-white/40 hover:text-[#BF9B8E] transition-all pointer-events-auto backdrop-blur-md border border-white/10 group">
+                <button onClick={nextSlide} className="p-3 rounded-sm bg-white/5 hover:bg-white/10 text-white/40 hover:text-[#BF9B8E] transition-all pointer-events-auto backdrop-blur-md border border-white/10 group">
                     <ChevronRight size={28} />
                 </button>
             </div>
