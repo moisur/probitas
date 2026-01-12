@@ -20,25 +20,31 @@ const QualiopiPage: React.FC = () => {
                 </header>
 
                 {/* Certificate Verification Section */}
-                <section className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 mb-16 text-center">
-                    <div className="flex justify-center mb-8">
-                        <CheckCircle className="w-20 h-20 text-[#BF9B8E]" />
+                <section className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 mb-16 text-center space-y-12">
+                    <div className="max-w-md mx-auto">
+                        <img
+                            src="assets/certificat-qua006775.webp"
+                            alt="Qualiopi Probitas"
+                            className="w-full h-auto rounded-sm shadow-2xl mb-8"
+                        />
                     </div>
-                    <p className="text-lg md:text-xl mb-8 leading-relaxed max-w-2xl mx-auto">
-                        La certification qualité a été délivrée au titre de la catégorie d'action suivante : <strong>ACTIONS DE FORMATION</strong>.
-                    </p>
-                    <p className="text-white/70 mb-8">
-                        Vous pouvez vérifier l'authenticité de notre certificat sur le site de l'ICPF.
-                    </p>
-                    <div className="flex flex-col md:flex-row justify-center gap-6">
-                        <a
-                            href="https://certif-icpf.org/search?query=Probitas"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#BF9B8E] text-[#0C2E59] font-bold rounded-full hover:bg-white transition-colors text-lg"
-                        >
-                            Vérifier le certificat <ExternalLink className="w-5 h-5" />
-                        </a>
+                    <div>
+                        <p className="text-lg md:text-xl mb-8 leading-relaxed max-w-2xl mx-auto">
+                            La certification qualité a été délivrée au titre de la catégorie d'action suivante : <strong>ACTIONS DE FORMATION</strong>.
+                        </p>
+                        <p className="text-white/70 mb-8">
+                            Vous pouvez vérifier l'authenticité de notre certificat sur le site de l'ICPF.
+                        </p>
+                        <div className="flex flex-col md:flex-row justify-center gap-6">
+                            <a
+                                href="https://certif-icpf.org/search?query=Probitas"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-[#BF9B8E] text-[#0C2E59] font-black uppercase tracking-widest text-xs hover:bg-white transition-all shadow-xl"
+                            >
+                                Vérifier le certificat <ExternalLink className="w-5 h-5" />
+                            </a>
+                        </div>
                     </div>
                 </section>
 

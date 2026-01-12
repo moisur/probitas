@@ -164,11 +164,11 @@ const FaqItemComponent: React.FC<{ item: FaqItem }> = ({ item }) => {
 
 const documentLinks = [
     { name: "Livret d'accueil", href: "#" },
-    { name: "Politique de confidentialité", href: "../wp-content/uploads/2024/05/2024-probitas-politique-de-confidentialite-formations.pdf" },
-    { name: "Conditions Générales", href: "../wp-content/uploads/2024/05/cgv-probitas.pdf" }
+    { name: "Politique de confidentialité", href: "assets/pdf/2024-probitas-politique-de-confidentialite-formations.pdf" },
+    { name: "Conditions Générales", href: "assets/pdf/cgv-probitas.pdf" }
 ];
 
-const FormationPage: React.FC = () => {
+const FormationPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -188,25 +188,31 @@ const FormationPage: React.FC = () => {
             </div>
 
             {/* Qualiopi Section */}
-            <div className="container mx-auto px-4 md:px-8 mb-24">
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
-                    <div className="flex-shrink-0 bg-white/10 p-6 rounded-full">
-                        <CheckCircle className="w-16 h-16 text-[#BF9B8E]" />
-                    </div>
-                    <div className="flex-grow text-center md:text-left">
-                        <h2 className="text-2xl font-bold font-cinzel mb-4 text-[#BF9B8E]">Certification QUALIOPI</h2>
-                        <p className="text-lg mb-6">
-                            PROBITAS est certifié QUALIOPI pour ses <strong>ACTIONS DE FORMATION</strong>.
-                            Gage de qualité et de professionnalisme reconnu par l'État.
-                        </p>
-                        <a
-                            href="https://certif-icpf.org/search?query=Probitas"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-[#BF9B8E] hover:text-white transition-colors font-bold uppercase tracking-wider"
-                        >
-                            Vérifier le certificat <ArrowRight className="ml-2 w-4 h-4" />
-                        </a>
+            <div className="container mx-auto px-4 md:px-8 mb-24 text-center">
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-12 space-y-8">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+                        <div className="flex-1 space-y-6">
+                            <h2 className="text-3xl md:text-5xl font-cinzel font-black text-[#BF9B8E] uppercase tracking-tighter">Certification QUALIOPI</h2>
+                            <p className="text-lg md:text-xl font-light text-white/90">
+                                PROBITAS est certifié QUALIOPI pour ses <strong>ACTIONS DE FORMATION</strong>. <br />
+                                Gage de qualité et de professionnalisme reconnu par l'État.
+                            </p>
+                            <a
+                                href="https://certif-icpf.org/search?query=Probitas"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center text-[#BF9B8E] hover:text-white transition-colors font-black uppercase tracking-[0.3em] text-[10px] group"
+                            >
+                                Vérifier le certificat <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                            </a>
+                        </div>
+                        <div className="flex-1 w-full max-w-sm">
+                            <img
+                                src="assets/certificat-qua006775.webp"
+                                alt="Certification Qualiopi - Probitas Actions de Formation"
+                                className="w-full h-auto rounded-sm shadow-2xl"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -219,6 +225,7 @@ const FormationPage: React.FC = () => {
                         <a
                             key={i}
                             href={doc.href}
+                            download
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-3 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all group"
@@ -230,11 +237,11 @@ const FormationPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* Secteur Public */}
-            <section id="public" className="container mx-auto px-4 md:px-8 mb-32 scroll-mt-32">
+            {/* À LA CARTE - PUBLIC */}
+            <section id="formation-public" className="container mx-auto px-4 md:px-8 mb-32 scroll-mt-32">
                 <div className="flex items-center gap-4 mb-12">
                     <div className="h-px bg-white/20 flex-grow"></div>
-                    <h2 className="text-3xl md:text-4xl font-cinzel font-bold text-center">SECTEUR PUBLIC</h2>
+                    <h2 className="text-3xl md:text-4xl font-cinzel font-bold text-center uppercase tracking-widest">À LA CARTE - Public</h2>
                     <div className="h-px bg-white/20 flex-grow"></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -244,17 +251,34 @@ const FormationPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Secteur Privé */}
-            <section id="private" className="container mx-auto px-4 md:px-8 mb-32 scroll-mt-32">
+            {/* À LA CARTE - PRIVÉ */}
+            <section id="formation-prive" className="container mx-auto px-4 md:px-8 mb-32 scroll-mt-32">
                 <div className="flex items-center gap-4 mb-12">
                     <div className="h-px bg-white/20 flex-grow"></div>
-                    <h2 className="text-3xl md:text-4xl font-cinzel font-bold text-center">SECTEUR PRIVÉ</h2>
+                    <h2 className="text-3xl md:text-4xl font-cinzel font-bold text-center uppercase tracking-widest">À LA CARTE - Privé</h2>
                     <div className="h-px bg-white/20 flex-grow"></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {privateFormations.map((formation, idx) => (
                         <FormationCard key={idx} formation={formation} />
                     ))}
+                </div>
+            </section>
+
+            {/* SUR MESURE */}
+            <section id="formation-surmesure" className="container mx-auto px-4 md:px-8 mb-32 scroll-mt-32">
+                <div className="bg-[#BF9B8E] text-[#0C2E59] rounded-2xl p-12 text-center">
+                    <h2 className="text-3xl md:text-5xl font-cinzel font-black uppercase mb-6">Formation Sur Mesure</h2>
+                    <p className="text-xl font-serif italic mb-10 max-w-2xl mx-auto">
+                        Besoin d'un programme spécifique adapté à votre organisation ? <br />
+                        Nous co-construisons votre formation pour répondre à vos enjeux propres.
+                    </p>
+                    <button
+                        onClick={onOpenContact}
+                        className="inline-block bg-[#0C2E59] text-white px-10 py-5 font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform"
+                    >
+                        Discuter de votre projet
+                    </button>
                 </div>
             </section>
 

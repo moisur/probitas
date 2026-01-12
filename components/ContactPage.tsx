@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Mail, Phone, Calendar, Twitter, Linkedin, ChevronLeft, Send, CheckCircle } from 'lucide-react';
 import gsap from 'gsap';
 
-const ContactPage: React.FC = () => {
+const ContactPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -190,15 +190,13 @@ const ContactPage: React.FC = () => {
                                     <p className="text-white/60 text-sm mb-6">
                                         Accédez directement à notre agenda et choisissez le meilleur moment pour échanger ensemble.
                                     </p>
-                                    <a
-                                        href="https://meet.brevo.com/farah-zaoui/presentation"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                    <button
+                                        onClick={onOpenContact}
                                         className="inline-flex items-center gap-2 text-[#BF9B8E] font-bold hover:underline group"
                                     >
                                         Choisir un créneau
                                         <span className="group-hover:translate-x-1 transition-transform">→</span>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>

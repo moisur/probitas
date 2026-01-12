@@ -39,9 +39,9 @@ const ScratchRevealSection: React.FC = () => {
             <div className="relative mb-16">
               <motion.div
                 style={{ scale: scribbleScale, rotate: scribbleRotate }}
-                className="absolute -left-12 -top-12 z-20"
+                className="absolute -left-8 -top-16 z-30"
               >
-                <span className="text-[10vw] font-serif italic text-[#BF9B8E] leading-none drop-shadow-sm select-none">
+                <span className="text-[7vw] font-serif italic text-[#BF9B8E] leading-none drop-shadow-sm select-none whitespace-nowrap">
                   Audit
                 </span>
               </motion.div>
@@ -59,7 +59,7 @@ const ScratchRevealSection: React.FC = () => {
 
             <div className="text-center max-w-sm relative">
               <p className="text-[#0C2E59]/70 font-medium text-lg leading-relaxed mb-8">
-                Une analyse personnalisée de votre situation fiscale et patrimoniale pour définir une stratégie sur-mesure.
+                Un accompagnement stratégique pour identifier vos zones grises et sécuriser vos prises de décision.
               </p>
               <motion.div style={{ scaleX: maskScaleX, opacity: maskOpacity }} className="absolute inset-x-0 -top-2 bottom-0 bg-[#0C2E59] origin-left translate-y-2 h-6" />
               <motion.div style={{ scaleX: maskScaleX, opacity: maskOpacity }} className="absolute inset-x-0 bottom-0 bg-[#0C2E59] origin-right translate-y-6 h-6" />
@@ -69,12 +69,18 @@ const ScratchRevealSection: React.FC = () => {
           {/* PATRIMOINE COLUMN */}
           <div className="relative flex flex-col items-center">
             <div className="relative mb-16">
-              <h2 className="text-[8vw] font-serif italic text-[#BF9B8E] leading-none tracking-tighter uppercase mb-[-2vw]">
-                Immo
-              </h2>
+              <motion.div
+                style={{ scale: scribbleScale, rotate: scribbleRotate }}
+                className="absolute -right-8 -top-16 z-30"
+              >
+                <span className="text-[7vw] font-serif italic text-[#BF9B8E] leading-none drop-shadow-sm select-none whitespace-nowrap">
+                  Vigie
+                </span>
+              </motion.div>
+
               <div className="relative">
                 <h2 className="text-[8vw] font-cinzel font-black text-[#0C2E59] leading-none tracking-tighter uppercase">
-                  PATRIMOINE
+                  FORMATION
                 </h2>
                 <motion.div
                   style={{ scaleX: maskScaleX, opacity: maskOpacity }}
@@ -85,7 +91,7 @@ const ScratchRevealSection: React.FC = () => {
 
             <div className="text-center max-w-sm relative">
               <p className="text-[#0C2E59]/70 font-medium text-lg leading-relaxed mb-8">
-                Accès aux meilleures opportunités d'investissement immobilier et placements financiers sélectionnés pour leur pérennité.
+                Des programmes pédagogiques concrets pour insuffler une culture de l'intégrité à tous les niveaux.
               </p>
               <motion.div style={{ scaleX: maskScaleX, opacity: maskOpacity }} className="absolute inset-x-0 -top-2 bottom-0 bg-[#0C2E59] origin-right translate-y-2 h-6" />
               <motion.div style={{ scaleX: maskScaleX, opacity: maskOpacity }} className="absolute inset-x-0 bottom-0 bg-[#0C2E59] origin-left translate-y-6 h-6" />

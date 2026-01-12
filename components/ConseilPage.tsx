@@ -1,8 +1,12 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
-const ConseilPage: React.FC = () => {
+const ConseilPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const services = [
     "Programme de conformité complet",
     "Dépositif d’alerte (Sapin II)",
@@ -49,7 +53,7 @@ const ConseilPage: React.FC = () => {
                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#0C2E59]" /> Identification des zones de vulnérabilité</li>
                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#0C2E59]" /> Feuille de route priorisée</li>
               </ul>
-              <button className="w-full bg-[#0C2E59] text-white px-10 py-5 font-black uppercase tracking-widest text-xs">Déclencher le diagnostic</button>
+              <button onClick={onOpenContact} className="w-full bg-[#0C2E59] text-white px-10 py-5 font-black uppercase tracking-widest text-xs">Déclencher le diagnostic</button>
             </div>
             <div className="bg-white/5 border border-white/10 p-12 rounded-2xl">
               <h3 className="text-3xl font-cinzel font-black text-[#BF9B8E] uppercase mb-6">Pack Mise à Niveau</h3>
@@ -59,7 +63,13 @@ const ConseilPage: React.FC = () => {
                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#BF9B8E]" /> Rédaction du Code de conduite</li>
                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#BF9B8E]" /> Kit d'outillage & procédures</li>
               </ul>
-              <button className="w-full border border-[#BF9B8E] text-[#BF9B8E] px-10 py-5 font-black uppercase tracking-widest text-xs hover:bg-[#BF9B8E] hover:text-white transition-all">Consulter l'offre</button>
+              <button
+                onClick={onOpenContact}
+                className="group flex items-center justify-center gap-3 bg-[#BF9B8E] text-[#0C2E59] px-8 py-4 font-black uppercase tracking-widest text-xs hover:bg-white transition-all shadow-xl shadow-[#BF9B8E]/10"
+              >
+                Discuter de votre projet
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </div>
 

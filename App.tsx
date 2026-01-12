@@ -8,6 +8,7 @@ import ImageCorridor from './components/ImageCorridor';
 import TrustSection from './components/TrustSection';
 import ArtisticFooter from './components/ArtisticFooter';
 import TopographyBg from './components/TopographyBg';
+import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import ConseilPage from './components/ConseilPage';
 import CommunicationPage from './components/CommunicationPage';
@@ -25,14 +26,33 @@ import PreventionPage from './components/PreventionPage';
 import BoutiquePage from './components/BoutiquePage';
 import MunicipalesPage from './components/MunicipalesPage';
 import SensibilisationPage from './components/SensibilisationPage';
+import BlogPage from './components/BlogPage';
+
+import BlogPostPage from './components/BlogPostPage';
+import ContactModal from './components/ContactModal';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = React.useState<'home' | 'cookies' | 'privacy' | 'mentions' | 'cgv' | 'contact' | 'testimonials' | 'qualiopi' | 'formation' | 'presse' | 'agenda' | 'prevention' | 'conseil' | 'communication' | 'boutique' | 'municipales' | 'sensibilisation' | 'realisations'>('home');
+  const [currentView, setCurrentView] = React.useState<'home' | 'about' | 'cookies' | 'privacy' | 'mentions' | 'cgv' | 'contact' | 'testimonials' | 'qualiopi' | 'formation' | 'presse' | 'agenda' | 'prevention' | 'conseil' | 'communication' | 'boutique' | 'municipales' | 'sensibilisation' | 'realisations' | 'blog' | 'blog-post'>('home');
+  const [currentBlogId, setCurrentBlogId] = React.useState<string>('');
+  const [isContactModalOpen, setIsContactModalOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash === '#cookies') {
+      console.log('Navigating to hash:', hash);
+
+      if (hash === '#blog') {
+        setCurrentView('blog');
+        window.scrollTo(0, 0);
+      } else if (hash.startsWith('#blog/')) {
+        const fullId = hash.replace('#blog/', '');
+        // Clean ID in case of query params appended to hash
+        const blogId = fullId.split('?')[0].split('&')[0];
+        console.log('Extracted Blog ID:', blogId);
+        setCurrentBlogId(blogId);
+        setCurrentView('blog-post');
+        window.scrollTo(0, 0);
+      } else if (hash === '#cookies') {
         setCurrentView('cookies');
         window.scrollTo(0, 0);
       } else if (hash === '#confidentialite') {
@@ -74,16 +94,18 @@ const App: React.FC = () => {
       } else if (hash === '#municipales') {
         setCurrentView('municipales');
         window.scrollTo(0, 0);
-      } else if (hash === '#sensibilisation' || hash === '#sensibilisation-ateliers' || hash === '#sensibilisation-articles') {
+      } else if (hash === '#sensibilisation' || hash === '#sensibilisation-ateliers' || hash === '#sensibilisation-conferences') {
         setCurrentView('sensibilisation');
         if (hash === '#sensibilisation') window.scrollTo(0, 0);
       } else if (hash === '#realisations') {
         setCurrentView('realisations');
         window.scrollTo(0, 0);
-      } else if (hash === '#formation' || hash === '#public' || hash === '#private' || hash === '#formation-surmesure') {
+      } else if (hash.includes('#a-propos')) {
+        setCurrentView('about');
+        window.scrollTo(0, 0);
+      } else if (hash.includes('#formation') || hash.includes('#public') || hash.includes('#private')) {
         setCurrentView('formation');
-        // Scroll handling for anchors is done within the component or automatically if ID matches
-        if (hash === '#formation') window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
       } else {
         setCurrentView('home');
       }
@@ -98,17 +120,18 @@ const App: React.FC = () => {
   return (
     <div className="bg-[#0C2E59] min-h-screen text-white selection:bg-[#BF9B8E] selection:text-white font-sans">
       <TopographyBg />
-      <Navbar />
+      <Navbar onOpenContact={() => setIsContactModalOpen(true)} />
+
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
 
       <main className="relative z-10">
         {currentView === 'home' ? (
           <>
             <div id="hero">
               <HeroSection />
-            </div>
-
-            <div id="a-propos">
-              <AboutPage />
             </div>
 
             <ScratchRevealSection />
@@ -126,7 +149,7 @@ const App: React.FC = () => {
                     <p className="text-white/50 text-xl font-light leading-relaxed max-w-lg mb-10">
                       La confiance est la base de toute relation de probité. Découvrez les retours de nos partenaires publics et privés.
                     </p>
-                    <div className="flex gap-4 items-center group cursor-pointer">
+                    <div className="flex gap-4 items-center group cursor-pointer" onClick={() => setCurrentView('testimonials')}>
                       <div className="h-16 w-16 rounded-full border border-[#BF9B8E] flex items-center justify-center group-hover:bg-[#BF9B8E] transition-all duration-500">
                         <span className="text-[#BF9B8E] group-hover:text-white transition-colors text-2xl">→</span>
                       </div>
@@ -145,40 +168,46 @@ const App: React.FC = () => {
               </div>
             </section>
           </>
+        ) : currentView === 'about' ? (
+          <AboutPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'cookies' ? (
-          <CookiePolicy />
+          <CookiePolicy onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'privacy' ? (
-          <PrivacyPolicy />
+          <PrivacyPolicy onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'mentions' ? (
-          <LegalNotice />
+          <LegalNotice onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'cgv' ? (
-          <CGVFormation />
+          <CGVFormation onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'contact' ? (
-          <ContactPage />
+          <ContactPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'testimonials' ? (
-          <TestimonialsPage />
+          <TestimonialsPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'qualiopi' ? (
-          <QualiopiPage />
+          <QualiopiPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'presse' ? (
-          <PressePage />
+          <PressePage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'agenda' ? (
-          <AgendaPage />
+          <AgendaPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'prevention' ? (
-          <PreventionPage />
+          <PreventionPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'conseil' ? (
-          <ConseilPage />
+          <ConseilPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'communication' ? (
-          <CommunicationPage />
+          <CommunicationPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'boutique' ? (
-          <BoutiquePage />
+          <BoutiquePage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'municipales' ? (
-          <MunicipalesPage />
+          <MunicipalesPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'sensibilisation' ? (
-          <SensibilisationPage />
+          <SensibilisationPage onOpenContact={() => setIsContactModalOpen(true)} />
         ) : currentView === 'realisations' ? (
-          <PreventionPage />
+          <PreventionPage onOpenContact={() => setIsContactModalOpen(true)} />
+        ) : currentView === 'blog' ? (
+          <BlogPage onOpenContact={() => setIsContactModalOpen(true)} />
+        ) : currentView === 'blog-post' ? (
+          <BlogPostPage id={currentBlogId} onOpenContact={() => setIsContactModalOpen(true)} />
         ) : (
-          <FormationPage />
+          <FormationPage onOpenContact={() => setIsContactModalOpen(true)} />
         )}
       </main>
 

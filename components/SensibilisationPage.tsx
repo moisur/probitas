@@ -10,7 +10,7 @@ import {
     Calendar
 } from 'lucide-react';
 
-const SensibilisationPage: React.FC = () => {
+const SensibilisationPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -87,7 +87,7 @@ const SensibilisationPage: React.FC = () => {
                     {services.map((service, i) => (
                         <motion.div
                             key={service.id}
-                            id={`sensibilisation-${service.id === 'conferences' ? '' : service.id}`}
+                            id={`sensibilisation-${service.id}`}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -132,8 +132,11 @@ const SensibilisationPage: React.FC = () => {
                         <h2 className="text-3xl md:text-4xl font-cinzel font-black uppercase mb-4">Organiser une intervention ?</h2>
                         <p className="text-lg opacity-80">Contactez-nous pour discuter de vos besoins en sensibilisation.</p>
                     </div>
-                    <button className="whitespace-nowrap bg-[#0C2E59] text-white px-10 py-5 font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform flex items-center gap-3">
-                        <Calendar className="w-4 h-4" /> Planifier un échange
+                    <button
+                        onClick={onOpenContact}
+                        className="inline-block bg-[#0C2E59] text-white px-10 py-5 font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform"
+                    >
+                        Discuter de votre projet
                     </button>
                     <div className="absolute top-0 right-0 text-[12rem] font-cinzel font-black opacity-10 -mr-10 -mt-10 leading-none">S</div>
                 </div>

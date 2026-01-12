@@ -40,7 +40,7 @@ const ArtisticFooter: React.FC = () => {
             Expertise Anti-Corruption • Compliance • Éthique des Affaires
           </p>
           <p className="text-white/30 text-xs italic font-serif mt-4 max-w-md leading-relaxed selection:bg-[#BF9B8E] selection:text-[#0C2E59]">
-            Insuffler la culture de l’éthique au cœur des organisations publiques et privées.
+            Insuffler la culture de l’éthique.
           </p>
         </div>
 
@@ -111,7 +111,7 @@ const ArtisticFooter: React.FC = () => {
         {/* BOTTOM FRAME */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-[10px] font-mono text-white/30 tracking-widest uppercase text-center md:text-left">
-            2023-2025 ©PROBITAS • <a href="#" className="hover:text-white transition-colors">Webdesign instinct-digital.com</a>
+            2023-2025 ©PROBITAS • <a href="https://site-internet-six.vercel.app/" className="hover:text-white transition-colors">Proudly made by King Djissi</a>
           </div>
           <div className="flex flex-wrap justify-center gap-8 text-[9px] font-mono text-white/50 tracking-widest uppercase">
             <a href="#mentions" className="hover:text-[#BF9B8E]">Mentions légales</a>

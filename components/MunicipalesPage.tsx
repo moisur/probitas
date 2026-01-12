@@ -13,7 +13,7 @@ import {
     Download
 } from 'lucide-react';
 
-const MunicipalesPage: React.FC = () => {
+const MunicipalesPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -91,7 +91,10 @@ const MunicipalesPage: React.FC = () => {
                         <button className="bg-[#BF9B8E] text-white px-10 py-5 font-black uppercase tracking-widest text-xs hover:bg-[#ae8a7e] transition-all flex items-center gap-3">
                             <Download className="w-4 h-4" /> Télécharger le guide (Février 2026)
                         </button>
-                        <button className="border border-white/20 text-white px-10 py-5 font-black uppercase tracking-widest text-xs hover:bg-white/5 transition-all">
+                        <button
+                            onClick={onOpenContact}
+                            className="border border-white/20 text-white px-10 py-5 font-black uppercase tracking-widest text-xs hover:bg-white/5 transition-all"
+                        >
                             Demander un devis
                         </button>
                     </div>

@@ -22,8 +22,8 @@ const CommunicationPage: React.FC = () => {
               viewport={{ once: true }}
               className="w-24 h-[1px] bg-[#BF9B8E] mb-12"
             />
-            <h2 className="text-3xl sm:text-4xl md:text-8xl font-cinzel font-black leading-[0.9] uppercase mb-12 break-words">
-              COACHING EN <br /><span className="text-[#BF9B8E]">COMMUNICATION</span>
+            <h2 className="text-3xl sm:text-4xl md:text-7xl font-cinzel font-black leading-[0.9] uppercase mb-12 break-words">
+              COMMUNICATION ÉTHIQUE <br />& <span className="text-[#BF9B8E]">SITUATIONS SENSIBLES</span>
             </h2>
             <p className="text-2xl md:text-3xl font-serif italic text-[#0C2E59]/80 leading-snug max-w-2xl">
               Devenez remarquable grâce à une communication experte et stratégique.

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Linkedin, Instagram, Twitter } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Handle scroll effect
   useEffect(() => {
@@ -28,14 +29,19 @@ const Navbar: React.FC = () => {
   }, [isOpen]);
 
   const menuItems = [
-    { label: "Accueil", href: "#hero" },
     {
       label: "Formation",
       href: "#formation",
       hasDropdown: true,
       dropdownItems: [
-        { label: "INTER-ENTREPRISES", href: "#formation" },
-        { label: "FORMATIONS DIGITALES", href: "#formations-digitales" }
+        {
+          label: "À LA CARTE",
+          subItems: [
+            { label: "PUBLIC", href: "#formation-public" },
+            { label: "PRIVÉ", href: "#formation-prive" }
+          ]
+        },
+        { label: "INTER", href: "#formation-surmesure" }
       ]
     },
     {
@@ -43,8 +49,8 @@ const Navbar: React.FC = () => {
       href: "#conseil",
       hasDropdown: true,
       dropdownItems: [
-        { label: "CONFORMITÉ SAPIN II", href: "#conseil" },
-        { label: "COMMUNICATION", href: "#communication" }
+        { label: "CONFORMITE SAPIN II", href: "#conseil" },
+        { label: "COMMUNICATION ETHIQUE & D'INFLUENCE", href: "#communication" }
       ]
     },
     {
@@ -52,7 +58,7 @@ const Navbar: React.FC = () => {
       href: "#sensibilisation",
       hasDropdown: true,
       dropdownItems: [
-        { label: "WORKSHOPS", href: "#sensibilisation" },
+        { label: "ATELIERS", href: "#prevention" },
         { label: "CONFÉRENCES", href: "#sensibilisation-conferences" }
       ]
     },
@@ -89,19 +95,22 @@ const Navbar: React.FC = () => {
       hasDropdown: true,
       dropdownItems: [
         { label: "NOUS CONNAITRE", href: "#a-propos" },
-        { label: "NOS RÉALISATIONS", href: "#realisations" },
+        { label: "AGENDA", href: "#agenda" },
         { label: "PRESSE", href: "#presse" },
         { label: "TEMOIGNAGES", href: "#temoignages" },
         { label: "CERTIFICATION QUALIOPI", href: "#qualiopi" },
         { label: "CONTACT", href: "#contact" }
       ]
-    }
+    },
+    { label: "Blog", href: "#blog" }
   ];
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-[100] flex justify-between items-center bg-[#0C2E59]/80 backdrop-blur-md border-b border-white/5 transition-all duration-500 ease-in-out ${isScrolled ? 'py-3 md:py-4 px-6 md:px-12' : 'px-6 py-6 md:px-10 md:py-8'
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={`fixed top-0 left-0 w-full z-[100] flex justify-between items-center bg-[#0C2E59]/80 backdrop-blur-md border-b border-white/5 transition-all duration-500 ease-in-out ${isScrolled && !isHovered ? 'py-3 md:py-4 px-6 md:px-12' : 'px-6 py-6 md:px-10 md:py-8'
           }`}
       >
 
@@ -120,8 +129,8 @@ const Navbar: React.FC = () => {
         {/* Desktop Menu - Hidden on Mobile */}
         <div className="hidden lg:flex gap-10 items-center z-[110]">
           {menuItems.map((item) => {
-            // SCROLL FILTER LOGIC: If scrolled, only show "Municipales 2026"
-            if (isScrolled && item.label !== "Municipales 2026") return null;
+            // SCROLL FILTER LOGIC: If scrolled AND NOT HOVERED, only show "Municipales 2026"
+            if (isScrolled && !isHovered && item.label !== "Municipales 2026") return null;
 
             return (
               <div
@@ -154,14 +163,36 @@ const Navbar: React.FC = () => {
                         className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-72 bg-[#0C2E59] border-t-2 border-[#BF9B8E]/40 shadow-2xl py-6 flex flex-col gap-4 z-[110]"
                       >
                         {item.dropdownItems?.map((subItem) => (
-                          <a
-                            key={subItem.label}
-                            href={subItem.href}
-                            className="px-8 py-2 text-[10px] font-cinzel font-black tracking-[0.2em] uppercase text-white hover:text-[#BF9B8E] transition-colors"
-                            onClick={() => setActiveDropdown(null)}
-                          >
-                            {subItem.label}
-                          </a>
+                          <div key={subItem.label} className="flex flex-col">
+                            {subItem.href ? (
+                              <a
+                                href={subItem.href}
+                                className="px-8 py-2 text-[10px] font-cinzel font-black tracking-[0.2em] uppercase text-white hover:text-[#BF9B8E] transition-colors"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                {subItem.label}
+                              </a>
+                            ) : (
+                              <span className="px-8 py-2 text-[10px] font-cinzel font-black tracking-[0.2em] uppercase text-[#BF9B8E]/60 cursor-default">
+                                {subItem.label}
+                              </span>
+                            )}
+
+                            {'subItems' in subItem && subItem.subItems && (
+                              <div className="flex flex-col gap-2 pl-4 mb-2">
+                                {subItem.subItems.map((nested) => (
+                                  <a
+                                    key={nested.label}
+                                    href={nested.href}
+                                    className="px-8 py-1 text-[9px] font-mono font-bold tracking-[0.1em] uppercase text-white/70 hover:text-white transition-colors border-l border-white/10 ml-4"
+                                    onClick={() => setActiveDropdown(null)}
+                                  >
+                                    {nested.label}
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                         ))}
                       </motion.div>
                     )}
@@ -174,7 +205,10 @@ const Navbar: React.FC = () => {
 
         {/* Action Button & Mobile Burger */}
         <div className="flex items-center gap-3 z-[110]">
-          <button className="hidden sm:flex bg-[#BF9B8E] text-white font-bold px-7 py-3 rounded-sm items-center gap-2 hover:bg-[#ae8a7e] transition-all text-[10px] tracking-[0.3em] uppercase shadow-lg shadow-[#BF9B8E]/20">
+          <button
+            onClick={onOpenContact}
+            className="hidden sm:flex bg-[#BF9B8E] text-white font-bold px-7 py-3 rounded-sm items-center gap-2 hover:bg-[#ae8a7e] transition-all text-[10px] tracking-[0.3em] uppercase shadow-lg shadow-[#BF9B8E]/20"
+          >
             RESERVER UN APPEL
           </button>
 
@@ -255,14 +289,36 @@ const Navbar: React.FC = () => {
                     {item.hasDropdown && (
                       <div className="ml-2 mt-2 flex flex-col gap-2 pl-4 border-l border-[#BF9B8E]/30">
                         {item.dropdownItems.map((sub, j) => (
-                          <a
-                            key={sub.label}
-                            href={sub.href}
-                            onClick={() => setIsOpen(false)}
-                            className="text-white/60 hover:text-white text-xs sm:text-sm font-mono tracking-widest uppercase transition-colors"
-                          >
-                            {sub.label}
-                          </a>
+                          <div key={sub.label} className="flex flex-col gap-2">
+                            {sub.href ? (
+                              <a
+                                href={sub.href}
+                                onClick={() => setIsOpen(false)}
+                                className="text-white/60 hover:text-white text-xs sm:text-sm font-mono tracking-widest uppercase transition-colors"
+                              >
+                                {sub.label}
+                              </a>
+                            ) : (
+                              <span className="text-[#BF9B8E]/60 text-xs sm:text-sm font-mono tracking-widest uppercase">
+                                {sub.label}
+                              </span>
+                            )}
+
+                            {'subItems' in sub && sub.subItems && (
+                              <div className="flex flex-col gap-2 pl-4 border-l border-white/10 ml-2">
+                                {sub.subItems.map((nested) => (
+                                  <a
+                                    key={nested.label}
+                                    href={nested.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="text-white/40 hover:text-white text-[10px] sm:text-xs font-mono tracking-widest uppercase transition-colors"
+                                  >
+                                    {nested.label}
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                         ))}
                       </div>
                     )}
@@ -275,7 +331,10 @@ const Navbar: React.FC = () => {
             <div className="relative z-20 flex-none w-full bg-[#0C2E59]/95 border-t border-white/5 pb-6 pt-4 px-6 flex flex-col items-center gap-4 sm:hidden">
               <button
                 className="w-full max-w-sm bg-[#BF9B8E] text-white font-bold px-7 py-4 rounded-sm flex justify-center items-center gap-2 hover:bg-[#ae8a7e] transition-all text-xs tracking-[0.3em] uppercase shadow-lg shadow-[#BF9B8E]/20"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  onOpenContact?.();
+                }}
               >
                 RESERVER UN APPEL
               </button>
