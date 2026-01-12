@@ -3,12 +3,12 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 
 const corridorItems = [
-  { id: 1, side: 'left', img: 'assets/compilation-com-electorale-e1749714874115.jpg', offset: 0.1, label: "STRATÉGIE_FONCIÈRE" },
-  { id: 2, side: 'right', img: 'assets/photo-parlant-drajes--scaled.webp', offset: 0.2, label: "AUDIT_PATRIMOINE" },
-  { id: 3, side: 'left', img: 'assets/formation-en-guyane-3.webp', offset: 0.35, label: "PLACEMENTS_SÉCURISÉS" },
-  { id: 4, side: 'right', img: 'assets/naissance.webp', offset: 0.5, label: "DÉVELOPPEMENT_VALEUR" },
-  { id: 5, side: 'left', img: 'assets/Probitas_Farah-Zaoui-640b-400x400-1.webp', offset: 0.65, label: "VISION_PÉRENNE" },
-  { id: 6, side: 'right', img: 'assets/Farah-zaoui-sourire.webp', offset: 0.8, label: "SÉCURITÉ_EXPERTISE" },
+  { id: 1, side: 'left', img: '/assets/compilation-com-electorale-e1749714874115.jpg', offset: 0.1, label: "STRATÉGIE_FONCIÈRE" },
+  { id: 2, side: 'right', img: '/assets/photo-parlant-drajes--scaled.webp', offset: 0.2, label: "AUDIT_PATRIMOINE" },
+  { id: 3, side: 'left', img: '/assets/formation-en-guyane-3.webp', offset: 0.35, label: "PLACEMENTS_SÉCURISÉS" },
+  { id: 4, side: 'right', img: '/assets/naissance.webp', offset: 0.5, label: "DÉVELOPPEMENT_VALEUR" },
+  { id: 5, side: 'left', img: '/assets/Probitas_Farah-Zaoui-640b-400x400-1.webp', offset: 0.65, label: "VISION_PÉRENNE" },
+  { id: 6, side: 'right', img: '/assets/Farah-zaoui-sourire.webp', offset: 0.8, label: "SÉCURITÉ_EXPERTISE" },
 ];
 
 interface CorridorItemProps {

@@ -1,7 +1,5 @@
-
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import heroImage from '../assets/hero_v1.png';
 
 const HeroSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -45,7 +43,7 @@ const HeroSection: React.FC = () => {
             className="relative w-[100vw] h-[100vh] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8)]"
           >
             <img
-              src={heroImage}
+              src="/assets/hero_v1.png"
               alt="Probitas Conseil - Farah Zaoui"
               className="w-full h-full object-cover object-left md:object-center"
             />

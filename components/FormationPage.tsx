@@ -164,8 +164,8 @@ const FaqItemComponent: React.FC<{ item: FaqItem }> = ({ item }) => {
 
 const documentLinks = [
     { name: "Livret d'accueil", href: "#" },
-    { name: "Politique de confidentialité", href: "assets/pdf/2024-probitas-politique-de-confidentialite-formations.pdf" },
-    { name: "Conditions Générales", href: "assets/pdf/cgv-probitas.pdf" }
+    { name: "Politique de confidentialité", href: "/assets/pdf/2024-probitas-politique-de-confidentialite-formations.pdf" },
+    { name: "Conditions Générales", href: "/assets/pdf/cgv-probitas.pdf" }
 ];
 
 const FormationPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
@@ -208,7 +208,7 @@ const FormationPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact
                         </div>
                         <div className="flex-1 w-full max-w-sm">
                             <img
-                                src="assets/certificat-qua006775.webp"
+                                src="/assets/certificat-qua006775.webp"
                                 alt="Certification Qualiopi - Probitas Actions de Formation"
                                 className="w-full h-auto rounded-sm shadow-2xl"
                             />

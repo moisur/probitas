@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useRef, useLayoutEffect, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, MapPin, Building2, ChevronDown, ChevronUp, History, Filter, X, ArrowRight } from 'lucide-react';
-import farahImg from '../assets/Farah.jpg';
+
+const farahImg = '/assets/Farah.jpg';
 
 interface Event {
     id: number;

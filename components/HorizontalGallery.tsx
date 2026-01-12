@@ -11,11 +11,11 @@ const HorizontalGallery: React.FC = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
 
   const items = [
-    { id: 1, title: "INTÉGRITÉ PUBLIQUE", img: "assets/formation-en-guyane-3.webp", size: "w-80 h-96", y: "top-20" },
-    { id: 2, title: "CONFORMITÉ SAPIN II", img: "assets/compilation-com-electorale-e1749714874115.jpg", size: "w-[35vw] h-[50vh]", y: "top-40" },
-    { id: 3, title: "DÉCIDER SANS SUBIR", img: "assets/photo-parlant-drajes--scaled.webp", size: "w-96 h-80", y: "bottom-20", grayscale: true },
-    { id: 4, title: "VIGIE DÉCISIONNELLE", img: "assets/naissance.webp", size: "w-72 h-72", y: "top-10", grayscale: true },
-    { id: 5, title: "TRANSMISSION", img: "assets/Probitas_Farah-Zaoui-640b-400x400-1.webp", size: "w-[30vw] h-[40vh]", y: "bottom-10" },
+    { id: 1, title: "INTÉGRITÉ PUBLIQUE", img: "/assets/formation-en-guyane-3.webp", size: "w-80 h-96", y: "top-20" },
+    { id: 2, title: "CONFORMITÉ SAPIN II", img: "/assets/compilation-com-electorale-e1749714874115.jpg", size: "w-[35vw] h-[50vh]", y: "top-40" },
+    { id: 3, title: "DÉCIDER SANS SUBIR", img: "/assets/photo-parlant-drajes--scaled.webp", size: "w-96 h-80", y: "bottom-20", grayscale: true },
+    { id: 4, title: "VIGIE DÉCISIONNELLE", img: "/assets/naissance.webp", size: "w-72 h-72", y: "top-10", grayscale: true },
+    { id: 5, title: "TRANSMISSION", img: "/assets/Probitas_Farah-Zaoui-640b-400x400-1.webp", size: "w-[30vw] h-[40vh]", y: "bottom-10" },
   ];
 
   return (

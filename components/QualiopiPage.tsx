@@ -23,7 +23,7 @@ const QualiopiPage: React.FC = () => {
                 <section className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 mb-16 text-center space-y-12">
                     <div className="max-w-md mx-auto">
                         <img
-                            src="assets/certificat-qua006775.webp"
+                            src="/assets/certificat-qua006775.webp"
                             alt="Qualiopi Probitas"
                             className="w-full h-auto rounded-sm shadow-2xl mb-8"
                         />
