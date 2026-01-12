@@ -90,7 +90,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     initial={{ scale: 0.9, opacity: 0, y: 20 }}
                     animate={{ scale: 1, opacity: 1, y: 0 }}
                     exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                    className="relative w-full max-w-4xl bg-[#0C2E59] border border-white/10 rounded-lg overflow-hidden shadow-2xl flex flex-col md:flex-row min-h-[600px]"
+                    className="relative w-full max-w-4xl max-h-[90vh] bg-[#0C2E59] border border-white/10 rounded-lg overflow-hidden overflow-y-auto shadow-2xl flex flex-col md:flex-row md:min-h-[600px]"
                 >
                     {/* Background layers to allow watermark on both parts */}
                     <div className="absolute inset-0 z-0">
@@ -101,8 +101,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     {/* Sidebar / Info Panel */}
-                    <div className="relative z-10 md:w-1/3 p-8 md:p-12 flex flex-col text-[#0C2E59]">
-                        <h2 className="text-3xl md:text-4xl font-cinzel font-black uppercase leading-none mb-4">
+                    <div className="relative z-10 w-full md:w-1/3 p-6 md:p-12 flex flex-col text-[#0C2E59] bg-[#BF9B8E]">
+                        <h2 className="text-2xl md:text-4xl font-cinzel font-black uppercase leading-none mb-4">
                             Parlons <br />
                             <span className="text-white">ENSEMBLE.</span>
                         </h2>
@@ -154,7 +154,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     {/* Main Content Area */}
-                    <div className="relative z-10 flex-1 p-8 md:p-16 flex flex-col overflow-hidden">
+                    <div className="relative z-10 flex-1 p-6 md:p-16 flex flex-col overflow-hidden">
                         <button
                             onClick={handleClose}
                             className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors"

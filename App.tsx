@@ -133,11 +133,14 @@ const App: React.FC = () => {
             <div id="hero">
               <HeroSection />
             </div>
+            <HomePage onOpenContact={() => setIsContactModalOpen(true)} />
 
             <ScratchRevealSection />
             <ImageCorridor />
             <HorizontalGallery />
             <TrustSection />
+
+            {/* Full HomePage content (includes PercentageShowcase, MissionsTimeline, etc.) */}
 
             <section className="py-40 bg-black/20 backdrop-blur-3xl border-t border-white/5 relative z-40">
               <div className="container mx-auto px-6">
