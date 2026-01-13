@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import {
     Mic,
@@ -11,9 +11,7 @@ import {
 } from 'lucide-react';
 
 const SensibilisationPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    // Removed specific scrollTo to allow global hash handling
 
     const services = [
         {
@@ -89,7 +87,7 @@ const SensibilisationPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenC
                     {services.map((service, i) => (
                         <div
                             key={service.id}
-                            id={`sensibilisation-${service.id}`}
+                            id={`sensibilisation - ${service.id} `}
                             className="group bg-[#081d38] border border-white/5 p-10 rounded-sm relative overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-[#BF9B8E]/30 transition-all duration-500 scroll-mt-48 flex flex-col"
                         >
                             <div className="absolute top-0 left-0 w-1.5 h-full bg-[#BF9B8E]/10 group-hover:bg-[#BF9B8E] transition-colors" />

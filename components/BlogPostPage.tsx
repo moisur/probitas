@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, FileText, Share2, Linkedin, Twitter, Link as LinkIcon, Clock, Award, Phone } from 'lucide-react';
 import { blogData } from '../data/blogData';
 
-interface BlogPostPageProps {
-    id: string;
-}
-
-const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
+const BlogPostPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
+    const { id } = useParams<{ id: string }>();
     const post = blogData.find(p => p.id === id);
     const otherPosts = blogData.filter(p => p.id !== id).slice(0, 3); // Simple recommendation logic
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
 
     if (!post) {
         return (
             <div className="min-h-screen bg-[#0C2E59] flex items-center justify-center text-white">
                 <div className="text-center">
                     <h2 className="text-4xl font-bold mb-4">Article introuvable</h2>
-                    <a href="#blog" className="text-[#BF9B8E] hover:underline">Retour au blog</a>
+                    <Link to="/blog" className="text-[#BF9B8E] hover:underline">Retour au blog</Link>
                 </div>
             </div>
         );
@@ -37,10 +39,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
 
                 {/* Back Button */}
                 <div className="mb-12">
-                    <a href="#blog" className="inline-flex items-center gap-2 text-[#BF9B8E] text-xs font-bold uppercase tracking-widest hover:text-white transition-colors group">
+                    <Link to="/blog" className="inline-flex items-center gap-2 text-[#BF9B8E] text-xs font-bold uppercase tracking-widest hover:text-white transition-colors group">
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour au blog
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
@@ -124,7 +126,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 {otherPosts.map(other => (
-                                    <a key={other.id} href={`#blog/${other.id}`} className="group block bg-white/5 rounded-sm overflow-hidden border border-white/10 hover:border-[#BF9B8E]/50 transition-colors">
+                                    <Link key={other.id} to={`/blog/${other.id}`} className="group block bg-white/5 rounded-sm overflow-hidden border border-white/10 hover:border-[#BF9B8E]/50 transition-colors">
                                         <div className="aspect-video relative overflow-hidden">
                                             <img src={other.image} alt={other.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                                             <div className="absolute inset-0 bg-[#0C2E59]/50 group-hover:bg-[#0C2E59]/20 transition-colors" />
@@ -133,7 +135,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                                             <span className="text-[10px] font-black uppercase tracking-widest text-[#BF9B8E] mb-2 block">{other.category}</span>
                                             <h4 className="text-lg font-bold leading-tight group-hover:text-[#BF9B8E] transition-colors">{other.title}</h4>
                                         </div>
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
@@ -147,7 +149,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ id }) => {
                             <div className="bg-white text-[#0C2E59] rounded-sm p-8 text-center shadow-2xl">
                                 <div className="w-32 h-32 mx-auto rounded-sm border-4 border-[#BF9B8E] p-1 mb-6 relative">
                                     <img
-                                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop"
+                                        src="/assets/Farah.jpg"
                                         alt="Farah Zaoui"
                                         className="w-full h-full object-cover rounded-sm"
                                     />

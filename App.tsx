@@ -1,5 +1,8 @@
 
 import React from 'react';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import ScrollToHashElement from './components/ScrollToHashElement';
+import SEO from './components/SEO';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import HorizontalGallery from './components/HorizontalGallery';
@@ -20,6 +23,7 @@ import ContactPage from './components/ContactPage';
 import TestimonialsPage from './components/TestimonialsPage';
 import QualiopiPage from './components/QualiopiPage';
 import FormationPage from './components/FormationPage';
+import FormationDetailPage from './components/FormationDetailPage';
 import PressePage from './components/PressePage';
 import AgendaPage from './components/AgendaPage';
 import PreventionPage from './components/PreventionPage';
@@ -30,96 +34,15 @@ import BlogPage from './components/BlogPage';
 
 import BlogPostPage from './components/BlogPostPage';
 import ContactModal from './components/ContactModal';
+import { TestimonialSlider } from './components/TestimonialSlider';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = React.useState<'home' | 'about' | 'cookies' | 'privacy' | 'mentions' | 'cgv' | 'contact' | 'testimonials' | 'qualiopi' | 'formation' | 'presse' | 'agenda' | 'prevention' | 'conseil' | 'communication' | 'boutique' | 'municipales' | 'sensibilisation' | 'realisations' | 'blog' | 'blog-post'>('home');
-  const [currentBlogId, setCurrentBlogId] = React.useState<string>('');
   const [isContactModalOpen, setIsContactModalOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      console.log('Navigating to hash:', hash);
-
-      if (hash === '#blog') {
-        setCurrentView('blog');
-        window.scrollTo(0, 0);
-      } else if (hash.startsWith('#blog/')) {
-        const fullId = hash.replace('#blog/', '');
-        // Clean ID in case of query params appended to hash
-        const blogId = fullId.split('?')[0].split('&')[0];
-        console.log('Extracted Blog ID:', blogId);
-        setCurrentBlogId(blogId);
-        setCurrentView('blog-post');
-        window.scrollTo(0, 0);
-      } else if (hash === '#cookies') {
-        setCurrentView('cookies');
-        window.scrollTo(0, 0);
-      } else if (hash === '#confidentialite') {
-        setCurrentView('privacy');
-        window.scrollTo(0, 0);
-      } else if (hash === '#mentions') {
-        setCurrentView('mentions');
-        window.scrollTo(0, 0);
-      } else if (hash === '#cgv-formation') {
-        setCurrentView('cgv');
-        window.scrollTo(0, 0);
-      } else if (hash === '#contact') {
-        setCurrentView('contact');
-        window.scrollTo(0, 0);
-      } else if (hash === '#temoignages') {
-        setCurrentView('testimonials');
-        window.scrollTo(0, 0);
-      } else if (hash === '#qualiopi') {
-        setCurrentView('qualiopi');
-        window.scrollTo(0, 0);
-      } else if (hash === '#presse') {
-        setCurrentView('presse');
-        window.scrollTo(0, 0);
-      } else if (hash === '#agenda') {
-        setCurrentView('agenda');
-        window.scrollTo(0, 0);
-      } else if (hash === '#prevention') {
-        setCurrentView('prevention');
-        window.scrollTo(0, 0);
-      } else if (hash === '#conseil') {
-        setCurrentView('conseil');
-        window.scrollTo(0, 0);
-      } else if (hash === '#communication') {
-        setCurrentView('communication');
-        window.scrollTo(0, 0);
-      } else if (hash === '#boutique') {
-        setCurrentView('boutique');
-        window.scrollTo(0, 0);
-      } else if (hash === '#municipales') {
-        setCurrentView('municipales');
-        window.scrollTo(0, 0);
-      } else if (hash === '#sensibilisation' || hash === '#sensibilisation-ateliers' || hash === '#sensibilisation-conferences') {
-        setCurrentView('sensibilisation');
-        if (hash === '#sensibilisation') window.scrollTo(0, 0);
-      } else if (hash === '#realisations') {
-        setCurrentView('realisations');
-        window.scrollTo(0, 0);
-      } else if (hash.includes('#a-propos')) {
-        setCurrentView('about');
-        window.scrollTo(0, 0);
-      } else if (hash.includes('#formation') || hash.includes('#public') || hash.includes('#private')) {
-        setCurrentView('formation');
-        window.scrollTo(0, 0);
-      } else {
-        setCurrentView('home');
-      }
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // Initial check
-
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
 
   return (
     <div className="bg-[#0C2E59] min-h-screen text-white selection:bg-[#BF9B8E] selection:text-white font-sans">
       <TopographyBg />
+      <ScrollToHashElement />
       <Navbar onOpenContact={() => setIsContactModalOpen(true)} />
 
       <ContactModal
@@ -127,91 +50,83 @@ const App: React.FC = () => {
         onClose={() => setIsContactModalOpen(false)}
       />
 
-      <main className="relative z-10">
-        {currentView === 'home' ? (
-          <>
-            <div id="hero">
-              <HeroSection />
-            </div>
-            <HomePage onOpenContact={() => setIsContactModalOpen(true)} />
+      <main className="relative z-10 w-full">
+        <Routes>
+          {/* HOME PAGE */}
+          <Route path="/" element={
+            <>
+              <SEO
+                title="Probitas Conseil | Gestion de Patrimoine & Compliance"
+                description="Probitas Conseil accompagne les acteurs publics et privés dans l'éthique, la conformité Sapin II et la gestion de patrimoine."
+              />
+              <div id="hero">
+                <HeroSection />
+              </div>
+              <HomePage onOpenContact={() => setIsContactModalOpen(true)} />
+              <ScratchRevealSection />
+              <ImageCorridor />
+              <HorizontalGallery />
+              <TrustSection />
 
-            <ScratchRevealSection />
-            <ImageCorridor />
-            <HorizontalGallery />
-            <TrustSection />
-
-            {/* Full HomePage content (includes PercentageShowcase, MissionsTimeline, etc.) */}
-
-            <section className="py-40 bg-black/20 backdrop-blur-3xl border-t border-white/5 relative z-40">
-              <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row gap-20 items-center">
-                  <div className="flex-1">
-                    <h3 className="text-3xl md:text-6xl font-cinzel font-black uppercase mb-8 leading-none tracking-tighter">
-                      TÉMOIGNAGES <br /> <span className="text-[#BF9B8E]">CLIENTS.</span>
-                    </h3>
-                    <p className="text-white/50 text-xl font-light leading-relaxed max-w-lg mb-10">
-                      La confiance est la base de toute relation de probité. Découvrez les retours de nos partenaires publics et privés.
-                    </p>
-                    <div className="flex gap-4 items-center group cursor-pointer" onClick={() => setCurrentView('testimonials')}>
+              <section className="py-40 bg-black/20 backdrop-blur-3xl border-t border-white/5 relative z-40 overflow-hidden">
+                <div className="container mx-auto px-6 mb-20">
+                  <div className="flex flex-col md:flex-row gap-20 items-end justify-between">
+                    <div className="flex-1">
+                      <h3 className="text-3xl md:text-6xl font-cinzel font-black uppercase mb-8 leading-none tracking-tighter">
+                        TÉMOIGNAGES <br /> <span className="text-[#BF9B8E]">CLIENTS.</span>
+                      </h3>
+                      <p className="text-white/50 text-xl font-light leading-relaxed max-w-lg">
+                        La confiance est la base de toute relation de probité. Découvrez les retours de nos partenaires publics et privés.
+                      </p>
+                    </div>
+                    <Link to="/temoignages" className="flex gap-4 items-center group cursor-pointer mb-2">
                       <div className="h-16 w-16 rounded-sm border border-[#BF9B8E] flex items-center justify-center group-hover:bg-[#BF9B8E] transition-all duration-500">
                         <span className="text-[#BF9B8E] group-hover:text-white transition-colors text-2xl">→</span>
                       </div>
-                      <span className="font-cinzel font-bold tracking-[0.3em] uppercase text-xs">Lire les témoignages</span>
-                    </div>
-                  </div>
-                  <div className="flex-1 grid grid-cols-2 gap-4">
-                    <div className="h-64 bg-white/5 rounded-sm overflow-hidden border border-white/10 group">
-                      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800" className="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 cursor-pointer" />
-                    </div>
-                    <div className="h-64 bg-[#BF9B8E] rounded-sm flex items-center justify-center p-8 rotate-3 shadow-2xl">
-                      <p className="text-[#0C2E59] font-cinzel font-black text-3xl text-center leading-none tracking-tighter uppercase">Excellence & Intégrité</p>
-                    </div>
+                      <span className="font-cinzel font-bold tracking-[0.3em] uppercase text-xs">Explorer tout le mur</span>
+                    </Link>
                   </div>
                 </div>
-              </div>
-            </section>
-          </>
-        ) : currentView === 'about' ? (
-          <AboutPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'cookies' ? (
-          <CookiePolicy onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'privacy' ? (
-          <PrivacyPolicy onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'mentions' ? (
-          <LegalNotice onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'cgv' ? (
-          <CGVFormation onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'contact' ? (
-          <ContactPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'testimonials' ? (
-          <TestimonialsPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'qualiopi' ? (
-          <QualiopiPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'presse' ? (
-          <PressePage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'agenda' ? (
-          <AgendaPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'prevention' ? (
-          <PreventionPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'conseil' ? (
-          <ConseilPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'communication' ? (
-          <CommunicationPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'boutique' ? (
-          <BoutiquePage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'municipales' ? (
-          <MunicipalesPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'sensibilisation' ? (
-          <SensibilisationPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'realisations' ? (
-          <PreventionPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'blog' ? (
-          <BlogPage onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : currentView === 'blog-post' ? (
-          <BlogPostPage id={currentBlogId} onOpenContact={() => setIsContactModalOpen(true)} />
-        ) : (
-          <FormationPage onOpenContact={() => setIsContactModalOpen(true)} />
-        )}
+
+                <div className="h-[600px] md:h-[800px] w-full">
+                  <TestimonialSlider limit={3} />
+                </div>
+              </section>
+            </>
+          } />
+
+          {/* PAGES */}
+          <Route path="/a-propos" element={<><SEO title="À Propos - Probitas" description="Découvrez l'équipe et les valeurs de Probitas Conseil." /><AboutPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/formations" element={<><SEO title="Formations Anticorruption - Probitas" description="Formations Sapin II, éthique publique et gestion des risques pour entreprises et collectivités." /><FormationPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/formations/:slug" element={<FormationDetailPage onOpenContact={() => setIsContactModalOpen(true)} />} />
+
+          <Route path="/conseil" element={<><SEO title="Conseil & Audit - Probitas" description="Audit, cartographie des risques et conseil en conformité Sapin II." /><ConseilPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/communication" element={<><SEO title="Communication de Crise & Éthique" description="Stratégie de communication sensible et valorisation de l'intégrité." /><CommunicationPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+
+          <Route path="/blog" element={<><SEO title="Le Blog - Analyses & Veille" description="Analyses juridiques, décryptages éthiques et actualité de la compliance." /><BlogPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/blog/:id" element={<><BlogPostPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+
+          <Route path="/contact" element={<><SEO title="Contact - Probitas" description="Contactez-nous pour un diagnostic ou une formation." /><ContactPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/temoignages" element={<TestimonialsPage onOpenContact={() => setIsContactModalOpen(true)} />} />
+          <Route path="/qualiopi" element={<><SEO title="Certification Qualiopi" description="Notre engagement qualité." /><QualiopiPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/presse" element={<><SEO title="Espace Presse" description="Retombées presse et communiqués." /><PressePage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/agenda" element={<><SEO title="Agenda & Événements" description="Retrouvez-nous lors de nos prochains événements." /><AgendaPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+
+          <Route path="/prevention" element={<><SEO title="Prévention" description="Outils et méthodes de prévention." /><PreventionPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/realisations" element={<><SEO title="Nos Réalisations" description="Cas clients et missions réalisées." /><PreventionPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+
+          <Route path="/boutique" element={<><SEO title="La Boutique" description="Outils pédagogiques et goodies éthiques." /><BoutiquePage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/municipales-2026" element={<><SEO title="Municipales 2026" description="Accompagnement éthique des campagnes électorales." /><MunicipalesPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/sensibilisation" element={<><SEO title="Sensibilisation & Workshops" description="Ateliers et conférences pour diffuser la culture de l'intégrité." /><SensibilisationPage onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+
+          <Route path="/politique-cookies" element={<><SEO title="Politique de Cookies" description="Gestion de vos données." /><CookiePolicy onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/confidentialite" element={<><SEO title="Politique de Confidentialité" description="RGPD et vie privée." /><PrivacyPolicy onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/mentions-legales" element={<><SEO title="Mentions Légales" description="Informations légales." /><LegalNotice onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+          <Route path="/cgv" element={<><SEO title="CGV Formation" description="Conditions générales de vente." /><CGVFormation onOpenContact={() => setIsContactModalOpen(true)} /></>} />
+
+          {/* Catch-all / 404 - Redirect to Home for now or 404 page */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
       <ArtisticFooter />

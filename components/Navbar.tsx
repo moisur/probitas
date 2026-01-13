@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Linkedin, Instagram, Twitter } from 'lucide-react';
 
@@ -31,40 +32,40 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
   const menuItems = [
     {
       label: "Formation",
-      href: "#formation",
+      href: "/formations",
       hasDropdown: true,
       dropdownItems: [
         {
           label: "À LA CARTE",
           subItems: [
-            { label: "PUBLIC", href: "#formation-public" },
-            { label: "PRIVÉ", href: "#formation-prive" }
+            { label: "PUBLIC", href: "/formations#public" },
+            { label: "PRIVÉ", href: "/formations#prive" }
           ]
         },
-        { label: "INTER", href: "#formation-surmesure" }
+        { label: "INTER", href: "/formations#surmesure" }
       ]
     },
     {
       label: "Conseil",
-      href: "#conseil",
+      href: "/conseil",
       hasDropdown: true,
       dropdownItems: [
-        { label: "CONFORMITE SAPIN II", href: "#conseil" },
-        { label: "COMMUNICATION ETHIQUE & D'INFLUENCE", href: "#communication" }
+        { label: "CONFORMITÉ SAPIN II", href: "/conseil" },
+        { label: "COMMUNICATION ÉTHIQUE", href: "/communication" }
       ]
     },
     {
       label: "Sensibilisation",
-      href: "#sensibilisation",
+      href: "/sensibilisation",
       hasDropdown: true,
       dropdownItems: [
-        { label: "ATELIERS", href: "#prevention" },
-        { label: "CONFÉRENCES", href: "#sensibilisation-conferences" }
+        { label: "ATELIERS", href: "/sensibilisation#ateliers" },
+        { label: "CONFÉRENCES", href: "/sensibilisation#conferences" }
       ]
     },
     {
       label: "Municipales 2026",
-      href: "#municipales",
+      href: "/municipales-2026",
       isSpecial: true,
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="inline-block mr-3">
@@ -88,21 +89,21 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
         </svg>
       )
     },
-    { label: "Boutique", href: "#boutique" },
+    { label: "Boutique", href: "/boutique" },
     {
       label: "À propos",
-      href: "#a-propos",
+      href: "/a-propos",
       hasDropdown: true,
       dropdownItems: [
-        { label: "NOUS CONNAITRE", href: "#a-propos" },
-        { label: "AGENDA", href: "#agenda" },
-        { label: "PRESSE", href: "#presse" },
-        { label: "TEMOIGNAGES", href: "#temoignages" },
-        { label: "CERTIFICATION QUALIOPI", href: "#qualiopi" },
-        { label: "CONTACT", href: "#contact" }
+        { label: "NOUS CONNAITRE", href: "/a-propos" },
+        { label: "AGENDA", href: "/agenda" },
+        { label: "PRESSE", href: "/presse" },
+        { label: "TEMOIGNAGES", href: "/temoignages" },
+        { label: "CERTIFICATION QUALIOPI", href: "/qualiopi" },
+        { label: "CONTACT", href: "/contact" }
       ]
     },
-    { label: "Blog", href: "#blog" }
+    { label: "Blog", href: "/blog" }
   ];
 
   return (
@@ -119,11 +120,11 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
         <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#0C2E59]/80 to-transparent pointer-events-none" />
 
         <div className="z-[110]">
-          <a href="#hero" onClick={() => setIsOpen(false)}>
-            <h1 className="text-xl md:text-2xl font-cinzel font-black leading-[0.8] tracking-widest uppercase text-white hover:text-[#BF9B8E] transition-colors cursor-pointer">
-              PROBITAS<br /><span className="text-[#BF9B8E] text-[0.6em] tracking-[0.4em]">CONSEIL</span>
+          <Link to="/" onClick={() => setIsOpen(false)}>
+            <h1 className="group text-xl md:text-2xl font-cinzel font-black leading-[0.8] tracking-widest uppercase text-white hover:text-[#BF9B8E] transition-colors cursor-pointer">
+              PROBITAS<br /><span className="text-[#BF9B8E] group-hover:text-white text-[0.6em] tracking-[0.4em] transition-colors">CONSEIL</span>
             </h1>
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Menu - Hidden on Mobile */}
@@ -139,8 +140,8 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
                 onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.label)}
                 onMouseLeave={() => item.hasDropdown && setActiveDropdown(null)}
               >
-                <a
-                  href={item.href}
+                <Link
+                  to={item.href}
                   className="flex items-center gap-1.5 text-[11px] font-mono font-bold tracking-[0.2em] uppercase text-white/90 hover:text-[#BF9B8E] transition-all"
                 >
                   {'icon' in item && item.icon}
@@ -150,7 +151,7 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   )}
-                </a>
+                </Link>
 
                 {item.hasDropdown && (
                   <AnimatePresence>
@@ -165,13 +166,13 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
                         {item.dropdownItems?.map((subItem) => (
                           <div key={subItem.label} className="flex flex-col">
                             {subItem.href ? (
-                              <a
-                                href={subItem.href}
+                              <Link
+                                to={subItem.href}
                                 className="px-8 py-2 text-[10px] font-cinzel font-black tracking-[0.2em] uppercase text-white hover:text-[#BF9B8E] transition-colors"
                                 onClick={() => setActiveDropdown(null)}
                               >
                                 {subItem.label}
-                              </a>
+                              </Link>
                             ) : (
                               <span className="px-8 py-2 text-[10px] font-cinzel font-black tracking-[0.2em] uppercase text-[#BF9B8E]/60 cursor-default">
                                 {subItem.label}
@@ -181,14 +182,14 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
                             {'subItems' in subItem && subItem.subItems && (
                               <div className="flex flex-col gap-2 pl-4 mb-2">
                                 {subItem.subItems.map((nested) => (
-                                  <a
+                                  <Link
                                     key={nested.label}
-                                    href={nested.href}
+                                    to={nested.href}
                                     className="px-8 py-1 text-[9px] font-mono font-bold tracking-[0.1em] uppercase text-white/70 hover:text-white transition-colors border-l border-white/10 ml-4"
                                     onClick={() => setActiveDropdown(null)}
                                   >
                                     {nested.label}
-                                  </a>
+                                  </Link>
                                 ))}
                               </div>
                             )}
@@ -270,8 +271,8 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
                     }}
                     className={`w-full ${'isSpecial' in item ? 'flex flex-col items-center py-6' : ''}`}
                   >
-                    <a
-                      href={item.href}
+                    <Link
+                      to={item.href}
                       onClick={() => setIsOpen(false)}
                       className={`group relative inline-flex items-center gap-3 text-4xl sm:text-5xl md:text-7xl font-cinzel font-normal tracking-wide text-white hover:text-[#BF9B8E] transition-colors duration-300 ${'isSpecial' in item ? 'text-center flex-col' : ''}`}
                     >
@@ -285,19 +286,19 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
                       <span className={`hidden md:inline-block ml-4 text-sm font-bold text-[#BF9B8E] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-mono ${'isSpecial' in item ? 'mt-4 ml-0' : ''}`}>
                         0{i + 1}
                       </span>
-                    </a>
+                    </Link>
                     {item.hasDropdown && (
                       <div className="ml-2 mt-2 flex flex-col gap-2 pl-4 border-l border-[#BF9B8E]/30">
                         {item.dropdownItems.map((sub, j) => (
                           <div key={sub.label} className="flex flex-col gap-2">
                             {sub.href ? (
-                              <a
-                                href={sub.href}
+                              <Link
+                                to={sub.href}
                                 onClick={() => setIsOpen(false)}
                                 className="text-white/60 hover:text-white text-xs sm:text-sm font-mono tracking-widest uppercase transition-colors"
                               >
                                 {sub.label}
-                              </a>
+                              </Link>
                             ) : (
                               <span className="text-[#BF9B8E]/60 text-xs sm:text-sm font-mono tracking-widest uppercase">
                                 {sub.label}
@@ -307,14 +308,14 @@ const Navbar: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => 
                             {'subItems' in sub && sub.subItems && (
                               <div className="flex flex-col gap-2 pl-4 border-l border-white/10 ml-2">
                                 {sub.subItems.map((nested) => (
-                                  <a
+                                  <Link
                                     key={nested.label}
-                                    href={nested.href}
+                                    to={nested.href}
                                     onClick={() => setIsOpen(false)}
                                     className="text-white/40 hover:text-white text-[10px] sm:text-xs font-mono tracking-widest uppercase transition-colors"
                                   >
                                     {nested.label}
-                                  </a>
+                                  </Link>
                                 ))}
                               </div>
                             )}

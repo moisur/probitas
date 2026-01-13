@@ -1,0 +1,495 @@
+export interface FormationDetail {
+    slug: string;
+    title: string;
+    description: string;
+    sector: 'public' | 'private';
+    duration: string;
+    price: string;
+    target: string;
+    prerequisites: string;
+    objectives: string[];
+    program: string[];
+    methodology: string;
+    evaluation: string;
+    accessibility: string;
+    modalities: string;
+    technicalModalities: string;
+    // New enriched fields
+    creationDate: string;
+    lastRevisionDate: string;
+    trainer: string;
+    educationalReferent: string;
+    trainerCVLink?: string;
+}
+
+export const organisationStats = {
+    satisfactionRate: "86 %",
+    satisfactionRateUpdateDate: "06/10/2025",
+    recommendationRate: "100 %",
+    recommendationRateUpdateDate: "06/10/2025",
+    learnersCount2024: "340",
+    cumulativeHours2024: "2 407",
+    bpfDeclarationYear: "2024"
+};
+
+export const formationsData: FormationDetail[] = [
+    {
+        "slug": "basiques-compliance-publique-loi-sapin2",
+        "title": "Formation dédiée à la Compliance secteur public - Loi Sapin II",
+        "description": "Compliance secteur public : formez-vous et mettez en pratique la Loi Sapin II. Soignez votre réputation avec ce module dispensé par Farah Zaoui.",
+        "sector": "public",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Directeur général des services, juriste des collectivités, d’EPIC, d’EPL, d’OPHLM et dirigeant d’associations parapubliques. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "prerequisites": "Aucun.",
+        "objectives": [
+            "Comprendre l’étendue du dispositif anti-corruption défini par la loi Sapin II et son application au secteur public.",
+            "Préparer à un éventuel contrôle de l’Agence Française Anticorruption (AFA)."
+        ],
+        "program": [
+            "1 – Décrypter le dispositif anticorruption",
+            "2 – Appliquer le dispositif et anticiper un contrôle AFA"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/11/2023",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "cartographie-des-risques",
+        "title": "Formation établir une cartographie des risques anticorruption",
+        "description": "Apprenez à identifier, analyser et hiérarchiser les risques anticorruption grâce à une cartographie efficace et intégrée aux dispositifs de conformité.",
+        "sector": "public",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Cadres territoriaux, agents de direction, juristes, agents chargés de mission, référents déontologues, DGS, DGAS. Toute personne impliquée dans la gestion des risques, le contrôle interne ou la conformité.",
+        "prerequisites": "Aucun. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "objectives": [
+            "Identifier les enjeux stratégiques de la cartographie des risques anticorruption et en maîtriser les étapes clés.",
+            "Analyser et hiérarchiser les risques, en utilisant des outils de cotation et de restitution adaptés.",
+            "Articuler efficacement cette démarche avec les dispositifs de conformité déjà en place."
+        ],
+        "program": [
+            "1 – Comprendre pourquoi faire une cartographie des risques",
+            "2 – Identifier et qualifier les risques",
+            "3 – Construire sa grille de cotation",
+            "4 – Formaliser et exploiter la cartographie",
+            "5 – Ancrer la démarche dans l’organisation"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "20/08/2025",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "communication-en-periode-electorale",
+        "title": "Formation Communication en période pré-électorale",
+        "description": "Communiquez en période pré-électorale, adoptez les bons réflexes grâce à notre formation spécialisée dispensée par Farah Zaoui et reconnue Qualiopi.",
+        "sector": "public",
+        "duration": "Journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 2 000,00 € HT.",
+        "target": "Personnel des collectivités territoriales concerné par la communication en période électorale : directeurs généraux des services (DGS), directeurs de cabinet, responsables/chargés de communication, juristes et directeurs des aﬀaires juridiques, membres de cabinet d’élus, ainsi que tout agent public impliqué dans l’organisation de la communication institutionnelle en période pré-électorale.",
+        "prerequisites": "Aucun.",
+        "objectives": [
+            "Mettre en pratique les règles entourant la communication en période pré-électorale.",
+            "Intégrer cette réglementation dans les choix et stratégies de communication."
+        ],
+        "program": [
+            "1. Maîtriser le cadre juridique entourant la communication en période pré-électorale",
+            "2. Communiquer en période pré-électorale : stratégies et conformité",
+            "3. Appréhender les fondamentaux de la liberté de la presse et nouvelles régulations",
+            "4. Savoir réagir face aux délits de presse et droit de réponse"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/09/2024",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "communiquer-en-periode-pre-electorale-pour-les-elus-locaux",
+        "title": "Formation communication période pré-électorale pour les élus",
+        "description": "Maires, adjoints, conseillers, ayez les bons réflexes pour communiquer en période pré-électorale, grâce à notre formation Qualiopi dispensée par Farah Zaoui.",
+        "sector": "public",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1 900,00 € HT.",
+        "target": "Maires, adjoints, conseillers municipaux (majorité ou opposition) et tout élu local candidat à une élection",
+        "prerequisites": "Aucun",
+        "objectives": [
+            "Maîtriser les règles de fond et de forme encadrant la communication en période pré-électorale.",
+            "Sécuriser la campagne juridiquement, financièrement et réputationnellement.",
+            "Identifier les limites à ne pas franchir sous peine d’annulation de l’élection ou de sanctions."
+        ],
+        "program": [
+            "1. Maîtriser le cadre juridique essentiel de la communication pré-électorale",
+            "2. Communiquer pendant la période pré-électorale : bonnes pratiques et écueils à éviter",
+            "3. Gérer la presse et sa réputation en période électorale",
+            "4. Se protéger et réagir : comment un élu peut se défendre face à des attaques médiatiques ou sur les réseaux sociaux"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/09/2024",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "deontologie-et-integrite-loi-sapin-2",
+        "title": "Formation prévention des conflits d’intérêts, Loi Sapin II",
+        "description": "Apprenez à reconnaître les situations de corruption, à utiliser les outils internes (code de conduite, alerte, politique cadeaux) et à adopter les bons réflexes",
+        "sector": "private",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 2 000,00 € HT.",
+        "target": "Salariés d'entreprise",
+        "prerequisites": "Aucun. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "objectives": [
+            "À l’issue de cette formation, les candidats seront en mesure de :",
+            "Comprendre les enjeux éthiques, juridiques et réputationnels liés à la corruption et aux conflits d’intérêts.",
+            "Identifier les situations à risque dans son environnement professionnel.",
+            "Connaître les outils internes (code de conduite, alerte, politique cadeaux, etc.).",
+            "Adopter les bons réflexes en cas de doute ou de situation problématique."
+        ],
+        "program": [
+            "1 – Comprendre les bases juridiques, éthiques et internes en matière d’exposition au risque de conflits d’intérêts et d’atteinte à la probité",
+            "2 – Agir avec intégrité dans les relations externes",
+            "3 – Réagir en cas de doute"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/08/2025",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "deployer-un-dispositif-anticorruption-et-alerte-interne-les-fondamentaux",
+        "title": "Formation anticorruption et alerte interne : fondamentaux",
+        "description": "Déployer un dispositif anticorruption et un dispositif d'alerte interne en entreprise : les fondamentaux pour bien agir et la méthode pour les mettre en place",
+        "sector": "private",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Consultants, juristes, responsables conformité, professionnels souhaitant former ou accompagner des clients sur les dispositifs Sapin II, notamment l’alerte éthique.",
+        "prerequisites": "Aucun. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "objectives": [
+            "Identifier les éléments constitutifs d’un dispositif anticorruption en entreprise.",
+            "Définir les étapes du déploiement d’un dispositif d’alerte interne conforme à la réglementation.",
+            "Analyser les conditions de réussite et les écueils à éviter dans l’accompagnement d’un client.",
+            "Mobiliser les ressources, outils et méthodes adaptés pour structurer ou auditer un dispositif."
+        ],
+        "program": [
+            "1 – Comprendre le socle réglementaire du dispositif anticorruption",
+            "2 – Construire un dispositif d’alerte interne conforme aux exigences légales",
+            "3 – Structurer une démarche d’accompagnement ou de formation à la mise en œuvre d’un dispositif anticorruption"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/08/2025",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "garantir-son-devoir-de-probite-dans-le-contexte-de-lachat-public-local",
+        "title": "Formation loi Sapin II ciblée achat public local",
+        "description": "Formation pour élus et acheteurs publics : maîtrisez obligations légales, identifiez les risques et appliquez les outils de prévention de la loi Sapin II",
+        "sector": "public",
+        "duration": "Une demi-journée (3h).",
+        "price": "Le coût total de la formation est à partir de 1 540,00 € HT.",
+        "target": "Élus locaux",
+        "prerequisites": "Aucun. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "objectives": [
+            "À l’issue de cette formation, les candidats seront en mesure d’identifier les principales obligations légales et éthiques en matière de probité applicables aux élus et acheteurs publics. Repérer les situations à risque dans le cycle d’un achat public au sein d’une collectivité ou d’une EPL. Mobiliser les outils de prévention prévus par la loi Sapin II."
+        ],
+        "program": [
+            "1 – Comprendre les enjeux de probité et les risques relatifs aux fonctions électives et d’acheteur public",
+            "2 – Prévenir les atteintes à la probité : outils pratiques et postures"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/08/2025",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "lutte-contre-corruption-dans-commande-publique",
+        "title": "Lutte contre la corruption dans la commande publique",
+        "description": "Lutte contre la corruption, formation dédiée à la commande publique, adoptez les bonnes habitudes pour protéger votre réputation et votre carrière.",
+        "sector": "public",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Directeur général des services, administrateur de collectivités, salarié d’EPIC, de SEM, d’OPHLM, d’associations para publiques et acheteur public. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "prerequisites": "Disposer des connaissances de base en matière de commande publique.",
+        "objectives": [
+            "Identifier les risques juridiques inhérents à la commande publique.",
+            "Intégrer la notion de conflits d’intérêts.",
+            "Appréhender les risques aux différents stades de la procédure de marché public, ainsi que les sanctions encourues."
+        ],
+        "program": [
+            "1 – Comprendre les enjeux du conflit d’intérêts dans la commande publique",
+            "2 – Identifier les délits d’atteinte à la probité applicables au secteur de la Commande publique",
+            "3 – Appréhender les outils de prévention des risques d’atteintes à la probité",
+            "4 – Insuﬄer la culture de l’éthique au quotidien"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/11/2023",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "maitriser-le-cadre-juridique-et-deontologique-du-cumul-dactivites",
+        "title": "Formation pour maitriser le cumul d’activités secteur public",
+        "description": "Maîtriser le cadre juridique et déontologique du cumul d’activités, avec cette formation certifiée Qualiopi pour les agents territoriaux et éviter les risques",
+        "sector": "public",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Agents territoriaux (toutes catégories), cadres intermédiaires et responsables de service, membres du service RH et encadrants impliqués dans l’instruction des demandes de cumul.",
+        "prerequisites": "Aucun. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "objectives": [
+            "À l’issue de cette formation, les candidats seront en mesure de comprendre et appliquer le cadre juridique du cumul d'activités et de prévenir les risques déontologiques et les situations de conflit d'intérêts"
+        ],
+        "program": [
+            "Comprendre le cadre juridique du cumul d'activités,",
+            "Distinguer les activités autorisées, interdites ou soumises à autorisation,",
+            "Mettre en œuvre la procédure d'autorisation et les obligations de contrôle,",
+            "Intégrer les enjeux déontologiques et de prévenir les situations à risque."
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/12/2025",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "maitriser-les-atteintes-a-la-probite-dans-la-commande-publique",
+        "title": "Maîtriser les atteintes à la probité dans la commande publique",
+        "description": "Apprenez à identifier les risques juridiques liés à la commande publique, comprendre les conflits d’intérêts et anticiper les sanctions liées au marché public.",
+        "sector": "public",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Agents intervenants dans la chaine de commande publique, acheteurs, juristes",
+        "prerequisites": "Aucun. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "objectives": [
+            "À l’issue de cette formation, les candidats seront en mesure de :",
+            "Identifier les risques juridiques inhérents à la commande publique,",
+            "Intégrer la notion de conflit d'intérêts,",
+            "Appréhender les risques pendant la procédure de marché public et les sanctions encourues."
+        ],
+        "program": [
+            "1 – Identifier les risques juridiques inhérents à la commande publique",
+            "2 – Intégrer la notion de conflit d’intérêts",
+            "3 – Distinguer le conflit d’intérêts d’autres atteintes à la probité",
+            "4 – Appréhender les risques pendant la procédure de marché public et les sanctions encourues"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/06/2025",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "mise-en-place-dispositif-anticorruption-secteurs-fondatifs-associatifs",
+        "title": "Mise en place du dispositif anticorruption pour les fondations et associations",
+        "description": "Mise en place du dispositif anticorruption : Formation dédiée pour les fondations et associations. Prise en charge OPCO, formation certifiée Qualiopi.",
+        "sector": "private",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Délégués généraux, juristes d’association, trésoriers et membres de bureaux et/ou de conseils d’administration, responsables de l’audit et du contrôle interne, directeurs des ressources humaines, responsables de collecte des dons et tout autre salarié.",
+        "prerequisites": "Aucun.",
+        "objectives": [
+            "Comprendre l’étendue du dispositif anti-corruption défini par la loi Sapin II, son application à l'associatif et fondation.",
+            "Se préparer à un éventuel contrôle de l’Agence Française Anticorruption (AFA)."
+        ],
+        "program": [
+            "1 – Décrypter les enjeux de la lutte anticorruption dans le secteur associatif",
+            "2 – Mettre en œuvre une démarche préventive"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/11/2023",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "obligations-deontologiques-risque-penal-agent-public",
+        "title": "Obligations déontologiques et risque pénal de l'agent public",
+        "description": "Obligations déontologiques et risque pénal : découvrez notre formation adaptée aux agents du secteur public. Organisme de formation certifié Qualiopi",
+        "sector": "public",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Fonctionnaires, agents contractuels, collaborateurs d’élus et de groupe.",
+        "prerequisites": "Aucun. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "objectives": [
+            "Identifier les obligations issues du statut des fonctionnaires.",
+            "Identifier les facteurs de risques sur les volets déontologiques, juridiques, financiers et humains."
+        ],
+        "program": [
+            "1 – Comprendre les principes fondamentaux de la déontologie",
+            "2 – Identifier les risques juridiques et pénaux dans l’exercice de la fonction",
+            "3 – Prévenir les manquements à la probité",
+            "4 – Synthèse et retour d’expérience"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/11/2023",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "referent-alerte-ethique",
+        "title": "Formation référent éthique pour dispositif d’alerte interne",
+        "description": "Maîtrisez le cadre légal (Sapin II, Waserman, CNIL) et le rôle du référent pour un dispositif d’alerte interne conforme et efficace. Formation Qualiopi.",
+        "sector": "public",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "- Cadres territoriaux, agents de direction, juristes d’entreprise, agents chargés de mission, référents déontologues - Toute personne impliquée dans la gestion des risques, le contrôle interne ou la conformité",
+        "prerequisites": "Aucun. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés.",
+        "objectives": [
+            "Maîtriser le cadre légal des dispositifs d’alerte (Sapin II, Waserman, décret 2022, référentiel CNIL).",
+            "Comprendre la gouvernance et le rôle du référent.",
+            "Acquérir les bonnes pratiques pour recevoir, qualifier et traiter les alertes dans le respect des délais et de la confidentialité."
+        ],
+        "program": [
+            "1. Appréhender le cadre légal et le rôle du référent",
+            "2. Construire et piloter le dispositif",
+            "3. Traiter une alerte et plan d’action"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "18/08/2025",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "signalement-et-lancement-dalerte",
+        "title": "Formation Lanceur d’alerte dans le secteur public",
+        "description": "Lanceur d’alerte secteur public : Formez-vous, protégez-vous et luttez contre la corruption avec le dispositif loi Sapin II et loi Waserman.",
+        "sector": "public",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Personnel des services de l’État, des collectivités territoriales, des EPL, des associations parapubliques, des OPHLM, les collaborateurs d’élus ou de groupes. Cette formation entre dans le champ d’application des dispositions relatives à la formation professionnelle continue, car considérée comme une action d’adaptation et de développement des compétences des salariés (agents).",
+        "prerequisites": "Aucun.",
+        "objectives": [
+            "Comprendre les rouages du dispositif lanceur d’alerte défini par la loi Sapin II et renforcé par la loi Waserman.",
+            "Accompagner la mise place de ce dispositif en interne ou l’améliorer.",
+            "Encourager la confiance de leurs collaborateurs dans le dispositif d’alerte et communiquer positivement sur son existence."
+        ],
+        "program": [
+            "1 – Comprendre le statut et le rôle du lanceur d’alerte",
+            "2 – Maîtriser la procédure interne de recueil d’alertes",
+            "3 – Assurer la protection des lanceurs",
+            "4 – Communiquer, former et instaurer une culture de l’alerte au sein de la structure"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/11/2023",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    },
+    {
+        "slug": "signalement-lancement-alerte-secteur-prive-entreprises-associations",
+        "title": "Formation signalement et lancement d’alerte - secteur privé",
+        "description": "Comprendre les rouages du dispositif lanceur d’alerte défini par la loi Sapin II et la loi Waserman. Mettre en place et communiquer auprès des collaborateurs.",
+        "sector": "private",
+        "duration": "Une journée (7h avec une pause méridienne de 1h15).",
+        "price": "Le coût total de la formation est à partir de 1900,00 € HT.",
+        "target": "Directeurs juridiques, juristes d’entreprise, compliance officers, directeurs de l’audit et du contrôle interne, directeurs des ressources humaines et avocats, délégués généraux d’associations, administrateurs, trésoriers, juristes et responsables de la collecte des dons.",
+        "prerequisites": "Aucun.",
+        "objectives": [
+            "Comprendre les rouages du dispositif lanceur d’alerte défini par la loi Sapin II et renforcé par la loi Waserman.",
+            "Accompagner la mise place de ce dispositif en interne ou l’améliorer.",
+            "Encourager la confiance de leurs collaborateurs dans le dispositif d’alerte et communiquer positivement sur son existence."
+        ],
+        "program": [
+            "1. Décryptage du dispositif lanceur d’alerte adapté au secteur privé",
+            "2. Méthodes et conseils pour mettre en place ou renforcer le dispositif de lanceur d’alerte et susciter la confiance des collaborateurs"
+        ],
+        "methodology": "La formation comprend des cours théoriques, des exercices pratiques et des mises en situation.",
+        "evaluation": "Les participants seront évalués sur la base d’un quiz final.",
+        "accessibility": "Nous nous engageons à rendre notre formation accessible à tous. Nous nous déplaçons au sein des structures publiques et veillons à ce que les locaux soient adaptés pour accueillir les personnes en situation de handicap. Si vous avez besoin d’ajustements spécifiques, contactez notre référente handicap : Farah ZAOUI",
+        "modalities": "Les inscriptions s’arrêtent 15 jours avant le début de chaque session. Nous vous recommandons de vous inscrire rapidement, car les places sont limitées.",
+        "technicalModalities": "En présentiel, le formateur se déplace dans vos locaux pour une meilleure immersion.\n\n— OU —\n\nÀ distance, le formateur et les stagiaires interagissent avec spontanéité et fluidité via un outil de visioconférence. Le centre de formation veille à garantir une excellente qualité du son et de l'image. Un dispositif d'émargement en ligne sera également mis en place.",
+        "creationDate": "01/11/2023",
+        "lastRevisionDate": "-",
+        "trainer": "Farah ZAOUI",
+        "educationalReferent": "Farah ZAOUI",
+        "trainerCVLink": "/assets/pdf/farah-zaoui-cv.pdf"
+    }
+];
+
+export const getFormationBySlug = (slug: string): FormationDetail | undefined => {
+    return formationsData.find(f => f.slug === slug);
+};
+
+export const getFormationsBySector = (sector: 'public' | 'private'): FormationDetail[] => {
+    return formationsData.filter(f => f.sector === sector);
+};

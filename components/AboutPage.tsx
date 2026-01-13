@@ -61,7 +61,7 @@ const AboutPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) 
           >
             <div className="aspect-[4/5] overflow-hidden rounded-sm grayscale hover:grayscale-0 transition-all duration-700">
               <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
+                src="/assets/Farah.jpg"
                 alt="Farah Zaoui - Fondatrice"
                 className="w-full h-full object-cover"
               />

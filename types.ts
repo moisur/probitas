@@ -19,4 +19,7 @@ export interface Testimonial {
   words: StyledWord[];
   author: string;
   imageUrl: string;
+  category?: string;
+  fullText?: string;
+  logoUrl?: string;
 }

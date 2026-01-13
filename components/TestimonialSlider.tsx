@@ -6,22 +6,27 @@ import { AnimatedWord } from './AnimatedWord';
 
 const SLIDE_DURATION = 9000;
 
-export const TestimonialSlider: React.FC = () => {
+interface TestimonialSliderProps {
+    limit?: number;
+}
+
+export const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ limit }) => {
+    const displayTestimonials = limit ? testimonials.slice(0, limit) : testimonials;
     const [currentIndex, setCurrentIndex] = useState(0);
     const [progress, setProgress] = useState(0);
     const [direction, setDirection] = useState(0);
 
     const nextSlide = useCallback(() => {
         setDirection(1);
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+        setCurrentIndex((prev) => (prev + 1) % displayTestimonials.length);
         setProgress(0);
-    }, []);
+    }, [displayTestimonials.length]);
 
     const prevSlide = useCallback(() => {
         setDirection(-1);
-        setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+        setCurrentIndex((prev) => (prev - 1 + displayTestimonials.length) % displayTestimonials.length);
         setProgress(0);
-    }, []);
+    }, [displayTestimonials.length]);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -88,7 +93,7 @@ export const TestimonialSlider: React.FC = () => {
                         className="absolute inset-0"
                     >
                         <img
-                            src={testimonials[currentIndex].imageUrl}
+                            src={displayTestimonials[currentIndex].imageUrl}
                             alt=""
                             className="w-full h-full object-cover brightness-[0.25] saturate-[0.7]"
                         />
@@ -139,7 +144,7 @@ export const TestimonialSlider: React.FC = () => {
                                 key={`words-container-${currentIndex}`}
                                 className="flex flex-wrap items-center justify-center content-center gap-x-1.5 gap-y-2.5 md:gap-y-5 text-center"
                             >
-                                {testimonials[currentIndex].words.map((word, idx) => (
+                                {displayTestimonials[currentIndex].words.map((word, idx) => (
                                     <AnimatedWord
                                         key={`${currentIndex}-${idx}`}
                                         word={word}
@@ -155,15 +160,24 @@ export const TestimonialSlider: React.FC = () => {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.8 }}
-                            className="mt-8 md:mt-12 flex items-center gap-5 justify-center"
+                            className="mt-8 md:mt-12 flex items-center gap-6 justify-center"
                         >
-                            <div className="w-10 h-[1px] bg-[#BF9B8E]/40" />
+                            {displayTestimonials[currentIndex].logoUrl && (
+                                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border border-white/10 bg-white/5 p-2 flex items-center justify-center">
+                                    <img
+                                        src={displayTestimonials[currentIndex].logoUrl}
+                                        alt=""
+                                        className="w-full h-full object-contain opacity-80"
+                                    />
+                                </div>
+                            )}
+                            <div className="w-[1px] h-10 bg-[#BF9B8E]/40" />
                             <div className="text-left">
                                 <p className="text-lg md:text-2xl text-white font-bold tracking-tight leading-none">
-                                    {testimonials[currentIndex].author.split(' – ')[0]}
+                                    {displayTestimonials[currentIndex].author.split(' – ')[0]}
                                 </p>
                                 <p className="text-[#BF9B8E] text-[9px] md:text-xs font-black uppercase tracking-[0.2em] mt-1 opacity-70">
-                                    {testimonials[currentIndex].author.split(' – ')[1]}
+                                    {displayTestimonials[currentIndex].author.split(' – ')[1]}
                                 </p>
                             </div>
                         </motion.div>
@@ -173,7 +187,7 @@ export const TestimonialSlider: React.FC = () => {
                 {/* Indicateurs de progrès en bas de carte (Absolu) */}
                 <div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 pointer-events-auto z-40">
                     <div className="flex gap-2 w-full mb-6">
-                        {testimonials.map((_, idx) => (
+                        {displayTestimonials.map((_, idx) => (
                             <div
                                 key={idx}
                                 onClick={() => handleManualNav(idx)}

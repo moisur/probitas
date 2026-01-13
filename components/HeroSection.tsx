@@ -57,9 +57,9 @@ const HeroSection: React.FC = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-5">
-              <h2 className="text-4xl md:text-5xl font-cinzel font-black uppercase leading-none mb-6">
+              <h1 className="text-4xl md:text-5xl font-cinzel font-black uppercase leading-none mb-6">
                 L'Intégrité au service <br /><span className="text-[#BF9B8E]">des organisations</span>
-              </h2>
+              </h1>
               <p className="text-white/60 text-base max-w-md font-light leading-relaxed">
                 Probitas Conseil accompagne les acteurs publics et privés dans la structuration de leur culture d'intégrité avec une approche pragmatique et éthique.
               </p>

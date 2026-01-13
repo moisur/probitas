@@ -1,13 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Calendar, Video, FileText, ArrowRight, X } from 'lucide-react';
+import { Play, Calendar, Video, FileText, ArrowRight, X, ArrowDown } from 'lucide-react';
 import { blogData, BlogItemData } from '../data/blogData';
 
-const BlogPage: React.FC = () => {
+const BlogPage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) => {
+    const navigate = useNavigate();
     const [selectedItem, setSelectedItem] = useState<BlogItemData | null>(null);
     const [filter, setFilter] = useState<'all' | 'article' | 'video'>('all');
     const [hoveredFilter, setHoveredFilter] = useState<'all' | 'article' | 'video' | null>(null);
+
+    // Scroll detection logic
+    const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+        const target = e.currentTarget;
+        const isScrolled = target.scrollTop > 10;
+        const arrow = document.getElementById('blog-scroll-indicator');
+        if (arrow) {
+            arrow.style.opacity = isScrolled ? '0' : '1';
+            arrow.style.pointerEvents = isScrolled ? 'none' : 'auto';
+            arrow.style.transform = isScrolled ? 'translateY(10px)' : 'translateY(0)';
+        }
+    };
+
+    // Reset indicator and check for overflow when opening a new item
+    useEffect(() => {
+        if (selectedItem) {
+            const arrow = document.getElementById('blog-scroll-indicator');
+            if (arrow) {
+                // Petit délai pour laisser le contenu s'injecter
+                setTimeout(() => {
+                    const container = document.getElementById('blog-modal-content');
+                    if (container) {
+                        const isScrollable = container.scrollHeight > container.clientHeight;
+                        arrow.style.opacity = isScrollable ? '1' : '0';
+                        arrow.style.pointerEvents = isScrollable ? 'auto' : 'none';
+                        arrow.style.transform = 'translateY(0)';
+                    }
+                }, 100);
+            }
+        }
+    }, [selectedItem]);
 
     const filteredData = blogData.filter(item => filter === 'all' || item.type === filter);
 
@@ -151,40 +184,64 @@ const BlogPage: React.FC = () => {
                                     </div>
 
                                     {/* Right Side: Content */}
-                                    <div className="flex-1 p-8 md:p-20 flex flex-col justify-center bg-[#081d38] overflow-y-auto">
-                                        <div className="hidden md:flex items-center gap-4 mb-12">
-                                            <Calendar className="w-4 h-4 text-[#BF9B8E]" />
-                                            <span className="text-xs font-bold text-[#BF9B8E] uppercase tracking-[0.4em]">{selectedItem.date} // {selectedItem.category}</span>
+                                    <div className="flex-1 flex flex-col bg-[#081d38] overflow-hidden">
+                                        {/* Scrollable Area Wrapper */}
+                                        <div className="flex-1 relative flex flex-col min-h-0 overflow-hidden">
+                                            <div
+                                                id="blog-modal-content"
+                                                onScroll={handleScroll}
+                                                className="flex-1 overflow-y-auto p-8 md:p-16 md:pb-12 overscroll-contain scrollbar-hide"
+                                            >
+                                                <div className="hidden md:flex items-center gap-4 mb-12">
+                                                    <Calendar className="w-4 h-4 text-[#BF9B8E]" />
+                                                    <span className="text-xs font-bold text-[#BF9B8E] uppercase tracking-[0.4em]">{selectedItem.date} // {selectedItem.category}</span>
+                                                </div>
+
+                                                <h2 className="hidden md:block text-4xl lg:text-5xl font-black tracking-tighter text-white mb-8 leading-[0.9]">
+                                                    {selectedItem.title}
+                                                </h2>
+
+                                                <div className="hidden md:block h-[2px] w-20 bg-[#BF9B8E] mb-8" />
+
+                                                <p className="text-lg md:text-xl text-blue-200/80 font-light leading-relaxed mb-12">
+                                                    {selectedItem.longDescription || selectedItem.description}
+                                                </p>
+                                            </div>
+
+                                            {/* Elevated Gradient Fade - Now relative to content area */}
+                                            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#081d38] via-[#081d38]/80 to-transparent pointer-events-none z-10" />
+
+                                            {/* Dynamic Scroll Indicator - Now glued to content bottom */}
+                                            <div
+                                                id="blog-scroll-indicator"
+                                                className="absolute bottom-6 left-0 right-0 z-30 flex flex-col items-center justify-center gap-2 text-[#BF9B8E] opacity-0 pointer-events-none transition-all duration-300 ease-out"
+                                            >
+                                                <span className="text-[9px] font-black uppercase tracking-[0.2em] animate-bounce">Lire la suite</span>
+                                                <ArrowDown className="w-3 h-3 animate-bounce" />
+                                            </div>
                                         </div>
 
-                                        <h2 className="hidden md:block text-4xl lg:text-5xl font-black tracking-tighter text-white mb-8 leading-[0.9]">
-                                            {selectedItem.title}
-                                        </h2>
+                                        {/* Sticky Footer */}
+                                        <div className="bg-[#081d38] relative z-20 shrink-0 border-t border-white/5">
+                                            <div className="p-8 md:pb-12 pt-8 flex flex-col sm:flex-row justify-center items-center gap-6">
+                                                <button
+                                                    onClick={() => {
+                                                        setSelectedItem(null);
+                                                        navigate(`/blog/${selectedItem.id}`);
+                                                    }}
+                                                    className="inline-flex items-center justify-center gap-4 bg-[#BF9B8E] text-[#0C2E59] px-8 py-4 rounded-sm font-black uppercase tracking-widest text-xs hover:bg-white transition-all group"
+                                                >
+                                                    {selectedItem.type === 'video' ? 'Visionner la vidéo' : 'Lire l\'article complet'}
+                                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                                </button>
 
-                                        <div className="hidden md:block h-[2px] w-20 bg-[#BF9B8E] mb-8" />
-
-                                        <p className="text-lg md:text-xl text-blue-200/80 font-light leading-relaxed mb-12">
-                                            {selectedItem.longDescription || selectedItem.description}
-                                        </p>
-
-                                        <div className="flex flex-col sm:flex-row gap-6 mt-auto md:mt-0">
-                                            <button
-                                                onClick={() => {
-                                                    setSelectedItem(null);
-                                                    window.location.hash = `#blog/${selectedItem.id}`;
-                                                }}
-                                                className="inline-flex items-center justify-center gap-4 bg-[#BF9B8E] text-[#0C2E59] px-10 py-5 rounded-sm font-black uppercase tracking-widest text-xs hover:bg-white transition-all group"
-                                            >
-                                                {selectedItem.type === 'video' ? 'Visionner la vidéo' : 'Lire l\'article complet'}
-                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                            </button>
-
-                                            <button
-                                                onClick={() => setSelectedItem(null)}
-                                                className="inline-flex items-center justify-center px-10 py-5 rounded-sm border border-white/20 font-black uppercase tracking-widest text-[10px] text-white/60 hover:text-white hover:border-white transition-all"
-                                            >
-                                                Fermer
-                                            </button>
+                                                <button
+                                                    onClick={() => setSelectedItem(null)}
+                                                    className="inline-flex items-center justify-center px-8 py-4 rounded-sm border border-white/20 font-black uppercase tracking-widest text-[10px] text-white/60 hover:text-white hover:border-white transition-all"
+                                                >
+                                                    Fermer
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>

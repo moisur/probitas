@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Linkedin, Instagram } from 'lucide-react';
 
@@ -12,7 +13,7 @@ const ArtisticFooter: React.FC = () => {
           {Array.from({ length: 12 }).map((_, i) => (
             <path
               key={i}
-              d={`M - 100, ${i * 100} Q250, ${i * 100 - 50} 500, ${i * 100} T1100, ${i * 100} `}
+              d={`M-100, ${i * 100} Q250, ${i * 100 - 50} 500, ${i * 100} T1100, ${i * 100} `}
               stroke="#BF9B8E"
               fill="none"
               strokeWidth="1.5"
@@ -51,13 +52,13 @@ const ArtisticFooter: React.FC = () => {
           <div className="flex flex-col gap-8 md:items-start items-center">
             <div className="flex flex-col gap-4 items-center md:items-start">
               <span className="text-[#BF9B8E] font-cinzel font-bold text-xs tracking-widest uppercase border-b border-[#BF9B8E]/20 pb-2 w-max">FORMATION</span>
-              <a href="#formation" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Inter-entreprises</a>
-              <a href="#formations-digitales" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Digital Learning</a>
+              <Link to="/formations" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Inter-entreprises</Link>
+              <Link to="/formations" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Digital Learning</Link>
             </div>
             <div className="flex flex-col gap-4 items-center md:items-start">
               <span className="text-[#BF9B8E] font-cinzel font-bold text-xs tracking-widest uppercase border-b border-[#BF9B8E]/20 pb-2 w-max">CONSEIL</span>
-              <a href="#conseil" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Conformité Sapin II</a>
-              <a href="#communication" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Communication</a>
+              <Link to="/conseil" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Conformité Sapin II</Link>
+              <Link to="/communication" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Communication</Link>
             </div>
           </div>
 
@@ -65,23 +66,23 @@ const ArtisticFooter: React.FC = () => {
           <div className="flex flex-col gap-8 md:items-start items-center">
             <div className="flex flex-col gap-4 items-center md:items-start">
               <span className="text-[#BF9B8E] font-cinzel font-bold text-xs tracking-widest uppercase border-b border-[#BF9B8E]/20 pb-2 w-max">SENSIBILISATION</span>
-              <a href="#sensibilisation" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Workshops</a>
-              <a href="#sensibilisation-conferences" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Conférences</a>
+              <Link to="/sensibilisation" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Workshops</Link>
+              <Link to="/sensibilisation#conferences" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Conférences</Link>
             </div>
             <div className="flex flex-col gap-4 mt-2 items-center md:items-start">
-              <a href="#municipales" className="text-[#BF9B8E] font-cinzel font-bold text-xs tracking-widest uppercase hover:text-white transition-colors border-b border-[#BF9B8E]/20 pb-2 w-max">MUNICIPALES 2026</a>
-              <a href="#boutique" className="text-[#BF9B8E] font-cinzel font-bold text-xs tracking-widest uppercase hover:text-white transition-colors border-b border-[#BF9B8E]/20 pb-2 w-max">BOUTIQUE</a>
+              <Link to="/municipales-2026" className="text-[#BF9B8E] font-cinzel font-bold text-xs tracking-widest uppercase hover:text-white transition-colors border-b border-[#BF9B8E]/20 pb-2 w-max">MUNICIPALES 2026</Link>
+              <Link to="/boutique" className="text-[#BF9B8E] font-cinzel font-bold text-xs tracking-widest uppercase hover:text-white transition-colors border-b border-[#BF9B8E]/20 pb-2 w-max">BOUTIQUE</Link>
             </div>
           </div>
 
           {/* COL 3: L'AGENCE */}
           <div className="flex flex-col gap-4 md:items-start items-center">
             <span className="text-[#BF9B8E] font-cinzel font-bold text-xs tracking-widest uppercase border-b border-[#BF9B8E]/20 pb-2 w-max">À PROPOS</span>
-            <a href="#a-propos" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Nous connaître</a>
-            <a href="#realisations" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Nos Réalisations</a>
-            <a href="#presse" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Presse</a>
-            <a href="#temoignages" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Témoignages</a>
-            <a href="#qualiopi" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Certification Qualiopi</a>
+            <Link to="/a-propos" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Nous connaître</Link>
+            <Link to="/realisations" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Nos Réalisations</Link>
+            <Link to="/presse" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Presse</Link>
+            <Link to="/temoignages" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Témoignages</Link>
+            <Link to="/qualiopi" className="text-white/60 hover:text-white text-[10px] tracking-[0.2em] uppercase transition-colors">Certification Qualiopi</Link>
           </div>
 
         </div>
@@ -111,14 +112,14 @@ const ArtisticFooter: React.FC = () => {
         {/* BOTTOM FRAME */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-[10px] font-mono text-white/30 tracking-widest uppercase text-center md:text-left">
-            2023-2025 ©PROBITAS • <a href="https://site-internet-six.vercel.app/" className="hover:text-white transition-colors">Proudly made by King Djissi</a>
+            2023-{new Date().getFullYear()} ©PROBITAS • <a href="https://site-internet-six.vercel.app/" className="hover:text-white transition-colors">Proudly made by King Djissi</a>
           </div>
           <div className="flex flex-wrap justify-center gap-8 text-[9px] font-mono text-white/50 tracking-widest uppercase">
-            <a href="#mentions" className="hover:text-[#BF9B8E]">Mentions légales</a>
-            <a href="#confidentialite" className="hover:text-[#BF9B8E]">Politique de confidentialité</a>
-            <a href="#cookies" className="hover:text-[#BF9B8E]">Politique de cookies (UE)</a>
-            <a href="#cgv-formation" className="hover:text-[#BF9B8E]">CGV Formation</a>
-            <a href="#temoignages" className="hover:text-[#BF9B8E]">Témoignages</a>
+            <Link to="/mentions-legales" className="hover:text-[#BF9B8E]">Mentions légales</Link>
+            <Link to="/confidentialite" className="hover:text-[#BF9B8E]">Politique de confidentialité</Link>
+            <Link to="/politique-cookies" className="hover:text-[#BF9B8E]">Politique de cookies (UE)</Link>
+            <Link to="/cgv" className="hover:text-[#BF9B8E]">CGV Formation</Link>
+            <Link to="/temoignages" className="hover:text-[#BF9B8E]">Témoignages</Link>
           </div>
         </div>
       </div>

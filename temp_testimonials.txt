@@ -1,0 +1,66 @@
+﻿FILE: C:\Users\jean-\Desktop\gsap\temoignage\alex-wikimedia
+TEXT: Une excellente introduction au concept de conflits d&rsquo;intÃ©rÃªts pour tous les membres de l&rsquo;association.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\anonyme-benevole-wikimedia
+TEXT: C&rsquo;est un atelier instructif [Atelier de sensibilisation] qui sert dans de nombreuses situations et permet Ã©galement d&rsquo;approfondir la culture gÃ©nÃ©rale. Merci beaucoup.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\anonyme-benevole-wikimedia-2
+TEXT: Informatif, trÃ¨s utile, facile et agrÃ©able Ã suivre.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\anonyme-gie-chartres
+TEXT: Je conseille cet atelier qui permettrait dâ€™aider, de soulager et dâ€™orienter, dans de bonnes conditions, les tÃ¢ches quotidiennes des diffÃ©rents services de la collectivitÃ©.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\anonyme-gie-chartres-2
+TEXT: La formation sur la maÃ®trise des risques est indispensable car elle permet de se remettre en cause sur notre pratique afin de limiter les risques financiers et juridiques qui peuvent avoir des consÃ©quences importantes sur les agents et les Ã©lus.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\anonyme-gie-chartres-3
+TEXT: Se former, sâ€™informer pour mieux exercer ses missions au quotidien.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\christiane-l-scet
+TEXT: La formation [Dispositif de sensibilisation aux rÃ¨gles de dÃ©ontologie et de probitÃ©] a Ã©tÃ©Â largement rÃ©ussie, tant sur le fond que sur la forme. La formatrice a Ã©tÃ© un atout majeur, et les participants ont soulignÃ© la qualitÃ© pÃ©dagogique ainsi que la pertinence des exemples. 91 %Â des participants estiment que la formation a rÃ©pondu Ã leurs attentes. 94 %Â ont progressÃ© etÂ 93 %Â pensent pouvoir appliquer rapidement les connaissances acquises.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\chrystel-l-cdg-77
+TEXT: Tant les agents du Centre DÃ©partemental de Gestion de Seine-et-Marne que les Ã©lus du DÃ©partement, ont pu bÃ©nÃ©ficier des Ã©clairages de Farah, grande spÃ©cialiste de lâ€™anticorruption, qui a pris le temps de parcourir les contours de la dÃ©ontologie dans le secteur public. Un thÃ¨me amenÃ© Ã devenir de plus en plus incontournable Ã mesure des annÃ©es. Ses interventions didactiques, pÃ©dagogiques au sein du CDG 77 en juin dernier et lors du 61áµ‰Â CongrÃ¨s des Maires le 29 septembre 2023, ont eu pour mÃ©rite dâ€™Ã©veiller la curiositÃ© des agents publics et des dÃ©cideurs territoriaux sur la maniÃ¨re dont les usagers perÃ§oivent lâ€™action publique et font ou non confiance Ã la puissance publique. Â Clarifier ce quâ€™est la dÃ©ontologie en quelques mots, ses tenants et aboutissants, juridiques, moraux et sociÃ©taux : ce fut la mission accomplie par Farah en quelques heures. Un grand remerciement pour ce trÃ¨s beau travail !
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\djidi-achat-public
+TEXT: Jâ€™ai pu en lâ€™espace dâ€™une journÃ©e cerner les grands enjeux Ã©thiques de la commande publique. Cela mâ€™a apportÃ© une plus-value professionnelle trÃ¨s importante.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\erwan-s-avocat
+TEXT: Avant de suivre ce coaching, je cherchais Ã comprendre le fonctionnement de LinkedIn (ce qui marche et ce qui ne marche pas) et comment structurer un post pour mettre en avant mon expertise et gagner en visibilitÃ©. Jâ€™ai particuliÃ¨rement apprÃ©ciÃ© la premiÃ¨re partie thÃ©orique, qui mâ€™a permis de comprendre les bases, ainsi que la deuxiÃ¨me partie plus pratique. Les conseils de Farah Zaoui Ã©taient Ã la fois pragmatiques et pertinents. Ce que jâ€™ai vraiment aimÃ©, câ€™est le partage sans retenu de son expÃ©rience et ses conseils pratiques qui mâ€™ont permis de mieux structurer mes publications. Depuis le coaching, jâ€™ai constatÃ© une nette augmentation de lâ€™engagement sur mes posts et jâ€™ai enfin lancÃ© une vÃ©ritable stratÃ©gie de communication, ce qui Ã©tait un vrai dÃ©fi pour moi auparavant.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\ewe-nahah-snim
+TEXT: Mme Farah ZAOUI nous a dispensÃ© durant 3 jours en mai 2023, des cours trÃ¨s intÃ©ressants et bÃ©nÃ©fiques sur les thÃ¨mes suivants : â€“ Transparence et Communication des documents administratifs â€“ Les Outils et MÃ©thodes de la lutte anticorruption appliquÃ©s Ã lâ€™Entreprise Je saisis cette occasion pour vous remercier pour la qualitÃ© et la clartÃ© des cours dispensÃ©s.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\ibrahima-benevole
+TEXT: C&rsquo;Ã©tait vraiment bien et je conseille tout le monde de le suivre [Atelier de sensibilisation].
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\ingrid-k-coaching
+TEXT: Le coaching de Farah Zaoui est ce qu&rsquo;il vous faut si vous souhaitez avoir une communication impactante sans cÃ©der au buzz Ã tout prix. J&rsquo;ai travaillÃ© avec elle pendant 2 mois alors que j&rsquo;avais dÃ©jÃ commencÃ© Ã publier sur Linkedin. Les rÃ©sultats sont lÃ : Linkedin est devenu un canal d&rsquo;acquisition Ã part entiÃ¨re (je suis dÃ©sormais sollicitÃ©e chaque semaine et une partie des demandes se convertit en dossiers), Une opportunitÃ© d&rsquo;enseignement, Une visibilitÃ© accrue en tant qu&rsquo;experte.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\malika-s-ville-dermont
+TEXT: Lâ€™intervenante Ã©tait trÃ¨s claire et prÃ©cise juridiquement. Avis trÃ¨s positif sur les formations proposÃ©es !
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\melanie-achat-public
+TEXT: Je pense que votre formation [sujet : lutter contre la corruption dans la commande publique] devrait Ãªtre obligatoire.Â Elle Ã©tait riche, remplie dâ€™exemples concrets et accessibles. Jâ€™ai par exemple compris en pratique ce quâ€™Ã©tait la concussion et les leviers existants Ã mobiliser pour prÃ©venir la corruption au quotidien.Â Je ne suis pas sortie de la formation en me disant â€œcâ€™est dommageâ€.Â Jâ€™en garde un bon souvenir !
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\melanie-g-weka
+TEXT: Jâ€™ai fait appel Ã Farah pour participer Ã une Masterclass sur la thÃ©matique des conflits dâ€™intÃ©rÃªt et la compliance dans les marchÃ©s publics, et je nâ€™ai pas Ã©tÃ© dÃ©Ã§ue ! Farah est trÃ¨s efficace et compÃ©tente sur ce sujet. Elle a une trÃ¨s bonne capacitÃ© dâ€™adaptation, son enthousiasme lâ€™a rendue opÃ©rationnelle et autonome sur cet Ã©vÃ©nement. Elle est souriante et bienveillante, Ã§a a Ã©tÃ© un plaisir de travailler avec Farah, câ€™est une personne dynamique, et je referai appel Ã elle sans hÃ©sitation si lâ€™occasion se reprÃ©sente.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\melissa-b-achat-public
+TEXT: La formationÂ [Le risque pÃ©nal dans la commande publique] Ã©tait prÃ©parÃ©e par la formatrice qui maÃ®trise son sujet. Le fil conducteur de chaque thÃ©matique est prÃ©sent tout au long de la journÃ©e de formation. Les cas pratiques Ã©taient un plus pour amÃ©liorer la comprÃ©hension de la thÃ©matique. Cette formation Ã©tait importante pour moi, car elle met en avant les risques qui pÃ¨sent sur les agents et Ã©lus tout au long de la procÃ©dure marchÃ© public. Je vais pouvoir envisager une procÃ©dure interne renforcÃ©e de prÃ©vention sur ces risques.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\moctar-snim
+TEXT: Jâ€™ai trouvÃ© la formation bien prÃ©parÃ©e dans son fond avec des exemples concrets qui facilitent sa comprÃ©hension et que vous Ã©tiez disponible pour rÃ©pondre Ã toutes les questions et que lâ€™Ã©change Ã©tait aisÃ© et interactif.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\nicolas-j-drajes
+TEXT: Une trÃ¨s bonne intervention [atelier sur le sujet : cadeaux et invitations Ã lâ€™approche des JO2024] avec plein dâ€™exemples concrets que nous, agents de lâ€™Ã‰tat pourrions rencontrer. Certaines situations prÃ©sentÃ©es pouvaient sembler anodines, mais qui pourraient avoir des consÃ©quences sÃ©rieuses sur notre intÃ©gritÃ© professionnelle.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\pierre-v-intelligence-360
+TEXT: Farah est particuliÃ¨rement pÃ©dagogue et mâ€™a montrÃ© toutes les subtilitÃ©s de Linkedin. Elle a la bonne approche pour optimiser mon profil Linkedin et depuis ses conseils, jâ€™utilise Linkedin quasi tous les jours. Depuis jâ€™ai rÃ©guliÃ¨rement des opportunitÃ©s. Je recommande.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\tres-explicite-intervention-accessible-a-tous
+TEXT: J&rsquo;ai trouvÃ© cette intervention trÃ¨s explicite et accessible Ã tous. Permet de dÃ©mystifier les actions Ã mener.
+---
+FILE: C:\Users\jean-\Desktop\gsap\temoignage\yann-c-drajes
+TEXT: Intervention de qualitÃ© sur cette sensibilisation [atelier sur le sujet : cadeaux et invitations Ã lâ€™approche des JO2024]. Cela me permettra de mieux cerner une situation, dâ€™Ãªtre vigilant ou bien dâ€™avoir un regard averti en lien avec ce sujet des cadeaux et invitations donnÃ©s et reÃ§us dans le cadre professionnel.
+---

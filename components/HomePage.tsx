@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Mail, Check } from 'lucide-react';
 import GenesisSection from './GenesisSection';
 import MissionsTimeline from './MissionsTimeline';
@@ -82,7 +83,7 @@ const HomePage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) =
           <div className="order-1 lg:order-2 relative">
             <div className="absolute inset-0 border-[20px] border-[#BF9B8E]/10 md:-m-6 -m-4 pointer-events-none" />
             <img
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800"
+              src="/assets/Farah.jpg"
               alt="Farah Zaoui Probitas"
               className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl relative z-10"
             />
@@ -118,6 +119,13 @@ const HomePage: React.FC<{ onOpenContact?: () => void }> = ({ onOpenContact }) =
                 </div>
                 <h4 className="text-white font-cinzel font-bold text-lg mb-4 uppercase tracking-wider">{v.name}</h4>
                 <p className="text-white/50 font-light text-sm leading-relaxed text-justify">{v.text}</p>
+                {/* The following Link was added based on the instruction, assuming it should be appended to each value item */}
+                <Link to="/temoignages" className="flex gap-4 items-center group cursor-pointer mt-4">
+                  <div className="h-16 w-16 rounded-sm border border-[#BF9B8E] flex items-center justify-center group-hover:bg-[#BF9B8E] transition-all duration-500">
+                    <span className="text-[#BF9B8E] group-hover:text-white transition-colors text-2xl">→</span>
+                  </div>
+                  <span className="font-cinzel font-bold tracking-[0.3em] uppercase text-xs text-[#BF9B8E] group-hover:text-white transition-colors">Lire les témoignages</span>
+                </Link>
               </div>
             ))}
           </div>

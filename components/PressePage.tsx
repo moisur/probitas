@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Youtube, ExternalLink, Play, Newspaper, Quote, ArrowRight, X, Calendar, MapPin, Video } from 'lucide-react';
+import { Youtube, ExternalLink, Play, Newspaper, Quote, ArrowRight, ArrowDown, X, Calendar, MapPin, Video } from 'lucide-react';
 
 interface PressItemData {
     id: string;
@@ -17,6 +18,41 @@ interface PressItemData {
 const PressePage: React.FC = () => {
     const [selectedItem, setSelectedItem] = useState<PressItemData | null>(null);
     const [filter, setFilter] = useState<'all' | 'video' | 'article'>('all');
+
+    // Scroll detection inspired by user's example
+    const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+        const target = e.currentTarget;
+        const isScrolled = target.scrollTop > 10;
+        const arrow = document.getElementById('scroll-indicator');
+        if (arrow) {
+            arrow.style.opacity = isScrolled ? '0' : '1';
+            arrow.style.pointerEvents = isScrolled ? 'none' : 'auto';
+            arrow.style.transform = isScrolled ? 'translateY(10px)' : 'translateY(0)';
+        }
+    };
+
+    // Reset indicator when opening a new item & check if scrollable
+    useEffect(() => {
+        if (selectedItem) {
+            // Initial reset
+            const arrow = document.getElementById('scroll-indicator');
+            if (arrow) {
+                arrow.style.opacity = '1';
+                arrow.style.pointerEvents = 'auto';
+                arrow.style.transform = 'translateY(0)';
+            }
+            // Check after a brief delay to allow content rendering
+            setTimeout(() => {
+                const container = document.getElementById('press-modal-content');
+                const scrollArrow = document.getElementById('scroll-indicator');
+                if (container && scrollArrow) {
+                    const isScrollable = container.scrollHeight > container.clientHeight;
+                    scrollArrow.style.opacity = isScrollable ? '1' : '0';
+                    scrollArrow.style.pointerEvents = isScrollable ? 'auto' : 'none';
+                }
+            }, 100);
+        }
+    }, [selectedItem]);
 
     const pressData: PressItemData[] = [
         {
@@ -247,81 +283,108 @@ const PressePage: React.FC = () => {
                 </div>
 
                 {/* Modal Overlay for Details */}
-                <AnimatePresence>
-                    {selectedItem && (
-                        <div className="fixed inset-0 z-[200] flex items-center justify-center px-4">
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                onClick={() => setSelectedItem(null)}
-                                className="absolute inset-0 bg-[#0C2E59]/90 backdrop-blur-md"
-                            />
-
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.9, y: 50 }}
-                                className="relative w-full max-w-5xl bg-[#081d38] border border-white/10 rounded-sm overflow-hidden shadow-2xl z-[210] flex flex-col md:flex-row h-[85vh] md:h-auto"
-                            >
-                                {/* Close Button */}
-                                <button
+                {createPortal(
+                    <AnimatePresence>
+                        {selectedItem && (
+                            <div className="fixed inset-0 z-[9999] flex items-center justify-center px-4">
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
                                     onClick={() => setSelectedItem(null)}
-                                    className="absolute top-8 right-8 z-[220] w-12 h-12 bg-[#BF9B8E] text-[#0C2E59] rounded-sm flex items-center justify-center hover:scale-110 transition-all shadow-xl"
+                                    className="absolute inset-0 bg-[#0C2E59]/90 backdrop-blur-md"
+                                />
+
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.9, y: 50 }}
+                                    className="relative w-full max-w-5xl bg-[#081d38] border border-white/10 rounded-sm overflow-hidden shadow-2xl z-[210] flex flex-col md:flex-row max-h-[90vh] md:h-auto"
                                 >
-                                    <X className="w-6 h-6" />
-                                </button>
+                                    {/* Close Button */}
+                                    <button
+                                        onClick={() => setSelectedItem(null)}
+                                        className="absolute top-8 right-8 z-[220] w-12 h-12 bg-[#BF9B8E] text-[#0C2E59] rounded-sm flex items-center justify-center hover:scale-110 transition-all shadow-xl"
+                                    >
+                                        <X className="w-6 h-6" />
+                                    </button>
 
-                                {/* Left Side: Visual */}
-                                <div className="w-full md:w-1/2 h-64 md:h-auto relative">
-                                    <img src={selectedItem.image} alt="" className="w-full h-full object-cover opacity-90" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#081d38] via-transparent to-transparent md:hidden" />
-                                    <div className="absolute bottom-8 left-8 text-white md:hidden">
-                                        <span className="text-xs font-black uppercase tracking-[0.4em] mb-2 block text-[#BF9B8E]">{selectedItem.source}</span>
-                                        <h2 className="text-2xl font-bold">{selectedItem.title}</h2>
-                                    </div>
-                                </div>
-
-                                {/* Right Side: Content */}
-                                <div className="flex-1 p-12 md:p-20 flex flex-col justify-center bg-[#081d38]">
-                                    <div className="hidden md:flex items-center gap-4 mb-12">
-                                        <Calendar className="w-4 h-4 text-[#BF9B8E]" />
-                                        <span className="text-xs font-bold text-[#BF9B8E] uppercase tracking-[0.4em]">{selectedItem.date} // {selectedItem.source}</span>
+                                    {/* Left Side: Visual */}
+                                    <div className="w-full md:w-1/2 h-64 md:h-auto md:min-h-[500px] relative">
+                                        <img src={selectedItem.image} alt="" className="w-full h-full object-cover opacity-90" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#081d38] via-transparent to-transparent md:hidden" />
+                                        <div className="absolute bottom-8 left-8 text-white md:hidden">
+                                            <span className="text-xs font-black uppercase tracking-[0.4em] mb-2 block text-[#BF9B8E]">{selectedItem.source}</span>
+                                            <h2 className="text-2xl font-bold">{selectedItem.title}</h2>
+                                        </div>
                                     </div>
 
-                                    <h2 className="hidden md:block text-5xl font-black tracking-tighter text-white mb-8 leading-[0.9]">
-                                        {selectedItem.title}
-                                    </h2>
+                                    {/* Right Side: Content */}
+                                    <div className="flex-1 flex flex-col bg-[#081d38] overflow-hidden">
+                                        {/* Scrollable Area Wrapper */}
+                                        <div className="flex-1 relative flex flex-col min-h-0 overflow-hidden">
+                                            <div
+                                                id="press-modal-content"
+                                                onScroll={handleScroll}
+                                                className="flex-1 overflow-y-auto p-8 md:p-16 md:pb-12 overscroll-contain scrollbar-hide"
+                                            >
+                                                <div className="hidden md:flex items-center gap-4 mb-12">
+                                                    <Calendar className="w-4 h-4 text-[#BF9B8E]" />
+                                                    <span className="text-xs font-bold text-[#BF9B8E] uppercase tracking-[0.4em]">{selectedItem.date} // {selectedItem.source}</span>
+                                                </div>
 
-                                    <div className="h-[2px] w-20 bg-[#BF9B8E] mb-8" />
+                                                <h2 className="hidden md:block text-4xl lg:text-5xl font-black tracking-tighter text-white mb-8 leading-[0.9]">
+                                                    {selectedItem.title}
+                                                </h2>
 
-                                    <p className="text-xl md:text-2xl text-blue-200/80 font-light leading-relaxed mb-12">
-                                        {selectedItem.longDescription || selectedItem.description}
-                                    </p>
+                                                <div className="hidden md:block h-[2px] w-20 bg-[#BF9B8E] mb-8" />
 
-                                    <div className="flex flex-col sm:flex-row gap-6">
-                                        <a
-                                            href={selectedItem.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center justify-center gap-4 bg-[#BF9B8E] text-[#0C2E59] px-10 py-5 rounded-sm font-black uppercase tracking-widest text-xs hover:bg-white transition-all group"
-                                        >
-                                            {selectedItem.type === 'video' ? 'Visionner la vidéo' : 'Lire l\'article complet'}
-                                            <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                        </a>
+                                                <p className="text-lg md:text-xl text-blue-200/80 font-light leading-relaxed mb-12">
+                                                    {selectedItem.longDescription || selectedItem.description}
+                                                </p>
+                                            </div>
 
-                                        <button
-                                            onClick={() => setSelectedItem(null)}
-                                            className="inline-flex items-center justify-center px-10 py-5 rounded-sm border border-white/20 font-black uppercase tracking-widest text-[10px] text-white/60 hover:text-white hover:border-white transition-all"
-                                        >
-                                            Retour aux archives
-                                        </button>
+                                            {/* Elevated Gradient Fade - Now relative to content area */}
+                                            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#081d38] via-[#081d38]/80 to-transparent pointer-events-none z-10" />
+
+                                            {/* Centered Scroll Indicator - Now glued to content bottom */}
+                                            <div
+                                                id="scroll-indicator"
+                                                className="absolute bottom-6 left-0 right-0 z-30 flex flex-col items-center justify-center gap-2 text-[#BF9B8E] transition-all duration-300 pointer-events-none"
+                                            >
+                                                <span className="text-[9px] font-black uppercase tracking-[0.2em] animate-bounce">Lire la suite</span>
+                                                <ArrowDown className="w-3 h-3 animate-bounce" />
+                                            </div>
+                                        </div>
+
+                                        {/* Sticky Footer */}
+                                        <div className="bg-[#081d38] relative z-20 shrink-0 border-t border-white/5">
+                                            <div className="p-8 md:pb-12 pt-8 flex flex-col sm:flex-row justify-center items-center gap-6">
+                                                <a
+                                                    href={selectedItem.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center justify-center gap-4 bg-[#BF9B8E] text-[#0C2E59] px-8 py-4 rounded-sm font-black uppercase tracking-widest text-xs hover:bg-white transition-all group"
+                                                >
+                                                    {selectedItem.type === 'video' ? 'Visionner la vidéo' : 'Lire l\'article complet'}
+                                                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                                </a>
+
+                                                <button
+                                                    onClick={() => setSelectedItem(null)}
+                                                    className="inline-flex items-center justify-center px-8 py-4 rounded-sm border border-white/20 font-black uppercase tracking-widest text-[10px] text-white/60 hover:text-white hover:border-white transition-all"
+                                                >
+                                                    Fermer
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
-                        </div>
-                    )}
-                </AnimatePresence>
+                                </motion.div>
+                            </div>
+                        )}
+                    </AnimatePresence>,
+                    document.body
+                )}
 
                 {/* Probitas Logo / Footer Section */}
                 <section className="mt-60 border-t border-white/10 pt-32 text-center">
